@@ -12,6 +12,8 @@
 		84A299D92BEF7FFD00A88485 /* MyTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84A299D72BEF7FFD00A88485 /* MyTodo.xcdatamodeld */; };
 		84A299DB2BEF7FFE00A88485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84A299DA2BEF7FFE00A88485 /* Assets.xcassets */; };
 		84A299E62BEF84D700A88485 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A299E52BEF84D700A88485 /* main.swift */; };
+		84A299E82BF091ED00A88485 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A299E72BF091ED00A88485 /* Table.swift */; };
+		84A299EC2BF0B5A100A88485 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A299EB2BF0B5A100A88485 /* Navigator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		84A299DA2BEF7FFE00A88485 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84A299DF2BEF7FFE00A88485 /* MyTodo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyTodo.entitlements; sourceTree = "<group>"; };
 		84A299E52BEF84D700A88485 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		84A299E72BF091ED00A88485 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
+		84A299EB2BF0B5A100A88485 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,12 +58,14 @@
 		84A299D22BEF7FFD00A88485 /* MyTodo */ = {
 			isa = PBXGroup;
 			children = (
+				84A299E52BEF84D700A88485 /* main.swift */,
 				84A299D32BEF7FFD00A88485 /* AppDelegate.swift */,
 				84A299D52BEF7FFD00A88485 /* ViewController.swift */,
+				84A299E72BF091ED00A88485 /* Table.swift */,
 				84A299DA2BEF7FFE00A88485 /* Assets.xcassets */,
 				84A299DF2BEF7FFE00A88485 /* MyTodo.entitlements */,
 				84A299D72BEF7FFD00A88485 /* MyTodo.xcdatamodeld */,
-				84A299E52BEF84D700A88485 /* main.swift */,
+				84A299EB2BF0B5A100A88485 /* Navigator.swift */,
 			);
 			path = MyTodo;
 			sourceTree = "<group>";
@@ -99,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 84A299CB2BEF7FFD00A88485 /* Build configuration list for PBXProject "MyTodo-Mac" */;
+			buildConfigurationList = 84A299CB2BEF7FFD00A88485 /* Build configuration list for PBXProject "MyTodo" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -134,9 +140,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A299D62BEF7FFD00A88485 /* ViewController.swift in Sources */,
+				84A299E82BF091ED00A88485 /* Table.swift in Sources */,
 				84A299D92BEF7FFD00A88485 /* MyTodo.xcdatamodeld in Sources */,
 				84A299E62BEF84D700A88485 /* main.swift in Sources */,
 				84A299D42BEF7FFD00A88485 /* AppDelegate.swift in Sources */,
+				84A299EC2BF0B5A100A88485 /* Navigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +324,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84A299CB2BEF7FFD00A88485 /* Build configuration list for PBXProject "MyTodo-Mac" */ = {
+		84A299CB2BEF7FFD00A88485 /* Build configuration list for PBXProject "MyTodo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				84A299E02BEF7FFE00A88485 /* Debug */,
