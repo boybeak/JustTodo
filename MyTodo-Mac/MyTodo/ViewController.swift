@@ -7,20 +7,19 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class ViewController: NSViewController, NSTextViewDelegate {
     
     private static let EDITOR_HEIGHT = CGFloat(32)
-    private static let SEPARATOR_COLOR = NSColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1)
+    private static let SEPARATOR_COLOR = NSColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
     
-    private var navigator: NSScrollView!
+    private var groupList: NSScrollView!
+    private var groupTable: NSTableView!
     
-    private let navigatorDataSource = NavigatorDataSource()
-    private let navigatorDelegate = NavigatorDelegate()
+    private let navigatorDelegate = GroupDelegate()
     
-    private let tableDataSource = TableDataSource()
     private let tableDelegate = TableDelegate()
     
-    private var selectedButton: NSButton?
+    private var contentTable: NSTableView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +32,9 @@ class ViewController: NSViewController {
         noteContainer.orientation = .vertical
         noteContainer.translatesAutoresizingMaskIntoConstraints = false
 
-        navigator = makeNavigator()
-        navigator.wantsLayer = true
-        navigator.layer?.backgroundColor = NSColor.blue.cgColor
+        let groupContainer = makeNavigator()
         
-        container.addArrangedSubview(navigator)
+        container.addArrangedSubview(groupContainer)
         
         let separator1 = NSView()
         separator1.wantsLayer = true
@@ -70,14 +67,14 @@ class ViewController: NSViewController {
         ])
         
         NSLayoutConstraint.activate([
-            navigator.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            navigator.topAnchor.constraint(equalTo: container.topAnchor),
-            navigator.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            navigator.widthAnchor.constraint(equalToConstant: 120)
+            groupContainer.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            groupContainer.topAnchor.constraint(equalTo: container.topAnchor),
+            groupContainer.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            groupContainer.widthAnchor.constraint(equalToConstant: 120)
         ])
         
         NSLayoutConstraint.activate([
-            separator1.leadingAnchor.constraint(equalTo: navigator.trailingAnchor),
+            separator1.leadingAnchor.constraint(equalTo: groupContainer.trailingAnchor),
             separator1.topAnchor.constraint(equalTo: container.topAnchor),
             separator1.bottomAnchor.constraint(equalTo: container.bottomAnchor),
             separator1.widthAnchor.constraint(equalToConstant: 0.5)
@@ -109,48 +106,88 @@ class ViewController: NSViewController {
         ])
     }
     
-    private func makeNavigator()-> NSScrollView {
+    private func makeNavigator()-> NSView {
+        
         let scrollView = NSScrollView()
         scrollView.verticalScroller = nil
+        scrollView.automaticallyAdjustsContentInsets = false
+        scrollView.contentInsets = NSEdgeInsetsZero
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
         
         let table = NSTableView()
         table.headerView = nil
-        table.dataSource = navigatorDataSource
+        table.selectionHighlightStyle = .none
+        table.focusRingType = .none
+        table.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.dataSource = TodoManager.shared.groupDataSource
         table.delegate = navigatorDelegate
         
         let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "column"))
         column.title = "Items"
+        column.resizingMask = .autoresizingMask
         table.addTableColumn(column)
         
+        
         scrollView.documentView = table
-        scrollView.hasVerticalScroller = true
+        scrollView.hasVerticalScroller = false
         scrollView.hasHorizontalScroller = false
         scrollView.autohidesScrollers = true
         
         table.reloadData()
         
-        return scrollView
+        groupTable = table
+        groupList = scrollView
+        
+        let groupAddBtn = NSButton()
+        groupAddBtn.image = NSImage(systemSymbolName: "plus.app", accessibilityDescription: nil)
+        groupAddBtn.imagePosition = .imageOnly
+        groupAddBtn.action = #selector(addGroup)
+        
+        let groupContainer = NSStackView()
+        groupContainer.orientation = .vertical
+        
+        groupContainer.addArrangedSubview(groupAddBtn)
+        groupContainer.addArrangedSubview(groupList)
+        
+        NSLayoutConstraint.activate([
+            groupAddBtn.topAnchor.constraint(equalTo: groupContainer.topAnchor),
+            groupAddBtn.trailingAnchor.constraint(equalTo: groupContainer.trailingAnchor),
+            groupAddBtn.widthAnchor.constraint(equalToConstant: 40),
+            groupAddBtn.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        NSLayoutConstraint.activate([
+            groupList.topAnchor.constraint(equalTo: groupAddBtn.bottomAnchor),
+            groupList.bottomAnchor.constraint(equalTo: groupContainer.bottomAnchor),
+            groupList.leadingAnchor.constraint(equalTo: groupContainer.leadingAnchor),
+            groupList.trailingAnchor.constraint(equalTo: groupContainer.trailingAnchor)
+        ])
+        
+        return groupContainer
     }
     
     private func makeList()-> NSView {
         let scrollView = NSScrollView()
         
-        let table = NSTableView()
-        table.headerView = nil
-        table.dataSource = tableDataSource
-        table.delegate = tableDelegate
+        contentTable = NSTableView()
+        contentTable?.headerView = nil
+        contentTable?.selectionHighlightStyle = .none
+        contentTable?.focusRingType = .none
+        contentTable?.dataSource = TodoManager.shared.todoDataSource
+        contentTable?.delegate = tableDelegate
         
         let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "column"))
         column.title = "Items"
-        table.addTableColumn(column)
+        contentTable?.addTableColumn(column)
         
-        scrollView.documentView = table
+        scrollView.documentView = contentTable
         scrollView.hasVerticalScroller = true
         scrollView.hasHorizontalScroller = false
         scrollView.autohidesScrollers = true
         scrollView.borderType = .noBorder
         
-        table.reloadData()
+        contentTable?.reloadData()
         
         return scrollView
     }
@@ -163,6 +200,7 @@ class ViewController: NSViewController {
         let input = NSTextView()
         input.textContainerInset = NSSize(width: 8, height: 9)
         input.font = NSFont.systemFont(ofSize: 14)
+        input.delegate = self
         
         let actionImage = NSImage(systemSymbolName: "paperplane.fill", accessibilityDescription: nil)
         let action = NSImageView(image: actionImage!)
@@ -184,6 +222,30 @@ class ViewController: NSViewController {
         ])
         
         return editor
+    }
+    
+    func textView(_ textView: NSTextView, doCommandBy commandSelector: Selector) -> Bool {
+        if commandSelector == #selector(insertNewline(_:)) {
+            let data = textView.string
+            if (data.isEmpty) {
+                return true
+            }
+            TodoManager.shared.todoDataSource.add(text: data)
+            contentTable?.reloadData()
+            textView.string = ""
+            // Enter key pressed
+            NSLog("textView")
+            return true // Indicating that the event has been handled
+        }
+        return false // Event not handled, letting the system handle it
+    }
+    
+    @objc func addGroup() {
+        
+        TodoManager.shared.newGroup(title: "XYZw")
+
+        groupTable.reloadData()
+        NSLog("addGroup count=\(TodoDB.shared.groupTable.count())")
     }
     
 }

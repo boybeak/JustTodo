@@ -9,7 +9,8 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    private let tray = Tray(iconName: "book.pages.fill", viewController: ViewController())
+//    private let tray = Tray(iconName: "book.pages.fill", viewController: ViewController())
+    private let tray = Tray(iconName: "book.pages.fill", viewController: WebViewController())
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         tray.install()
@@ -19,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 class Tray {
     
-    public static let POPOVER_SIZE = NSSize(width: 400, height: 400)
+    public static let POPOVER_SIZE = NSSize(width: 320, height: 400)
     
     private let iconName: String
     private var statusItem: NSStatusItem!
