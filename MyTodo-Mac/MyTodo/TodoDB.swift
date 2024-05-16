@@ -102,3 +102,22 @@ class GroupTable {
     }
     
 }
+
+extension Group: Encodable {
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(title, forKey: .title)
+        try container.encode(icon, forKey: .icon)
+        try container.encode(keep_top, forKey: .keep_top)
+        try container.encode(create_at, forKey: .create_at)
+    }
+}
+
+enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case icon
+        case keep_top
+        case create_at
+    }
