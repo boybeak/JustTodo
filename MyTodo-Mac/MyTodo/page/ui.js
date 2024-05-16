@@ -43,15 +43,20 @@ function getTabElementId(tab) {
 
 function onTabSelected(index) {
     var lastTab = headerTabs[lastSelectedTabIndex];
-    var lastTabElementId = getTabElementId(lastTab);
-    document.getElementById(lastTabElementId).removeEventListener("contextmenu", onTabRightClick);
+    if (!lastTab.isAddTab) {
+        var lastTabElementId = getTabElementId(lastTab);
+        document.getElementById(lastTabElementId).removeEventListener("contextmenu", onTabRightClick);
+    }
+    
 
-    let seelctedTab = headerTabs[index];
-    var tabElementId = getTabElementId(seelctedTab);
-    var tabItem = document.getElementById(tabElementId);
-    tabItem.addEventListener('contextmenu', onTabRightClick);
+    let selectedTab = headerTabs[index];
+    if (!selectedTab.isAddTab) {
+        var tabElementId = getTabElementId(selectedTab);
+        var tabItem = document.getElementById(tabElementId);
+        tabItem.addEventListener('contextmenu', onTabRightClick);
+    }
 
-    if (seelctedTab.isAddTab) {
+    if (selectedTab.isAddTab) {
         setVisibility("dataTableContainer", false);
         setVisibility("newTabPage", true);
     } else {
