@@ -6,16 +6,16 @@ function handleResult(eventId, result) {
     callbackMap.delete(eventId)
 }
 
-if(window.webkit) {
-    console.log = function(...data) {
+if (window.webkit) {
+    console.log = function (...data) {
         window.webkit.messageHandlers.consoleLog.postMessage(data);
     };
 }
 
-window.getTabs = function(callback) {
+window.getTabs = function (callback) {
     getTabsNative((result) => {
         let tabs = JSON.parse(result)
-    
+
         let addTab = {}
         addTab.isAddTab = true
         tabs.push(addTab)
@@ -28,6 +28,18 @@ window.getTabs = function(callback) {
 
 function getTabsNative(callback) {
     if (!window.webkit) {
+        callback(JSON.stringify(
+            [
+                {
+                    id: '11111',
+                    title: 'ABC'
+                },
+                {
+                    id: '2222',
+                    title: 'DEF'
+                }
+            ]
+        ))
         return
     }
     let eventId = newEventId()

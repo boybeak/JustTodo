@@ -29,6 +29,7 @@ class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         webView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
         webView.navigationDelegate = self
+        webView.uiDelegate = self
         
         if let htmlPath = Bundle.main.path(forResource: "index", ofType: "html") {
             let fileURL = URL(fileURLWithPath: htmlPath)
@@ -37,6 +38,12 @@ class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
             
             setupJsFunctions(webView: webView)
         }
+    }
+    
+    // 实现 WKNavigationDelegate 中的方法
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        // 禁用右键菜单
+        webView.evaluateJavaScript("document.body.setAttribute('oncontextmenu', 'event.preventDefault();');", completionHandler: nil)
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {

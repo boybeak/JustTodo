@@ -10,18 +10,6 @@
     <script src="./sober.min.js"></script>
     <script src="./ui.js"></script>
     <script src="./bridge.js"></script>
-    <script>
-        function tabSelect(index) {
-            let tab = headerTabs[index]
-            if (tab.isAddTab) {
-                setVisibility("dataTableContainer", false);
-                setVisibility("newTabPage", true);
-            } else {
-                setVisibility("dataTableContainer", true);
-                setVisibility("newTabPage", false);
-            }
-        }
-    </script>
 
     <style>
         html,
@@ -42,24 +30,35 @@
         }
 
         #newTabInput {
-            width: 160px; 
+            width: 160px;
             padding: 10px;
             border-radius: 10px;
             border: none;
             outline: none;
             /* background-color: blue; */
         }
-        .newTabInputWrapper {
-            border: 1px solid #ccc; /* 边框样式 */
-            border-radius: 10px; 
-        }
 
+        .newTabInputWrapper {
+            border: 1px solid #ccc;
+            /* 边框样式 */
+            border-radius: 10px;
+        }
     </style>
 </head>
 
 <body>
     <s-page id="app">
-        <s-tab id="headerTabs" onchange="tabSelect(this.selectIndex)" style="justify-content: flex-start">
+        <s-tab id="headerTabs" style="justify-content: flex-start">
+            <!-- <s-tab-item contextmenu="document.querySelector('#menu').show(this)">
+                <div slot="text">Item 1</div>
+            </s-tab-item> -->
+            <s-menu id="menu">
+                <s-menu-item>选项1</s-menu-item>
+                <s-menu-item>选项2</s-menu-item>
+                <s-menu-item>选项3</s-menu-item>
+                <s-menu-item>选项4</s-menu-item>
+                <s-menu-item>选项5</s-menu-item>
+            </s-menu>
         </s-tab>
 
         <div id="dataTableContainer" style="height: 352px;">
@@ -74,18 +73,18 @@
         </div>
 
         <div id="newTabPage"
-                style="display: none; width: 100%; height: 352px; justify-content: center; align-items: center;">
-                <div class="newTabInputWrapper" style="display: flex;">
-                    <input type="text" id="newTabInput" placeholder="Enter text here">
-                    <s-icon-button id="newTabCommitBtn" slot="end">
-                        <s-icon slot="end">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-                                <path d="M360-240 120-480l240-240 56 56-144 144h488v-160h80v240H272l144 144-56 56Z"></path>
-                            </svg>
-                        </s-icon>
-                    </s-icon-button>
-                </div>
+            style="display: none; width: 100%; height: 352px; justify-content: center; align-items: center;">
+            <div class="newTabInputWrapper" style="display: flex;">
+                <input type="text" id="newTabInput" placeholder="Enter text here">
+                <s-icon-button id="newTabCommitBtn" slot="end">
+                    <s-icon slot="end">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                            <path d="M360-240 120-480l240-240 56 56-144 144h488v-160h80v240H272l144 144-56 56Z"></path>
+                        </svg>
+                    </s-icon>
+                </s-icon-button>
             </div>
+        </div>
     </s-page>
     <script>
         showHeaders()
@@ -93,12 +92,12 @@
         function callNative() {
             window.webkit.messageHandlers.nativeFunction.postMessage("Hello from JavaScript!");
         }
-        
+
         // 获取输入框元素
         var input = document.getElementById("newTabInput");
 
         // 绑定 keydown 事件监听器
-        input.addEventListener("keydown", function(event) {
+        input.addEventListener("keydown", function (event) {
             // 如果按下的是回车键
             if (event.keyCode === 13) {
                 var textContent = input.value;
@@ -109,7 +108,7 @@
         });
 
         var newTabCommitBtn = document.getElementById("newTabCommitBtn");
-        newTabCommitBtn.addEventListener("click", function(event) {
+        newTabCommitBtn.addEventListener("click", function (event) {
             var textContent = input.value;
             console.log("click ...", textContent);
             callNative();
