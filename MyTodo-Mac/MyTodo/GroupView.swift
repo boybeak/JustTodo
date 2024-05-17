@@ -50,8 +50,8 @@ class GroupView: NSView {
         textField = NSTextField(frame: NSRect.zero)
         textField.font = NSFont.systemFont(ofSize: 16)
         textField.focusRingType = .none
-        textField.isEditable = false
-        textField.isSelectable = false
+        textField.isEditable = true
+        textField.isSelectable = true
         textField.isBordered = false
         textField.drawsBackground = false
         textField.delegate = self

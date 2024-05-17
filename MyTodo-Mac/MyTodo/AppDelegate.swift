@@ -9,22 +9,21 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-//    private let tray = Tray(iconName: "book.pages.fill", viewController: ViewController())
+//    private let tray = Tray(iconName: "book.pages.fill", viewController: TestController())
     private let tray = Tray(iconName: "book.pages.fill", viewController: WebViewController())
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         tray.install()
     }
-    
 }
 
-class Tray {
+class Tray: NSObject, NSPopoverDelegate {
     
     public static let POPOVER_SIZE = NSSize(width: 320, height: 480)
     
     private let iconName: String
     private var statusItem: NSStatusItem!
-    private var popover: NSPopover!
+    private(set) var popover: NSPopover!
     private var viewController: NSViewController
     
     init(iconName: String, viewController: NSViewController) {
@@ -46,9 +45,17 @@ class Tray {
         viewController.view.frame = NSRect(x: 0, y: 0, width: Tray.POPOVER_SIZE.width, height: Tray.POPOVER_SIZE.height)
         
         popover = NSPopover()
+        popover.behavior = .transient
+        popover.delegate = self
         popover.contentViewController = viewController
 //        popover.contentSize = NSSize(width: Tray.POPOVER_SIZE.width, height: Tray.POPOVER_SIZE.height)
         
+    }
+    
+    func popoverDidShow(_ notification: Notification) {
+        NSLog("popoverDidShow")
+        // 确保 popover 的层级在输入法之下，解决中文输入法浮窗被遮挡问题
+        popover.contentViewController?.view.window?.level = .floating
     }
     
     @objc private func togglePopover(_ sender: Any?) {

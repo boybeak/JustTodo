@@ -24,7 +24,7 @@ class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         webView = WKWebView(frame: view.bounds)
         webView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(webView)
+        view = webView
         
         webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -96,7 +96,6 @@ extension WebViewController: WKScriptMessageHandler {
             let params = message.body as! [String]
             let eventId = params[0]
             let title = params[1]
-            NSLog("NEW_GROUP eventId=\(eventId) title=\(title)")
             
             let group = TodoDB.shared.groupTable.newGroup(title: title)
             do {
