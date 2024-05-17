@@ -123,7 +123,6 @@ function newTab(title) {
         setTimeout(() => {
             tabEle.options[headerTabs.length - 2].checked = true
         }, 0)
-        console.log('newTab tab=', newTabItem)
     })
 }
 
