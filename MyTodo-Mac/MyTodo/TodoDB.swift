@@ -90,6 +90,21 @@ class GroupTable {
         return []
     }
     
+    func deleteGroup(id: String) {
+        let featchReq = Group.fetchRequest()
+        featchReq.predicate = NSPredicate(format: "id == %@", id)
+        
+        do {
+            let fetchResults = try context?.fetch(featchReq) as? [Group]
+            for group in fetchResults ?? [] {
+                context?.delete(group)
+            }
+            commit()
+        } catch {
+            NSLog("deleteGroup error")
+        }
+    }
+    
     private func commit() {
         if ((context?.hasChanges) != nil) {
             do {

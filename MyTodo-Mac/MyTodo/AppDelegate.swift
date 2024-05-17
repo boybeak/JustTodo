@@ -20,7 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 class Tray {
     
-    public static let POPOVER_SIZE = NSSize(width: 320, height: 400)
+    public static let POPOVER_SIZE = NSSize(width: 320, height: 480)
     
     private let iconName: String
     private var statusItem: NSStatusItem!

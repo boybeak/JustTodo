@@ -6,10 +6,30 @@ function handleResult(eventId, result) {
     callbackMap.delete(eventId)
 }
 
+var localTabs;
 if (window.webkit) {
     console.log = function (...data) {
         window.webkit.messageHandlers.consoleLog.postMessage(data);
     };
+} else {
+    localTabs = [
+        {
+            id: '0',
+            title: '0000'
+        },
+        {
+            id: '1',
+            title: '1111'
+        },
+        {
+            id: '2',
+            title: '2222'
+        },
+        {
+            id: '3',
+            title: '3333'
+        }
+    ]
 }
 
 window.getTabs = function (callback) {
@@ -28,23 +48,37 @@ window.getTabs = function (callback) {
 
 function getTabsNative(callback) {
     if (!window.webkit) {
-        callback(JSON.stringify(
-            [
-                {
-                    id: '11111',
-                    title: 'ABC'
-                },
-                {
-                    id: '2222',
-                    title: 'DEF'
-                }
-            ]
-        ))
+        callback(JSON.stringify(localTabs))
         return
     }
     let eventId = newEventId()
     callbackMap.set(eventId, callback)
     window.webkit.messageHandlers.getGroups.postMessage(eventId)
+}
+
+function newTabNative(title, callback) {
+    if (!window.webkit) {
+        var newTab = { id: Date.now().toString(), title: title}
+        localTabs.splice(localTabs.length - 1, 0, newTab)
+        callback(JSON.stringify(newTab))
+        return
+    }
+    let eventId = newEventId()
+    callbackMap.set(eventId, callback)
+    var params = [
+        eventId, title
+    ]
+    window.webkit.messageHandlers.newGroup.postMessage(params)
+}
+
+function deleteTabNative(id) {
+    if (!window.webkit) {
+        localTabs = localTabs.filter(function(tab) {
+            return tab.id == id
+        })
+        return
+    }
+    window.webkit.messageHandlers.deleteGroup.postMessage(id)
 }
 
 function newEventId() {

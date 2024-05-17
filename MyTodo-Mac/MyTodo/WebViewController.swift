@@ -10,10 +10,13 @@ import WebKit
 
 class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
-    static let JS_FUN_GET_GROUP = "getGroups"
     static let JS_FUN_CONSOLE_LOG = "consoleLog"
+    static let JS_FUN_GET_GROUP = "getGroups"
+    static let JS_FUN_NEW_GROUP = "newGroup"
+    static let JS_FUN_DELETE_GROUP = "deleteGroup"
     
     private(set) var webView: WKWebView!
+    let jsonEncoder = JSONEncoder()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,18 +62,27 @@ class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         userContentController.add(self, name: WebViewController.JS_FUN_CONSOLE_LOG)
         
         userContentController.add(self, name: WebViewController.JS_FUN_GET_GROUP)
+        userContentController.add(self, name: WebViewController.JS_FUN_NEW_GROUP)
+        userContentController.add(self, name: WebViewController.JS_FUN_DELETE_GROUP)
     }
     
 }
 
 extension WebViewController: WKScriptMessageHandler {
+    
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         switch message.name {
+        case WebViewController.JS_FUN_CONSOLE_LOG:
+            let params = message.body as! [Any]
+            let log = params.map {
+                String(describing: $0)
+            }.joined(separator: "")
+            NSLog("js:\(log)")
+            break
         case WebViewController.JS_FUN_GET_GROUP:
             let eventId = message.body as! String
             let groups = TodoDB.shared.groupTable.queryGroups()
             
-            let jsonEncoder = JSONEncoder()
             do {
                 let json = try jsonEncoder.encode(groups)
                 let jsonStr = String(data: json, encoding: .utf8)!
@@ -80,12 +92,28 @@ extension WebViewController: WKScriptMessageHandler {
                 
             }
             break
-        case WebViewController.JS_FUN_CONSOLE_LOG:
-            let params = message.body as! [Any]
-            let log = params.map {
-                String(describing: $0)
-            }.joined(separator: "")
-            NSLog("js:\(log)")
+        case WebViewController.JS_FUN_NEW_GROUP:
+            let params = message.body as! [String]
+            let eventId = params[0]
+            let title = params[1]
+            NSLog("NEW_GROUP eventId=\(eventId) title=\(title)")
+            
+            let group = TodoDB.shared.groupTable.newGroup(title: title)
+            do {
+                if (group != nil) {
+                    let json = try jsonEncoder.encode(group)
+                    let jsonStr = String(data: json, encoding: .utf8)!
+                    webView.jsHandleResult(eventId: eventId, result: jsonStr)
+                } else {
+                    webView.jsHandleResult(eventId: eventId, result: "")
+                }
+            } catch {
+                
+            }
+            break
+        case WebViewController.JS_FUN_DELETE_GROUP:
+            let groupId = message.body as! String
+            TodoDB.shared.groupTable.deleteGroup(id: groupId)
             break
         default:
             break
