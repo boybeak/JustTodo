@@ -100,7 +100,6 @@ class GroupTable {
         let fetchRequest: NSFetchRequest<Group> = Group.fetchRequest()
         do {
             let groups = try context?.fetch(fetchRequest)
-            NSLog("queryGroups count=\(String(describing: groups?.count))")
             return groups ?? []
         } catch {
             NSLog("queryGroups error")
@@ -161,20 +160,17 @@ class TodoItemTable {
     
     func newItem(groupId: String, text: String)-> Item? {
         
-        let groupReq = Group.fetchRequest()
-        groupReq.predicate = NSPredicate(format: "id == %@", UUID(uuidString: groupId)! as CVarArg)
+        let group = TodoDB.shared.groupTable.getGroup(id: groupId)
+        if (group == nil) {
+            return nil
+        }
         do {
-            let groups = try context?.fetch(groupReq)
-            
-            if (groups == nil || groups!.isEmpty) {
-                return nil
-            }
             let item = Item(context: context!)
             item.id = UUID()
             item.create_at = Date()
             item.text = text
             item.finished = false
-            item.group_id = groups![0]
+            item.group_id = group!
             
             try context?.save()
             commit()
@@ -183,6 +179,28 @@ class TodoItemTable {
             NSLog("newItem error")
         }
         return nil
+    }
+    
+    func toggleItem(todoId: String, checked: Bool)-> Item? {
+        let item = getItem(todoId: todoId)
+        if (item == nil) {
+            return nil
+        }
+        
+        item?.finished = checked
+        commit()
+        return item
+    }
+    
+    func getItem(todoId: String)-> Item? {
+        let fetchReq = Item.fetchRequest()
+        fetchReq.predicate = NSPredicate(format: "id=%@", UUID(uuidString: todoId)! as CVarArg)
+        do {
+            let item = try context?.fetch(fetchReq)
+            return item?[0]
+        } catch {
+           return nil
+        }
     }
     
     private func commit() {

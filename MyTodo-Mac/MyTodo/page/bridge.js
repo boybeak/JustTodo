@@ -105,6 +105,18 @@ function newTodoItemNative(groupId, text, callback) {
     window.webkit.messageHandlers.newTodoItem.postMessage(params)
 }
 
+function checkTodoItemNative(todoId, checked, callback) {
+    if (!window.webkit) {
+        return
+    }
+    let eventId = newEventId()
+    callbackMap.set(eventId, callback)
+    var params = [
+        eventId, todoId, checked
+    ]
+    window.webkit.messageHandlers.checkTodoItem.postMessage(params)
+}
+
 function newEventId() {
     return generateRandomString(8)
 }

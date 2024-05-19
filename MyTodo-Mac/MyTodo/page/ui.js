@@ -259,6 +259,7 @@ function createTodoItemEle(todoItem, isLastOne) {
     var checkbox = document.createElement('s-checkbox');
     checkbox.style.width = '40px'; // 设置复选框大小固定
     checkbox.style.height = '40px';
+    checkbox.checked = todoItem.finished;
     checkbox.onchange = function() {
         onTodoItemChecked(todoItem.id, checkbox.checked);
     };
@@ -291,14 +292,12 @@ function createTodoItemEle(todoItem, isLastOne) {
     icon.innerHTML = 
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">' + 
             '<path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"></path>' + 
-        '</svg>'
+        '</svg>';
     iconButton.appendChild(icon);
-    // iconButton.textContent = '图标'; // 这里用 '图标' 替代了真实的图标内容
-    // iconButton.style.width = '40px'; // 设置图标按钮大小固定
-    // iconButton.style.height = '40px';
+
     // 根据不同状态隐藏图标按钮
     if (todoItem.finished) {
-        iconButton.style.display = 'block';
+        iconButton.style.display = 'flex';
     } else {
         iconButton.style.display = 'none';
     }
@@ -312,5 +311,7 @@ function createTodoItemEle(todoItem, isLastOne) {
 }
 
 function onTodoItemChecked(todoItemId, checked) {
-    
+    checkTodoItemNative(todoItemId, checked, (result) => {
+        refreshTodoItems()
+    });
 }
