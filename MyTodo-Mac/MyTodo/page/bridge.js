@@ -81,6 +81,30 @@ function deleteTabNative(id) {
     window.webkit.messageHandlers.deleteGroup.postMessage(id)
 }
 
+function getTodoItemsNative(groupId, callback) {
+    if (!window.webkit) {
+        return
+    }
+    let eventId = newEventId()
+    callbackMap.set(eventId, callback)
+    var params = [
+        eventId, groupId
+    ]
+    window.webkit.messageHandlers.getTodoItems.postMessage(params)
+}
+
+function newTodoItemNative(groupId, text, callback) {
+    if (!window.webkit) {
+        return
+    }
+    let eventId = newEventId()
+    callbackMap.set(eventId, callback)
+    var params = [
+        eventId, groupId, text
+    ]
+    window.webkit.messageHandlers.newTodoItem.postMessage(params)
+}
+
 function newEventId() {
     return generateRandomString(8)
 }

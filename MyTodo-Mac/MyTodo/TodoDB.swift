@@ -32,7 +32,10 @@ class TodoDB {
     var groupTable: GroupTable {
         return GroupTable(context: context)
     }
-
+    
+    var todoItemTable: TodoItemTable {
+        return TodoItemTable(context: context)
+    }
     
     private init(){
         
@@ -56,6 +59,21 @@ class GroupTable {
             NSLog("count error")
         }
         return 0
+    }
+    
+    func getGroup(id: String)-> Group? {
+        let groupReq = Group.fetchRequest()
+        groupReq.predicate = NSPredicate(format: "id == %@", UUID(uuidString: id)! as CVarArg)
+        do {
+            let groups = try context?.fetch(groupReq)
+            if (groups == nil || groups!.isEmpty) {
+                return nil
+            }
+            return groups![0]
+        } catch {
+            NSLog("getGroup error")
+        }
+        return nil
     }
     
     func newGroup(title: String)-> Group? {
@@ -118,6 +136,67 @@ class GroupTable {
     
 }
 
+class TodoItemTable {
+    private weak var context: NSManagedObjectContext?
+    
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
+    
+    func getItems(groupId: String)-> [Item] {
+        let group = TodoDB.shared.groupTable.getGroup(id: groupId)
+        if (group == nil) {
+            return []
+        }
+        let fetchReq = Item.fetchRequest()
+        fetchReq.predicate = NSPredicate(format: "group_id=%@", group!)
+        do {
+            let items = try context?.fetch(fetchReq)
+            return items ?? []
+        } catch {
+            
+        }
+        return []
+    }
+    
+    func newItem(groupId: String, text: String)-> Item? {
+        
+        let groupReq = Group.fetchRequest()
+        groupReq.predicate = NSPredicate(format: "id == %@", UUID(uuidString: groupId)! as CVarArg)
+        do {
+            let groups = try context?.fetch(groupReq)
+            
+            if (groups == nil || groups!.isEmpty) {
+                return nil
+            }
+            let item = Item(context: context!)
+            item.id = UUID()
+            item.create_at = Date()
+            item.text = text
+            item.finished = false
+            item.group_id = groups![0]
+            
+            try context?.save()
+            commit()
+            return item
+        } catch {
+            NSLog("newItem error")
+        }
+        return nil
+    }
+    
+    private func commit() {
+        if ((context?.hasChanges) != nil) {
+            do {
+                try context?.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+}
+
 extension Group: Encodable {
     public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -129,10 +208,24 @@ extension Group: Encodable {
     }
 }
 
+extension Item: Encodable {
+    public func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(text, forKey: .text)
+        try container.encode(create_at, forKey: .create_at)
+        try container.encode(finished, forKey: .finished)
+        try container.encode(group_id?.id, forKey: .group_id)
+    }
+}
+
 enum CodingKeys: String, CodingKey {
         case id
         case title
         case icon
         case keep_top
         case create_at
+        case text
+        case finished
+        case group_id
     }

@@ -11,9 +11,12 @@ import WebKit
 class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     
     static let JS_FUN_CONSOLE_LOG = "consoleLog"
-    static let JS_FUN_GET_GROUP = "getGroups"
+    static let JS_FUN_GET_GROUPS = "getGroups"
     static let JS_FUN_NEW_GROUP = "newGroup"
     static let JS_FUN_DELETE_GROUP = "deleteGroup"
+    static let JS_FUN_GET_TODO_ITEMS = "getTodoItems"
+    static let JS_FUN_NEW_TODO_ITEM = "newTodoItem"
+    static let JS_FUN_DELETE_TODO_ITEM = "deleteTodoItem"
     
     private(set) var webView: WKWebView!
     let jsonEncoder = JSONEncoder()
@@ -43,6 +46,12 @@ class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         }
     }
     
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        NSLog("viewDidAppear")
+        webView.becomeFirstResponder()
+    }
+    
     // 实现 WKNavigationDelegate 中的方法
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         // 禁用右键菜单
@@ -61,9 +70,12 @@ class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         let userContentController = webView.configuration.userContentController
         userContentController.add(self, name: WebViewController.JS_FUN_CONSOLE_LOG)
         
-        userContentController.add(self, name: WebViewController.JS_FUN_GET_GROUP)
+        userContentController.add(self, name: WebViewController.JS_FUN_GET_GROUPS)
         userContentController.add(self, name: WebViewController.JS_FUN_NEW_GROUP)
         userContentController.add(self, name: WebViewController.JS_FUN_DELETE_GROUP)
+        
+        userContentController.add(self, name: WebViewController.JS_FUN_GET_TODO_ITEMS)
+        userContentController.add(self, name: WebViewController.JS_FUN_NEW_TODO_ITEM)
     }
     
 }
@@ -79,7 +91,7 @@ extension WebViewController: WKScriptMessageHandler {
             }.joined(separator: "")
             NSLog("js:\(log)")
             break
-        case WebViewController.JS_FUN_GET_GROUP:
+        case WebViewController.JS_FUN_GET_GROUPS:
             let eventId = message.body as! String
             let groups = TodoDB.shared.groupTable.queryGroups()
             
@@ -113,6 +125,39 @@ extension WebViewController: WKScriptMessageHandler {
         case WebViewController.JS_FUN_DELETE_GROUP:
             let groupId = message.body as! String
             TodoDB.shared.groupTable.deleteGroup(id: groupId)
+            break
+        case WebViewController.JS_FUN_GET_TODO_ITEMS:
+            let params = message.body as! [String]
+            let eventId = params[0]
+            let groupId = params[1]
+            let items = TodoDB.shared.todoItemTable.getItems(groupId: groupId)
+            let result: String
+            do {
+                let json = try jsonEncoder.encode(items)
+                result = String(data: json, encoding: .utf8)!
+            } catch {
+                result = ""
+            }
+            webView.jsHandleResult(eventId: eventId, result: result)
+            break
+        case WebViewController.JS_FUN_NEW_TODO_ITEM:
+            let params = message.body as! [String]
+            let eventId = params[0]
+            let groupId = params[1]
+            let text = params[2]
+            let newItem = TodoDB.shared.todoItemTable.newItem(groupId: groupId, text: text)
+            let result: String
+            if newItem == nil {
+                result = ""
+            } else {
+                do {
+                    let json = try jsonEncoder.encode(newItem!)
+                    result = String(data: json, encoding: .utf8)!
+                } catch {
+                    result = ""
+                }
+            }
+            webView.jsHandleResult(eventId: eventId, result: result)
             break
         default:
             break
