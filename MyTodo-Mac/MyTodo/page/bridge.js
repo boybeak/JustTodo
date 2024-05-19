@@ -117,6 +117,18 @@ function checkTodoItemNative(todoId, checked, callback) {
     window.webkit.messageHandlers.checkTodoItem.postMessage(params)
 }
 
+function deleteTodoItemNative(todoId, callback) {
+    if (!window.webkit) {
+        return
+    }
+    let eventId = newEventId()
+    callbackMap.set(eventId, callback)
+    var params = [
+        eventId, todoId
+    ]
+    window.webkit.messageHandlers.deleteTodoItem.postMessage(params)
+}
+
 function newEventId() {
     return generateRandomString(8)
 }

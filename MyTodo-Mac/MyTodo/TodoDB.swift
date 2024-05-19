@@ -192,6 +192,16 @@ class TodoItemTable {
         return item
     }
     
+    func deleteItem(todoId: String)-> Item? {
+        let item = getItem(todoId: todoId)
+        if (item == nil) {
+            return nil
+        }
+        context?.delete(item!)
+        commit()
+        return item!
+    }
+    
     func getItem(todoId: String)-> Item? {
         let fetchReq = Item.fetchRequest()
         fetchReq.predicate = NSPredicate(format: "id=%@", UUID(uuidString: todoId)! as CVarArg)

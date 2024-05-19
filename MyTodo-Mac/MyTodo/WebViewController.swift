@@ -78,6 +78,7 @@ class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         userContentController.add(self, name: WebViewController.JS_FUN_GET_TODO_ITEMS)
         userContentController.add(self, name: WebViewController.JS_FUN_NEW_TODO_ITEM)
         userContentController.add(self, name: WebViewController.JS_FUN_CHECK_TODO_ITEM)
+        userContentController.add(self, name: WebViewController.JS_FUN_DELETE_TODO_ITEM)
     }
     
 }
@@ -168,6 +169,27 @@ extension WebViewController: WKScriptMessageHandler {
             let checked = params[2] as! Int
             
             let item = TodoDB.shared.todoItemTable.toggleItem(todoId: todoId, checked: checked == 1)
+            
+            let result: String
+            if item == nil {
+                result = ""
+            } else {
+                do {
+                    let json = try jsonEncoder.encode(item!)
+                    result = String(data: json, encoding: .utf8)!
+                } catch {
+                    result = ""
+                }
+            }
+            webView.jsHandleResult(eventId: eventId, result: result)
+            break
+        case WebViewController.JS_FUN_DELETE_TODO_ITEM:
+            let params = message.body as! [String]
+            let eventId = params[0] 
+            let todoId = params[1]
+            
+            let item = TodoDB.shared.todoItemTable.deleteItem(todoId: todoId)
+            
             let result: String
             if item == nil {
                 result = ""
