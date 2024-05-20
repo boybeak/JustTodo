@@ -112,10 +112,17 @@ class GroupTable {
         featchReq.predicate = NSPredicate(format: "id == %@", id)
         
         do {
-            let fetchResults = try context?.fetch(featchReq) as? [Group]
-            for group in fetchResults ?? [] {
-                context?.delete(group)
+            let items = TodoDB.shared.todoItemTable.getItems(groupId: id)
+            for item in items {
+                context?.delete(item)
             }
+            let fetchResults = try context?.fetch(featchReq) as? [Group]
+            let group = fetchResults?[0]
+            if (group == nil) {
+                return
+            }
+            context?.delete(group!)
+            
             commit()
         } catch {
             NSLog("deleteGroup error")

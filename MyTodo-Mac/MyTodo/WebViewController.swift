@@ -40,8 +40,8 @@ class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         
         if let htmlPath = Bundle.main.path(forResource: "index", ofType: "html") {
             let fileURL = URL(fileURLWithPath: htmlPath)
-            webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
             
+            webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
             
             setupJsFunctions(webView: webView)
         }

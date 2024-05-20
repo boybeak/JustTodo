@@ -8,6 +8,36 @@
     <title>MyTodo</title>
 
     <script src="./sober.min.js"></script>
+    <script src="./utils.js"></script>
+    <script>
+        function loadScript(url) {
+            // 创建一个新的 script 元素
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = url;
+
+            // 将 script 元素添加到 head 或 body 中
+            document.head.appendChild(script);
+        }
+
+        var langJS;
+        const userLanguage = navigator.language || navigator.userLanguage;
+        switch (userLanguage) {
+            case 'zh-CN':
+                langJS = userLanguage
+                break;
+            default:
+                langJS = "en-US"
+                break
+        }
+        if (window.webkit) {
+            // Xcode项目中，会把子分组中的文件，都直接放在分组根目录下
+            loadScript('./' + langJS + '.js')
+        } else {
+            loadScript('./lang/' + langJS + '.js')
+        }
+        
+    </script>
     <script src="./ui.js"></script>
     <script src="./bridge.js"></script>
 
@@ -43,8 +73,10 @@
             /* 边框样式 */
             border-radius: 10px;
         }
+
         #todoScrollView::-webkit-scrollbar {
-            display: none; /* For Chrome, Safari, and Opera */
+            display: none;
+            /* For Chrome, Safari, and Opera */
         }
     </style>
 </head>
@@ -56,7 +88,7 @@
                 <div slot="text">Item 1</div>
             </s-tab-item> -->
             <s-menu id="menu">
-                <s-menu-item onclick="showDelTabDialog()">
+                <s-menu-item id="menu_item_delete" onclick="showDelTabDialog()">
                     <s-icon slot="start">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
                             <path
@@ -71,10 +103,12 @@
 
         <div id="dataTableContainer" style="height: 332px;">
             <s-scroll-view id="todoScrollView" style="width: 100%; height: 366px;">
-                <div id="emptyView" style="width: 100%; height: 100%; align-items: center; display: flex; justify-content: center;">
+                <div id="emptyView"
+                    style="width: 100%; height: 100%; align-items: center; display: flex; justify-content: center;">
                     <image style="width: 60%;" src="./empty.svg">
                 </div>
-                <ul id="todoList" style="width: 100%; max-width: 320px; padding: 0px; display: none; list-style-type: none; align-items: center; flex-direction: column;">
+                <ul id="todoList"
+                    style="width: 100%; max-width: 320px; padding: 0px; display: none; list-style-type: none; align-items: center; flex-direction: column;">
                 </ul>
             </s-scroll-view>
             <s-text-field id="editor" style="display: block; width: 100%; position:absolute; bottom: 0;">
@@ -100,7 +134,7 @@
             <div id="dialog-text" slot="text"></div>
             <s-button id="dialog-negative-btn" slot="action" type="text">取消</s-button>
             <s-button id="dialog-positive-btn" slot="action" type="text">确定</s-button>
-          </s-dialog>
+        </s-dialog>
     </s-page>
     <script>
         onPageReady()

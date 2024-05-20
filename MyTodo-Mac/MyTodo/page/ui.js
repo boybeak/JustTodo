@@ -38,7 +38,7 @@ function onPageReady() {
         }
     });
 
-    showHeaders()
+    showHeaders();
 }
 
 function showHeaders() {
@@ -122,7 +122,7 @@ function onTabSelected() {
     if (!selectedTab.isAddTab) {
         var tabElementId = getTabElementId(selectedTab);
         var tabItem = document.getElementById(tabElementId);
-        tabItem.addEventListener('contextmenu', onTabRightClick);
+        tabItem.addEventListener('contextmenu', onTabRightClick.bind(null, selectedTab));
 
         lastTabId = selectedTab.id;
         lastTabEleId = tabElementId;
@@ -148,6 +148,8 @@ function refreshTodoItems() {
 }
 
 function fillTodoItems(todoItems) {
+    var todoList = document.getElementById('todoList');
+    todoList.innerHTML = '';
     if (todoItems.length == 0) {
         setVisibility('emptyView', true);
         setVisibility('todoList', false);
@@ -155,17 +157,19 @@ function fillTodoItems(todoItems) {
     }
     setVisibility('emptyView', false);
     setVisibility('todoList', true);
-    var todoList = document.getElementById('todoList');
-    todoList.innerHTML = '';
+    
     todoItems.forEach(function(item, index) {
         todoList.appendChild(createTodoItemEle(item, index == todoItems.length - 1));
     })
 }
 
-function onTabRightClick(event) {
-    var currentId = getTabElementId(headerTabs[lastSelectedTabIndex]);
-    var currentTab = document.getElementById(currentId)
-    document.querySelector('#menu').show(currentTab);
+function onTabRightClick(tabItem, event) {
+    var currentId = getTabElementId(tabItem);
+    var currentTab = document.getElementById(currentId);
+    var menu = document.querySelector('#menu');
+    var deleteItem = document.getElementById('menu_item_delete');
+    deleteItem.onclick = showDelTabDialog.bind(null, tabItem);
+    menu.show(currentTab);
     event.preventDefault();
 }
 
@@ -200,14 +204,18 @@ function newTab(title) {
     })
 }
 
-function showDelTabDialog() {
-    showDialog('Sure to delete?', ()=> {
-        deleteTab()
+function showDelTabDialog(tabItem, _) {
+    var params = {
+        group_name: tabItem.title,
+        item_count: getTodoItemsCountUnderCurrentTab().toString()
+    };
+    var text = formatString(lang.text_dialog_delete_group, params);
+    showDialog(text, ()=> {
+        deleteTab(tabItem)
     })
 }
 
 function newTodoItem(text) {
-    console.log("newTodoItem text=", text, ", lastTabId=", lastTabId)
     if (lastTabId.length == 0) {
         return
     }
@@ -226,8 +234,7 @@ function showDialog(text, onClick) {
     dialog.show()
 }
 
-function deleteTab() {
-    var tabItem = headerTabs[lastSelectedTabIndex]
+function deleteTab(tabItem) {
     var tabItemEle = document.getElementById(getTabElementId(tabItem))
 
     var tab = document.getElementById('headerTabs')
@@ -323,4 +330,8 @@ function deleteTodoItem(todoItemId) {
     deleteTodoItemNative(todoItemId, (result) => {
         refreshTodoItems();
     });
+}
+
+function getTodoItemsCountUnderCurrentTab() {
+    return document.getElementById('todoList').children.length;
 }
