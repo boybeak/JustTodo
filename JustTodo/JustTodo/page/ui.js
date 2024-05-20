@@ -269,8 +269,8 @@ function createTodoItemEle(todoItem, isLastOne) {
     }
 
     var checkbox = document.createElement('s-checkbox')
-    checkbox.style.width = '40px' // 设置复选框大小固定
-    checkbox.style.height = '40px'
+    // checkbox.style.width = '40px' // 设置复选框大小固定
+    // checkbox.style.height = '40px'
     checkbox.checked = todoItem.finished
     checkbox.onchange = function() {
         onTodoItemChecked(todoItem.id, checkbox.checked)
@@ -278,7 +278,7 @@ function createTodoItemEle(todoItem, isLastOne) {
 
     var textContainer = document.createElement('div')
     textContainer.style.flex = '1' // 填充剩余空间
-    textContainer.style.width = '200px'
+    // textContainer.style.width = '200px'
     textContainer.style.marginRight = '8px' // 设置与图标按钮之间的间距
     textContainer.style.display = 'flex' // 设置为弹性布局
     textContainer.style.flexDirection = 'column' // 设置为垂直布局
