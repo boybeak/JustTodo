@@ -76,6 +76,9 @@
             display: none;
             /* For Chrome, Safari, and Opera */
         }
+        .svg-hint path {
+            fill: darkgray
+        }
     </style>
 </head>
 
@@ -109,7 +112,7 @@
             <s-text-field id="editor" style="display: block; width: 100%; position:absolute; bottom: 0;">
                 <input id="newTodoInput" type="text">
                 <s-icon slot="end">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                    <svg class="svg-hint" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
                         <path d="M360-240 120-480l240-240 56 56-144 144h488v-160h80v240H272l144 144-56 56Z"></path>
                     </svg>
                 </s-icon>
@@ -122,7 +125,7 @@
                 <input id="newTabInput" type="text">
                 <s-icon-button id="newTabCommitBtn" slot="end">
                     <s-icon slot="end">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                        <svg class="svg-hint" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
                             <path d="M360-240 120-480l240-240 56 56-144 144h488v-160h80v240H272l144 144-56 56Z"></path>
                         </svg>
                     </s-icon>
