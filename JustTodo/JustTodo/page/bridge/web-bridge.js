@@ -28,6 +28,8 @@ class WebBridge extends AbsBridge {
                 itemStore.createIndex('create_at', 'create_at')
                 itemStore.createIndex('group_id', 'group_id')
 
+                itemStore.createIndex('group_id_and_create_at', ['group_id', 'create_at'], { unique: false })
+
                 this.db = db
             }
             openDbReq.onsuccess = (event) => {
@@ -131,10 +133,13 @@ class WebBridge extends AbsBridge {
     getTodoItemsNative(groupId, callback) {
         this.storeReadOf(WebBridge.TABLE_NAME_ITEM, (store) => {
             const groupIdIndex = store.index('group_id')
-            const cursorReq = groupIdIndex.openCursor(IDBKeyRange.only(groupId))
+
+            let range = IDBKeyRange.only(groupId)
+            const cursorReq = groupIdIndex.openCursor(range, 'prev')
             var items = []
             cursorReq.onsuccess = (event) => {
                 const cursor = event.target.result
+                console.log('cursor=', cursor)
                 if (cursor) {
                     items.push(cursor.value)
                     cursor.continue()

@@ -156,6 +156,10 @@ class TodoItemTable {
         }
         let fetchReq = Item.fetchRequest()
         fetchReq.predicate = NSPredicate(format: "group_id=%@", group!)
+        fetchReq.sortDescriptors = [
+            // Recent first
+            NSSortDescriptor(key: "create_at", ascending: false)
+        ]
         do {
             let items = try context?.fetch(fetchReq)
             return items ?? []

@@ -18,6 +18,7 @@ function onPageReady() {
         if (event.keyCode === 13) {
             var textContent = newTabInput.value;
             newTab(textContent)
+            newTabInput.value = '';
         }
     });
 
@@ -41,15 +42,16 @@ function onPageReady() {
             refreshTodoItems();
         }
     });
-
     showHeaders();
+    console.log('onPageReady window.size=(', window.innerWidth, ', ', window.innerHeight, ') newTodoInput.height=', newTodoInput.clientHeight)
+    setTimeout(() => {
+        console.log('onPageReady timeout=', newTodoInput.clientHeight)
+    }, 1000);
 }
 
 function showHeaders() {
     // 获取 s-tab 元素
     var tab = document.getElementById("headerTabs");
-    // 必须加setTimeout，比如在创建新tab时，出现获取this.selectIndex为-1的情况
-    // tab.setAttribute("onchange", "setTimeout(()=>{ onTabSelected(this.selectIndex) }, 0)")
     tab.setAttribute("onchange", "onTabSelected()")
 
     bridge.getTabs((tabs) => {

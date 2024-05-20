@@ -67,6 +67,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     }
     
     private func setupJsFunctions(webView: WKWebView) {
+        NSLog("setupJsFunctions ")
         let userContentController = webView.configuration.userContentController
         userContentController.add(self, name: ViewController.JS_FUN_CONSOLE_LOG)
         
@@ -211,7 +212,7 @@ extension ViewController: WKScriptMessageHandler {
 
 extension WKWebView {
     func jsHandleResult(eventId: String, result: String) {
-        evaluateJavaScript("handleResult('\(eventId)', '\(result)')") { (result, error) in
+        evaluateJavaScript("bridge.handleResult('\(eventId)', '\(result)')") { (result, error) in
             if let error = error {
                 NSLog("Error evaluating JavaScript: \(error.localizedDescription)")
             }
