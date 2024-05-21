@@ -11,9 +11,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     private let tray = Tray(iconName: "book.pages.fill", viewController: ViewController())
 
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        tray.install()
+        let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_settings", comment: "Settings menu item"), action: #selector(settings(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_about", comment: "About menu item"), action: #selector(about(_:)), keyEquivalent: ""))
+        menu.addItem(.separator())
+        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_quit", comment: "Quit menu item"), action: #selector(quit(_:)), keyEquivalent: ""))
+        tray.install(menu: menu)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -22,6 +26,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
+    }
+    
+    @objc func settings(_ sender: NSMenuItem) {
+        
+    }
+    
+    @objc func about(_ sender: NSMenuItem) {
+        
+    }
+    
+    @objc func quit(_ sender: NSMenuItem) {
+        NSApplication.shared.terminate(self)
     }
 
     /*
@@ -125,4 +141,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
      */
 }
-

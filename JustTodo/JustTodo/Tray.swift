@@ -15,20 +15,24 @@ class Tray: NSObject, NSPopoverDelegate {
     private var statusItem: NSStatusItem!
     private(set) var popover: NSPopover!
     private var viewController: NSViewController
+    private var menu: NSMenu?
     
     init(iconName: String, viewController: NSViewController) {
         self.iconName = iconName
         self.viewController = viewController
     }
     
-    func install() {
+    func install(menu: NSMenu? = nil) {
+        self.menu = menu
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+//        statusItem.menu = menu
         
         if let trayBtn: NSStatusBarButton = statusItem.button {
             trayBtn.image = NSImage(systemSymbolName: iconName, accessibilityDescription: nil)
             
             trayBtn.target = self;
-            trayBtn.action = #selector(togglePopover(_:))
+            trayBtn.action = #selector(onTrayIconClick(_:))
+            trayBtn.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
         viewController.loadViewIfNeeded()
@@ -47,11 +51,16 @@ class Tray: NSObject, NSPopoverDelegate {
         popover.contentViewController?.view.window?.level = .floating
     }
     
-    @objc private func togglePopover(_ sender: Any?) {
-        if popover.isShown {
-            closePopover(sender: sender)
+    @objc private func onTrayIconClick(_ sender: Any?) {
+        let event = NSApp.currentEvent!
+        if event.type == .rightMouseUp && menu != nil {
+            statusItem?.popUpMenu(menu!)
         } else {
-            showPopover(sender: sender)
+            if popover.isShown {
+                closePopover(sender: sender)
+            } else {
+                showPopover(sender: sender)
+            }
         }
     }
 

@@ -26,6 +26,8 @@
 		849FD8592BFB748900DDE91F /* web-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8582BFB748900DDE91F /* web-bridge.js */; };
 		849FD85B2BFB74F100DDE91F /* abs-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD85A2BFB74F100DDE91F /* abs-bridge.js */; };
 		849FD85D2BFC181800DDE91F /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 849FD85C2BFC181800DDE91F /* index.css */; };
+		849FD8632BFCAD7200DDE91F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8612BFCAD7200DDE91F /* Localizable.strings */; };
+		849FD8662BFCAD8000DDE91F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8642BFCAD8000DDE91F /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,9 @@
 		849FD8582BFB748900DDE91F /* web-bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "web-bridge.js"; sourceTree = "<group>"; };
 		849FD85A2BFB74F100DDE91F /* abs-bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "abs-bridge.js"; sourceTree = "<group>"; };
 		849FD85C2BFC181800DDE91F /* index.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
+		849FD85E2BFCAC2300DDE91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		849FD8622BFCAD7200DDE91F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		849FD8652BFCAD8000DDE91F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +71,8 @@
 		849FD81F2BFB5EFC00DDE91F = {
 			isa = PBXGroup;
 			children = (
+				849FD8602BFCAD1C00DDE91F /* zh-Hans.lproj */,
+				849FD85F2BFCAD0400DDE91F /* en.lproj */,
 				849FD82A2BFB5EFC00DDE91F /* JustTodo */,
 				849FD8292BFB5EFC00DDE91F /* Products */,
 			);
@@ -82,6 +89,7 @@
 		849FD82A2BFB5EFC00DDE91F /* JustTodo */ = {
 			isa = PBXGroup;
 			children = (
+				849FD85E2BFCAC2300DDE91F /* Info.plist */,
 				849FD84B2BFB608E00DDE91F /* page */,
 				849FD83D2BFB5F5700DDE91F /* main.swift */,
 				849FD82B2BFB5EFC00DDE91F /* AppDelegate.swift */,
@@ -130,6 +138,22 @@
 			path = bridge;
 			sourceTree = "<group>";
 		};
+		849FD85F2BFCAD0400DDE91F /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				849FD8612BFCAD7200DDE91F /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		849FD8602BFCAD1C00DDE91F /* zh-Hans.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				849FD8642BFCAD8000DDE91F /* Localizable.strings */,
+			);
+			path = "zh-Hans.lproj";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,6 +196,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 849FD81F2BFB5EFC00DDE91F;
 			productRefGroup = 849FD8292BFB5EFC00DDE91F /* Products */;
@@ -191,12 +216,14 @@
 				849FD85B2BFB74F100DDE91F /* abs-bridge.js in Resources */,
 				849FD8542BFB608E00DDE91F /* utils.js in Resources */,
 				849FD84D2BFB608E00DDE91F /* zh-CN.js in Resources */,
+				849FD8632BFCAD7200DDE91F /* Localizable.strings in Resources */,
 				849FD84F2BFB608E00DDE91F /* empty.svg in Resources */,
 				849FD84E2BFB608E00DDE91F /* native-bridge.js in Resources */,
 				849FD8512BFB608E00DDE91F /* keyboard_return.svg in Resources */,
 				849FD8522BFB608E00DDE91F /* sober.min.js in Resources */,
 				849FD8502BFB608E00DDE91F /* index.html in Resources */,
 				849FD8532BFB608E00DDE91F /* ui.js in Resources */,
+				849FD8662BFCAD8000DDE91F /* Localizable.strings in Resources */,
 				849FD85D2BFC181800DDE91F /* index.css in Resources */,
 				849FD8592BFB748900DDE91F /* web-bridge.js in Resources */,
 				849FD8332BFB5EFC00DDE91F /* Assets.xcassets in Resources */,
@@ -221,6 +248,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		849FD8612BFCAD7200DDE91F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				849FD8622BFCAD7200DDE91F /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		849FD8642BFCAD8000DDE91F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				849FD8652BFCAD8000DDE91F /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		849FD8382BFB5EFC00DDE91F /* Debug */ = {
@@ -351,6 +397,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JustTodo/Info.plist;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -377,6 +424,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JustTodo/Info.plist;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;

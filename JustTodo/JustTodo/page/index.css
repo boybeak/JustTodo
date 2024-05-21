@@ -33,6 +33,7 @@ body {
     padding-right: 8px;
     color: var(--mdc-theme-on-background);
     background-color: transparent;
+    font-size: 15px;
 }
 #todoList {
     width: 100%; 

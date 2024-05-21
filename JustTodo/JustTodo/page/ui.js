@@ -245,9 +245,7 @@ function newTodoItem(text) {
     if (text.length == 0) {
         return
     }
-    bridge.newTodoItemNative(lastTabId, text, (result) => {
-        console.log('newTodoItem')
-    })
+    bridge.newTodoItemNative(lastTabId, text, (_) => {})
 }
 
 function showDialog(text, onClick) {
