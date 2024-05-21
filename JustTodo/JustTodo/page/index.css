@@ -31,6 +31,8 @@ body {
     outline: none; 
     padding-left: 8px; 
     padding-right: 8px;
+    color: var(--mdc-theme-on-background);
+    background-color: transparent;
 }
 #todoList {
     width: 100%; 
@@ -62,6 +64,7 @@ body {
     border-radius: 10px;
     border: none;
     outline: none;
+    background-color: transparent;
 }
 
 .newTabInputWrapper {

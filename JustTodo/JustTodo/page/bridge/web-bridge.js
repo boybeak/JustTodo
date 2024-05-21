@@ -12,7 +12,6 @@ class WebBridge extends AbsBridge {
                 console.log('Database error:', event.target.errorCode)
             }
             openDbReq.onupgradeneeded = (event) => {
-                console.log('onupgradeneeded')
                 const db = event.target.result
 
                 const groupStore = db.createObjectStore(WebBridge.TABLE_NAME_GROUP, { keyPath: 'id', autoIncrement: true })
@@ -33,7 +32,6 @@ class WebBridge extends AbsBridge {
                 this.db = db
             }
             openDbReq.onsuccess = (event) => {
-                console.log('Database opened successfully')
                 this.db = event.target.result
                 
                 callback(this.db)

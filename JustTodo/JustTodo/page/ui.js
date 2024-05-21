@@ -8,6 +8,8 @@ const ADD_TAB_ID = "tab_add"
 onPageReady()
 
 function onPageReady() {
+    var app = document.getElementById('app')
+    app.setAttribute('theme', 'auto')
     // 获取输入框元素
     var newTabInput = document.getElementById("newTabInput")
 
@@ -62,10 +64,6 @@ function onPageReady() {
         createTodo()
     })
     showHeaders()
-    console.log('onPageReady window.size=(', window.innerWidth, ', ', window.innerHeight, ') newTodoInput.height=', newTodoInput.clientHeight)
-    setTimeout(() => {
-        console.log('onPageReady timeout=', newTodoInput.clientHeight)
-    }, 1000)
 }
 
 function showHeaders() {
