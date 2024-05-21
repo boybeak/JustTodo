@@ -9,7 +9,7 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    private let tray = Tray(iconName: "book.pages.fill", viewController: ViewController())
+    private let tray = Tray(iconName: "TrayIcon", viewController: ViewController())
     
     private var aboutWindowController: NSWindowController?
 

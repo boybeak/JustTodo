@@ -28,7 +28,11 @@ class Tray: NSObject, NSPopoverDelegate {
 //        statusItem.menu = menu
         
         if let trayBtn: NSStatusBarButton = statusItem.button {
-            trayBtn.image = NSImage(systemSymbolName: iconName, accessibilityDescription: nil)
+            
+            let trayImage = NSImage(named: iconName)
+            trayImage?.size = NSSize(width: 18, height: 18)
+            
+            trayBtn.image = trayImage
             
             trayBtn.target = self;
             trayBtn.action = #selector(onTrayIconClick(_:))
