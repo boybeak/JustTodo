@@ -1,0 +1,80 @@
+html,
+body {
+    height: 100%;
+    /** 高度填充视图 **/
+    overflow: hidden;
+    /** 禁用滚动 **/
+    margin: 0;
+    /** 消除body外间距 **/
+    -webkit-tap-highlight-color: transparent;
+    /** 消除移动端默认tap反馈 **/
+}
+
+:not(:defined) {
+    /** Web Components 未准备完毕时隐藏 **/
+    display: none;
+}
+
+#editor {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    align-items: center;
+    border-top: 1px solid #ccc;;
+}
+#newTodoInput {
+    flex-grow: 1; 
+    height: 48px; 
+    display: flex; 
+    border: none; 
+    outline: none; 
+    padding-left: 8px; 
+    padding-right: 8px;
+}
+#todoList {
+    width: 100%; 
+    padding: 0px; 
+    display: none; 
+    list-style-type: none; 
+    align-items: center; 
+    flex-direction: column;
+}
+#emptyView {
+    width: 100%; 
+    height: 100%; 
+    align-items: center; 
+    display: flex; 
+    justify-content: center;
+}
+
+#newTabPage {
+    display: none; 
+    width: 100%; 
+    height: 352px; 
+    justify-content: center; 
+    align-items: center;
+}
+
+#newTabInput {
+    width: 160px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+
+.newTabInputWrapper {
+    border: 1px solid #ccc;
+    /* 边框样式 */
+    border-radius: 10px;
+}
+
+#todoScrollView::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+}
+
+.svg-hint path {
+    fill: darkgray
+}

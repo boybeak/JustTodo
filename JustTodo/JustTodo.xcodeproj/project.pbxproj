@@ -25,6 +25,7 @@
 		849FD8562BFB610C00DDE91F /* TodoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD8552BFB610C00DDE91F /* TodoDB.swift */; };
 		849FD8592BFB748900DDE91F /* web-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8582BFB748900DDE91F /* web-bridge.js */; };
 		849FD85B2BFB74F100DDE91F /* abs-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD85A2BFB74F100DDE91F /* abs-bridge.js */; };
+		849FD85D2BFC181800DDE91F /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 849FD85C2BFC181800DDE91F /* index.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		849FD8552BFB610C00DDE91F /* TodoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDB.swift; sourceTree = "<group>"; };
 		849FD8582BFB748900DDE91F /* web-bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "web-bridge.js"; sourceTree = "<group>"; };
 		849FD85A2BFB74F100DDE91F /* abs-bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "abs-bridge.js"; sourceTree = "<group>"; };
+		849FD85C2BFC181800DDE91F /* index.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				849FD8482BFB608E00DDE91F /* sober.min.js */,
 				849FD8492BFB608E00DDE91F /* ui.js */,
 				849FD84A2BFB608E00DDE91F /* utils.js */,
+				849FD85C2BFC181800DDE91F /* index.css */,
 			);
 			path = page;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				849FD8522BFB608E00DDE91F /* sober.min.js in Resources */,
 				849FD8502BFB608E00DDE91F /* index.html in Resources */,
 				849FD8532BFB608E00DDE91F /* ui.js in Resources */,
+				849FD85D2BFC181800DDE91F /* index.css in Resources */,
 				849FD8592BFB748900DDE91F /* web-bridge.js in Resources */,
 				849FD8332BFB5EFC00DDE91F /* Assets.xcassets in Resources */,
 				849FD84C2BFB608E00DDE91F /* en-US.js in Resources */,

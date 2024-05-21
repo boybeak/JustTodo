@@ -139,7 +139,6 @@ class WebBridge extends AbsBridge {
             var items = []
             cursorReq.onsuccess = (event) => {
                 const cursor = event.target.result
-                console.log('cursor=', cursor)
                 if (cursor) {
                     items.push(cursor.value)
                     cursor.continue()

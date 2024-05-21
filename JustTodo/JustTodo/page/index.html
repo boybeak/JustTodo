@@ -7,6 +7,8 @@
         content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <title>MyTodo</title>
 
+    <link rel="stylesheet" href="./index.css">
+
     <script src="./sober.min.js"></script>
     <script src="./utils.js"></script>
 
@@ -31,55 +33,9 @@
             loadScript('./bridge/abs-bridge.js')
             loadScript('./bridge/web-bridge.js')
         }
-        
+
         loadScript('./ui.js')
     </script>
-
-
-    <!-- <script src="./ui.js"></script>
-    <script src="./bridge.js"></script> -->
-
-    <style>
-        html,
-        body {
-            height: 100%;
-            /** 高度填充视图 **/
-            overflow: hidden;
-            /** 禁用滚动 **/
-            margin: 0;
-            /** 消除body外间距 **/
-            -webkit-tap-highlight-color: transparent;
-            /** 消除移动端默认tap反馈 **/
-        }
-
-        :not(:defined) {
-            /** Web Components 未准备完毕时隐藏 **/
-            display: none;
-        }
-
-        #newTabInput {
-            width: 160px;
-            padding: 10px;
-            border-radius: 10px;
-            border: none;
-            outline: none;
-            /* background-color: blue; */
-        }
-
-        .newTabInputWrapper {
-            border: 1px solid #ccc;
-            /* 边框样式 */
-            border-radius: 10px;
-        }
-
-        #todoScrollView::-webkit-scrollbar {
-            display: none;
-            /* For Chrome, Safari, and Opera */
-        }
-        .svg-hint path {
-            fill: darkgray
-        }
-    </style>
 </head>
 
 <body>
@@ -101,26 +57,25 @@
 
         <div id="dataTableContainer" style="height: 332px;">
             <s-scroll-view id="todoScrollView" style="width: 100%; height: 366px;">
-                <div id="emptyView"
-                    style="width: 100%; height: 100%; align-items: center; display: flex; justify-content: center;">
+                <div id="emptyView">
                     <image style="width: 60%;" src="./empty.svg">
                 </div>
-                <ul id="todoList"
-                    style="width: 100%; padding: 0px; display: none; list-style-type: none; align-items: center; flex-direction: column;">
+                <ul id="todoList">
                 </ul>
             </s-scroll-view>
-            <s-text-field id="editor" style="display: block; width: 100%; position:absolute; bottom: 0;">
+            <div id="editor">
                 <input id="newTodoInput" type="text">
-                <s-icon slot="end">
-                    <svg class="svg-hint" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-                        <path d="M360-240 120-480l240-240 56 56-144 144h488v-160h80v240H272l144 144-56 56Z"></path>
-                    </svg>
-                </s-icon>
-            </s-text-field>
+                <s-icon-button id="newTodoCommitBtn" slot="end">
+                    <s-icon slot="end">
+                        <svg class="svg-hint" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                            <path d="M360-240 120-480l240-240 56 56-144 144h488v-160h80v240H272l144 144-56 56Z"></path>
+                        </svg>
+                    </s-icon>
+                </s-icon-button>
+            </div>
         </div>
 
-        <div id="newTabPage"
-            style="display: none; width: 100%; height: 352px; justify-content: center; align-items: center;">
+        <div id="newTabPage">
             <div class="newTabInputWrapper" style="display: flex;">
                 <input id="newTabInput" type="text">
                 <s-icon-button id="newTabCommitBtn" slot="end">

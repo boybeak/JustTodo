@@ -10,37 +10,56 @@ onPageReady()
 function onPageReady() {
     // 获取输入框元素
     var newTabInput = document.getElementById("newTabInput")
+
+    function createTab() {
+        var textContent = newTabInput.value
+        if (textContent.length <= 0) {
+            return
+        }
+        newTab(textContent)
+        newTabInput.value = ''
+    }
+
     newTabInput.setAttribute('placeholder', lang.text_new_tab_placeholder)
 
     // 绑定 keydown 事件监听器
-    newTabInput.addEventListener("keydown", function (event) {
+    newTabInput.addEventListener("keydown", (event) => {
         // 如果按下的是回车键
         if (event.keyCode === 13) {
-            var textContent = newTabInput.value
-            newTab(textContent)
-            newTabInput.value = ''
+            createTab()
         }
     })
 
     var newTabCommitBtn = document.getElementById("newTabCommitBtn")
-    newTabCommitBtn.addEventListener("click", function (event) {
-        var textContent = newTabInput.value
-        newTab(textContent)
+    newTabCommitBtn.addEventListener("click", (event) => {
+        createTab()
     })
 
     var newTodoInput = document.getElementById("newTodoInput")
+
+    function createTodo() {
+        var textContent = newTodoInput.value
+        if (textContent.length <= 0) {
+            return
+        }
+        newTodoItem(textContent)
+
+        newTodoInput.value = ''
+
+        refreshTodoItems()
+    }
+
     newTodoInput.setAttribute('placeholder', lang.text_new_todo_placeholder)
     // 绑定 keydown 事件监听器
-    newTodoInput.addEventListener("keydown", function (event) {
+    newTodoInput.addEventListener("keydown", (event) => {
         // 如果按下的是回车键
         if (event.keyCode === 13) {
-            var textContent = newTodoInput.value
-            newTodoItem(textContent)
-
-            newTodoInput.value = ''
-
-            refreshTodoItems()
+            createTodo()
         }
+    })
+    var newTodoCommitBtn = document.getElementById("newTodoCommitBtn")
+    newTodoCommitBtn.addEventListener("click", (event) => {
+        createTodo()
     })
     showHeaders()
     console.log('onPageReady window.size=(', window.innerWidth, ', ', window.innerHeight, ') newTodoInput.height=', newTodoInput.clientHeight)
@@ -269,8 +288,10 @@ function createTodoItemEle(todoItem, isLastOne) {
     }
 
     var checkbox = document.createElement('s-checkbox')
-    // checkbox.style.width = '40px' // 设置复选框大小固定
-    // checkbox.style.height = '40px'
+    checkbox.style.width = '40px' // 设置复选框大小固定
+    checkbox.style.height = '40px'
+    checkbox.style.minWidth = '40px' // 设置复选框大小固定
+    checkbox.style.minHeight = '40px'
     checkbox.checked = todoItem.finished
     checkbox.onchange = function() {
         onTodoItemChecked(todoItem.id, checkbox.checked)
@@ -278,7 +299,8 @@ function createTodoItemEle(todoItem, isLastOne) {
 
     var textContainer = document.createElement('div')
     textContainer.style.flex = '1' // 填充剩余空间
-    // textContainer.style.width = '200px'
+    textContainer.style.width = '200px'
+    textContainer.style.minWidth = '160px'
     textContainer.style.marginRight = '8px' // 设置与图标按钮之间的间距
     textContainer.style.display = 'flex' // 设置为弹性布局
     textContainer.style.flexDirection = 'column' // 设置为垂直布局
@@ -301,6 +323,8 @@ function createTodoItemEle(todoItem, isLastOne) {
     textContainer.appendChild(text)
 
     var iconButton = document.createElement('s-icon-button')
+    iconButton.style.minWidth = '40px' // 设置复选框大小固定
+    iconButton.style.minHeight = '40px'
     var icon = document.createElement('s-icon')
     icon.innerHTML = 
         '<svg class="svg-hint" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">' + 
