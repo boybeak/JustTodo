@@ -157,6 +157,8 @@ class TodoItemTable {
         let fetchReq = Item.fetchRequest()
         fetchReq.predicate = NSPredicate(format: "group_id=%@", group!)
         fetchReq.sortDescriptors = [
+            // unfinished first
+            NSSortDescriptor(key: "finished", ascending: true),
             // Recent first
             NSSortDescriptor(key: "create_at", ascending: false)
         ]

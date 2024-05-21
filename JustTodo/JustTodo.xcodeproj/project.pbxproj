@@ -28,6 +28,7 @@
 		849FD85D2BFC181800DDE91F /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 849FD85C2BFC181800DDE91F /* index.css */; };
 		849FD8632BFCAD7200DDE91F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8612BFCAD7200DDE91F /* Localizable.strings */; };
 		849FD8662BFCAD8000DDE91F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8642BFCAD8000DDE91F /* Localizable.strings */; };
+		849FD8682BFCD00F00DDE91F /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD8672BFCD00F00DDE91F /* AboutWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		849FD85E2BFCAC2300DDE91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		849FD8622BFCAD7200DDE91F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		849FD8652BFCAD8000DDE91F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Localizable.strings; sourceTree = "<group>"; };
+		849FD8672BFCD00F00DDE91F /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				849FD83D2BFB5F5700DDE91F /* main.swift */,
 				849FD82B2BFB5EFC00DDE91F /* AppDelegate.swift */,
 				849FD82D2BFB5EFC00DDE91F /* ViewController.swift */,
+				849FD8672BFCD00F00DDE91F /* AboutWindow.swift */,
 				849FD8322BFB5EFC00DDE91F /* Assets.xcassets */,
 				849FD8372BFB5EFC00DDE91F /* JustTodo.entitlements */,
 				849FD82F2BFB5EFC00DDE91F /* JustTodo.xcdatamodeld */,
@@ -243,6 +246,7 @@
 				849FD82E2BFB5EFC00DDE91F /* ViewController.swift in Sources */,
 				849FD8562BFB610C00DDE91F /* TodoDB.swift in Sources */,
 				849FD83E2BFB5F5700DDE91F /* main.swift in Sources */,
+				849FD8682BFCD00F00DDE91F /* AboutWindow.swift in Sources */,
 				849FD82C2BFB5EFC00DDE91F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -280,7 +280,7 @@ function createTodoItemEle(todoItem, isLastOne) {
     if (isLastOne) {
         li.style.borderBottom = 'none'
     } else {
-        li.style.borderBottom = '1px solid #ccc'
+        li.style.borderBottom = '1px solid var(--s-color-outline-variant)'
     }
 
     var checkbox = document.createElement('s-checkbox')

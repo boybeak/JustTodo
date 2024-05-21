@@ -10,13 +10,15 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     private let tray = Tray(iconName: "book.pages.fill", viewController: ViewController())
+    
+    private var aboutWindowController: NSWindowController?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_settings", comment: "Settings menu item"), action: #selector(settings(_:)), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_about", comment: "About menu item"), action: #selector(about(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_settings", comment: "Settings menu item"), action: #selector(actionSettings(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_about", comment: "About menu item"), action: #selector(actionAbout(_:)), keyEquivalent: ""))
         menu.addItem(.separator())
-        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_quit", comment: "Quit menu item"), action: #selector(quit(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_quit", comment: "Quit menu item"), action: #selector(actionQuit(_:)), keyEquivalent: ""))
         tray.install(menu: menu)
     }
 
@@ -28,15 +30,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
-    @objc func settings(_ sender: NSMenuItem) {
+    @objc func actionSettings(_ sender: NSMenuItem) {
         
     }
     
-    @objc func about(_ sender: NSMenuItem) {
-        
+    @objc func actionAbout(_ sender: NSMenuItem) {
+//        showAboutWindow()
+        AboutWindow.show()
     }
     
-    @objc func quit(_ sender: NSMenuItem) {
+    @objc func actionQuit(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
     }
 
