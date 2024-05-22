@@ -11,30 +11,17 @@
 
     <script src="./sober.min.js"></script>
     <script src="./utils.js"></script>
-
     <script>
-        var langJS;
-        const userLanguage = navigator.language || navigator.userLanguage;
-        switch (userLanguage) {
-            case 'zh-CN':
-                langJS = userLanguage
-                break;
-            default:
-                langJS = "en-US"
-                break
-        }
-        if (window.webkit) {
-            // Xcode项目中，会把子分组中的文件，都直接放在分组根目录下
-            loadScript('./' + langJS + '.js')
-            loadScript('./abs-bridge.js')
-            loadScript('./native-bridge.js')
-        } else {
-            loadScript('./lang/' + langJS + '.js')
-            loadScript('./bridge/abs-bridge.js')
-            loadScript('./bridge/web-bridge.js')
-        }
-
-        loadScript('./ui.js')
+        initUtils((isNative) => {
+            if (isNative) {
+                loadScript('./abs-bridge.js')
+                loadScript('./native-bridge.js')
+            } else {
+                loadScript('./bridge/abs-bridge.js')
+                loadScript('./bridge/web-bridge.js')
+            }
+            loadScript('./ui.js')
+        })
     </script>
 </head>
 

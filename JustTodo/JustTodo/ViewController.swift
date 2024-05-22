@@ -67,7 +67,6 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     }
     
     private func setupJsFunctions(webView: WKWebView) {
-        NSLog("setupJsFunctions ")
         let userContentController = webView.configuration.userContentController
         userContentController.add(self, name: ViewController.JS_FUN_CONSOLE_LOG)
         

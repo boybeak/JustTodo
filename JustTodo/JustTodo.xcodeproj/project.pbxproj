@@ -29,6 +29,10 @@
 		849FD8632BFCAD7200DDE91F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8612BFCAD7200DDE91F /* Localizable.strings */; };
 		849FD8662BFCAD8000DDE91F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8642BFCAD8000DDE91F /* Localizable.strings */; };
 		849FD8682BFCD00F00DDE91F /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD8672BFCD00F00DDE91F /* AboutWindow.swift */; };
+		849FD86A2BFDDB2F00DDE91F /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8692BFDDB2F00DDE91F /* about.html */; };
+		849FD86C2BFDDEF600DDE91F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD86B2BFDDEF600DDE91F /* WebViewController.swift */; };
+		849FD8702BFDE31F00DDE91F /* AppIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 849FD86F2BFDE31F00DDE91F /* AppIcon.svg */; };
+		849FD8722BFE290F00DDE91F /* about.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8712BFE290F00DDE91F /* about.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +61,10 @@
 		849FD8622BFCAD7200DDE91F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		849FD8652BFCAD8000DDE91F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Localizable.strings; sourceTree = "<group>"; };
 		849FD8672BFCD00F00DDE91F /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
+		849FD8692BFDDB2F00DDE91F /* about.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		849FD86B2BFDDEF600DDE91F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		849FD86F2BFDE31F00DDE91F /* AppIcon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppIcon.svg; sourceTree = "<group>"; };
+		849FD8712BFE290F00DDE91F /* about.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = about.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 				849FD82B2BFB5EFC00DDE91F /* AppDelegate.swift */,
 				849FD82D2BFB5EFC00DDE91F /* ViewController.swift */,
 				849FD8672BFCD00F00DDE91F /* AboutWindow.swift */,
+				849FD86B2BFDDEF600DDE91F /* WebViewController.swift */,
 				849FD8322BFB5EFC00DDE91F /* Assets.xcassets */,
 				849FD8372BFB5EFC00DDE91F /* JustTodo.entitlements */,
 				849FD82F2BFB5EFC00DDE91F /* JustTodo.xcdatamodeld */,
@@ -118,6 +127,8 @@
 		849FD84B2BFB608E00DDE91F /* page */ = {
 			isa = PBXGroup;
 			children = (
+				849FD8712BFE290F00DDE91F /* about.js */,
+				849FD86F2BFDE31F00DDE91F /* AppIcon.svg */,
 				849FD8572BFB747100DDE91F /* bridge */,
 				849FD8432BFB608E00DDE91F /* lang */,
 				849FD8452BFB608E00DDE91F /* empty.svg */,
@@ -127,6 +138,7 @@
 				849FD8492BFB608E00DDE91F /* ui.js */,
 				849FD84A2BFB608E00DDE91F /* utils.js */,
 				849FD85C2BFC181800DDE91F /* index.css */,
+				849FD8692BFDDB2F00DDE91F /* about.html */,
 			);
 			path = page;
 			sourceTree = "<group>";
@@ -218,15 +230,18 @@
 			files = (
 				849FD85B2BFB74F100DDE91F /* abs-bridge.js in Resources */,
 				849FD8542BFB608E00DDE91F /* utils.js in Resources */,
+				849FD8722BFE290F00DDE91F /* about.js in Resources */,
 				849FD84D2BFB608E00DDE91F /* zh-CN.js in Resources */,
 				849FD8632BFCAD7200DDE91F /* Localizable.strings in Resources */,
 				849FD84F2BFB608E00DDE91F /* empty.svg in Resources */,
 				849FD84E2BFB608E00DDE91F /* native-bridge.js in Resources */,
 				849FD8512BFB608E00DDE91F /* keyboard_return.svg in Resources */,
 				849FD8522BFB608E00DDE91F /* sober.min.js in Resources */,
+				849FD86A2BFDDB2F00DDE91F /* about.html in Resources */,
 				849FD8502BFB608E00DDE91F /* index.html in Resources */,
 				849FD8532BFB608E00DDE91F /* ui.js in Resources */,
 				849FD8662BFCAD8000DDE91F /* Localizable.strings in Resources */,
+				849FD8702BFDE31F00DDE91F /* AppIcon.svg in Resources */,
 				849FD85D2BFC181800DDE91F /* index.css in Resources */,
 				849FD8592BFB748900DDE91F /* web-bridge.js in Resources */,
 				849FD8332BFB5EFC00DDE91F /* Assets.xcassets in Resources */,
@@ -248,6 +263,7 @@
 				849FD83E2BFB5F5700DDE91F /* main.swift in Sources */,
 				849FD8682BFCD00F00DDE91F /* AboutWindow.swift in Sources */,
 				849FD82C2BFB5EFC00DDE91F /* AppDelegate.swift in Sources */,
+				849FD86C2BFDDEF600DDE91F /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

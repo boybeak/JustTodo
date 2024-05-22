@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="icon" href="./icon.png" type="image/png">
+
+    <script src="./sober.min.js"></script>
+    <script src="./utils.js"></script>
+    <script>
+        console.log('aaaa')
+        initUtils((isNative) => {
+            console.log('about initUtils callback')
+            loadScript('./about.js')
+        })
+    </script>
+</head>
+<body>
+    <s-page theme="auto">
+        <div style="padding: 16px; display: flex; align-items: center;">
+            <image src="./AppIcon.svg" style="width: 64px; height: 64px;"/>
+            <div style="margin-left: 8px;">
+                <div style="font-weight: bold; font-size: 20px;">JustTodo</div>
+                <div style="margin-top: 4px; font-size: 12px;">
+                    Developed by 
+                    <a style="font-weight: bold; font-style: italic;" target="_blank" href="https://github.com/boybeak">boybeak</a>
+                    <a style="font-weight: bold;">·</a>
+                    Source code at 
+                    <a style="font-weight: bold; font-style: italic;" target="_blank" href="https://github.com/boybeak/MyTodo">JustTodo</a>
+                </div>
+            </div>
+            
+        </div>
+        <s-divider style="margin-top: 8px; margin-bottom: 8px; margin-left: 0px; margin-right: 0px;"></s-divider>
+        <div style="padding: 16px;">
+            <h2 id="title-app-intention"></h2>
+            <p id="text-app-intention-1"></p>
+            <ul id="text-app-problems"></ul>
+            <p id="text-app-intention-2"></p>
+            <ul id="text-app-answers"></ul>
+        </div>
+        <div style="padding: 16px;">
+            <h2 id="title-app-open-source"></h2>
+            <ul>
+                <li>
+                    <a href="https://github.com/apprat/sober">apprat/sober</a>
+                </li>
+            </ul>
+        </div>
+        
+    </s-page>
+</body>
+</html>
