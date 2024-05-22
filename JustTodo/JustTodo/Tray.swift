@@ -30,6 +30,8 @@ class Tray: NSObject, NSPopoverDelegate {
         if let trayBtn: NSStatusBarButton = statusItem.button {
             
             let trayImage = NSImage(named: iconName)
+            // Will make the color as other apps' tray icon color
+            trayImage?.isTemplate = true
             trayImage?.size = NSSize(width: 18, height: 18)
             
             trayBtn.image = trayImage
