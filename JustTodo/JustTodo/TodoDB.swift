@@ -41,6 +41,16 @@ class TodoDB {
         
     }
     
+    func onAppTerminate() {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                
+            }
+        }
+    }
+    
 }
 
 class GroupTable {
