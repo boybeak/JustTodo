@@ -1,6 +1,7 @@
-# JustTodo <image src="./resources/TrayIcon.svg" style="width: 24px; height: 24px; just">
+# JustTodo <image src="./resources/TrayIcon.svg" style="width: 24px; height: 24px; just"> <image src="./resources/AppIcon.svg" style="width: 24px; height: 24px;">
 
-<image src="./resources/AppIcon.svg" style="width: 256px; height: 256px;"> 
+## Basic usage
+https://github.com/boybeak/JustTodo/assets/6696502/84386be9-b5b1-40ef-bb24-1e4341c332a7
 
 ## Future features
 1. **Launch on boot**: Due to the relevant system limitations, this may not be easy；
