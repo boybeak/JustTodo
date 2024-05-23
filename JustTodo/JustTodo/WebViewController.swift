@@ -28,8 +28,22 @@ class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         
         webView.navigationDelegate = self
         webView.uiDelegate = self
-        
-        
+    }
+    
+    // WKNavigationDelegate 方法，当 WKWebView 即将加载一个请求时调用
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        // 检查请求中的 URL 是否为链接点击
+        if navigationAction.navigationType == .linkActivated {
+            // 在默认浏览器中打开链接
+            if let url = navigationAction.request.url {
+                NSWorkspace.shared.open(url)
+                // 取消 WKWebView 加载当前请求
+                decisionHandler(.cancel)
+                return
+            }
+        }
+        // 允许 WKWebView 加载当前请求
+        decisionHandler(.allow)
     }
     
     func load(page: String) {

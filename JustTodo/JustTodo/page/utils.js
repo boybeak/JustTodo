@@ -8,7 +8,6 @@ if (window.webkit) {
 }
 
 function initUtils(callback) {
-    console.log('initUtils !!!')
     var langJS;
     const userLanguage = navigator.language || navigator.userLanguage;
     switch (userLanguage) {

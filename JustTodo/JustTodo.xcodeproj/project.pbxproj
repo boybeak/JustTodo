@@ -33,6 +33,8 @@
 		849FD86C2BFDDEF600DDE91F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD86B2BFDDEF600DDE91F /* WebViewController.swift */; };
 		849FD8702BFDE31F00DDE91F /* AppIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 849FD86F2BFDE31F00DDE91F /* AppIcon.svg */; };
 		849FD8722BFE290F00DDE91F /* about.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8712BFE290F00DDE91F /* about.js */; };
+		84B19AFF2BFF32EA006656CA /* EmptyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19AFE2BFF32EA006656CA /* EmptyController.swift */; };
+		84D8E0FC2BFF2CB200D5BB97 /* BootLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		849FD86B2BFDDEF600DDE91F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		849FD86F2BFDE31F00DDE91F /* AppIcon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppIcon.svg; sourceTree = "<group>"; };
 		849FD8712BFE290F00DDE91F /* about.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = about.js; sourceTree = "<group>"; };
+		84B19AFE2BFF32EA006656CA /* EmptyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyController.swift; sourceTree = "<group>"; };
+		84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootLauncher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 				849FD82F2BFB5EFC00DDE91F /* JustTodo.xcdatamodeld */,
 				849FD83F2BFB5FBA00DDE91F /* Tray.swift */,
 				849FD8552BFB610C00DDE91F /* TodoDB.swift */,
+				84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */,
+				84B19AFE2BFF32EA006656CA /* EmptyController.swift */,
 			);
 			path = JustTodo;
 			sourceTree = "<group>";
@@ -256,6 +262,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84D8E0FC2BFF2CB200D5BB97 /* BootLauncher.swift in Sources */,
+				84B19AFF2BFF32EA006656CA /* EmptyController.swift in Sources */,
 				849FD8402BFB5FBA00DDE91F /* Tray.swift in Sources */,
 				849FD8312BFB5EFC00DDE91F /* JustTodo.xcdatamodeld in Sources */,
 				849FD82E2BFB5EFC00DDE91F /* ViewController.swift in Sources */,
@@ -418,6 +426,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JustTodo/Info.plist;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -427,7 +436,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.JustTodo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.boybeak.JustTodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -445,6 +454,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JustTodo/Info.plist;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -454,7 +464,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.JustTodo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.boybeak.JustTodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -12,12 +12,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private let tray = Tray(iconName: "TrayIcon", viewController: ViewController())
     
     private var aboutWindowController: NSWindowController?
+    
+    private let bootLauncher = BootLauncher()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_settings", comment: "Settings menu item"), action: #selector(actionSettings(_:)), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_about", comment: "About menu item"), action: #selector(actionAbout(_:)), keyEquivalent: ""))
+        
+//        Can not make launch on boot work until now
+//        let launchBootItem = NSMenuItem(title: NSLocalizedString("menu_item_launch_on_boot", comment: "launch on boot menu item"), action: #selector(actionLaunchOnBoot(_:)), keyEquivalent: "")
+//        
+//        launchBootItem.state = if bootLauncher.isLaunchAgentEnabled() {
+//            .on
+//        } else {
+//            .off
+//        }
+//        launchBootItem.target = self
+//        menu.addItem(launchBootItem)
+        
         menu.addItem(.separator())
+        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_about", comment: "About menu item"), action: #selector(actionAbout(_:)), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_quit", comment: "Quit menu item"), action: #selector(actionQuit(_:)), keyEquivalent: ""))
         tray.install(menu: menu)
     }
@@ -30,8 +43,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
-    @objc func actionSettings(_ sender: NSMenuItem) {
-        
+    @objc func actionLaunchOnBoot(_ sender: NSMenuItem) {
+        if (sender.state == .on) {
+            sender.state = .off
+            bootLauncher.unloadAndDeleteLaunchAgent()
+        } else {
+            sender.state = .on
+            bootLauncher.createAndLoadLaunchAgent()
+        }
     }
     
     @objc func actionAbout(_ sender: NSMenuItem) {
@@ -41,6 +60,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func actionQuit(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
+    }
+    
+    private func printErrorWithCallStack(_ error: Error) {
+        NSLog("Error: \(error.localizedDescription)")
+        NSLog("Call Stack:")
+        for symbol in Thread.callStackSymbols {
+            NSLog(symbol)
+        }
     }
 
     /*
