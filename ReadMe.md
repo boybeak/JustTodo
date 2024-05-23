@@ -22,4 +22,4 @@ In response to the aforementioned issues, my approach to addressing them is as f
 3. **Logo for tabs**: Add vector logos on tab;
 4. **Indenpendent tab on menu bar**: Make some tabs indenpendent on menu bar;
 
-If you want any more features, leave message at [Discussions](https://github.com/boybeak/JustTodo/discussions).
+If you want any more features, leave message at **[Discussions](https://github.com/boybeak/JustTodo/discussions)**.
