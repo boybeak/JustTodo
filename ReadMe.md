@@ -1,7 +1,7 @@
 # JustTodo <image src="./resources/TrayIcon.svg" style="width: 24px; height: 24px; just"> <image src="./resources/AppIcon.svg" style="width: 24px; height: 24px;">
 
 ## Basic usage
-https://github.com/boybeak/JustTodo/assets/6696502/84386be9-b5b1-40ef-bb24-1e4341c332a7
+![guide](./art/just-todo.gif)
 
 ## Why make this app?
 In fact, I have long wanted to create such an app. Mainly, when writing code, I often have fleeting ideas. Recording them casually might mean waiting a long time to find time to implement them. This requires a to-do app. I have tried various to-do apps before, but most have some issues, such as:
