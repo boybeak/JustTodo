@@ -46,9 +46,6 @@ class AboutWindow: NSWindow, NSWindowDelegate {
         
         aboutController = WebViewController()
         self.contentViewController = aboutController
-    }
-    
-    func windowDidBecomeMain(_ notification: Notification) {
         aboutController?.load(page: "about")
     }
     

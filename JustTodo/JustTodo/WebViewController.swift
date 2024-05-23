@@ -53,6 +53,7 @@ class WebViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
             webView.loadFileURL(fileURL, allowingReadAccessTo: fileURL.deletingLastPathComponent())
             
             let userContentController = webView.configuration.userContentController
+            userContentController.removeScriptMessageHandler(forName: WebViewController.JS_FUN_CONSOLE_LOG)
             userContentController.add(self, name: WebViewController.JS_FUN_CONSOLE_LOG)
         }
     }

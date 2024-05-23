@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        launchBootItem.target = self
 //        menu.addItem(launchBootItem)
         
-        menu.addItem(.separator())
+//        menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_about", comment: "About menu item"), action: #selector(actionAbout(_:)), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_quit", comment: "Quit menu item"), action: #selector(actionQuit(_:)), keyEquivalent: ""))
         tray.install(menu: menu)
