@@ -38,6 +38,14 @@ function loadScript(url) {
     document.head.appendChild(script);
 }
 
+function loadCSS(url) {
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+    document.head.appendChild(link);
+}
+
 function formatString(template, data) {
     return template.replace(/{(\w+)}/g, (match, key) => data[key] || '');
 }

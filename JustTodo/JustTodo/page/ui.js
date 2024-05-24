@@ -189,8 +189,8 @@ function fillTodoItems(todoItems) {
 function onTabRightClick(tabItem, event) {
     var currentId = getTabElementId(tabItem)
     var currentTab = document.getElementById(currentId)
-    var menu = document.querySelector('#menu')
-    var deleteItem = document.getElementById('menu_item_delete')
+    var menu = document.querySelector('#tabContextMenu')
+    var deleteItem = document.getElementById('tab_menu_item_delete')
     deleteItem.onclick = showDelTabDialog.bind(null, tabItem)
     menu.show(currentTab)
     event.preventDefault()
@@ -322,21 +322,36 @@ function createTodoItemEle(todoItem, isLastOne) {
     iconButton.style.minWidth = '40px' // 设置复选框大小固定
     iconButton.style.minHeight = '40px'
     var icon = document.createElement('s-icon')
-    icon.innerHTML = 
-        '<svg class="svg-hint" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">' + 
-            '<path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"></path>' + 
-        '</svg>'
+    icon.type = 'more_vert'
+    
     iconButton.onclick = function() {
-        deleteTodoItem(todoItem.id)
+        // deleteTodoItem(todoItem.id)
+        var copyMenuItem = document.getElementById('todo_menu_item_copy')
+        var deleteMenuItem = document.getElementById('todo_menu_item_delete')
+
+        document.querySelector('#todo_menu_item_copy .text').textContent = lang.text_menu_item_copy
+        document.querySelector('#todo_menu_item_delete .text').textContent = lang.text_menu_item_delete
+
+        if (todoItem.finished) {
+            deleteMenuItem.style.display = 'block'
+        } else {
+            deleteMenuItem.style.display = 'none'
+        }
+
+        copyMenuItem.onclick = (event) => {
+            bridge.copyTextNative(todoItem.text)
+            showToast('toast', lang.text_toast_copied)
+        }
+        deleteMenuItem.onclick = (event) => {
+            deleteTodoItem(todoItem.id)
+        }
+        
+        document.getElementById('todoItemContextMenu').show(icon)
     }
     iconButton.appendChild(icon)
 
     // 根据不同状态隐藏图标按钮
-    if (todoItem.finished) {
-        iconButton.style.display = 'flex'
-    } else {
-        iconButton.style.display = 'none'
-    }
+    
 
     // 将子元素添加到 li 元素中
     li.appendChild(checkbox)

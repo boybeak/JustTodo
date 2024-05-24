@@ -18,6 +18,7 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
     static let JS_FUN_NEW_TODO_ITEM = "newTodoItem"
     static let JS_FUN_CHECK_TODO_ITEM = "checkTodoItem"
     static let JS_FUN_DELETE_TODO_ITEM = "deleteTodoItem"
+    static let JS_FUN_COPY_TEXT = "copyText"
     
     private(set) var webView: WKWebView!
     let jsonEncoder = JSONEncoder()
@@ -78,6 +79,8 @@ class ViewController: NSViewController, WKNavigationDelegate, WKUIDelegate {
         userContentController.add(self, name: ViewController.JS_FUN_NEW_TODO_ITEM)
         userContentController.add(self, name: ViewController.JS_FUN_CHECK_TODO_ITEM)
         userContentController.add(self, name: ViewController.JS_FUN_DELETE_TODO_ITEM)
+        
+        userContentController.add(self, name: ViewController.JS_FUN_COPY_TEXT)
     }
     
 }
@@ -201,6 +204,12 @@ extension ViewController: WKScriptMessageHandler {
                 }
             }
             webView.jsHandleResult(eventId: eventId, result: result)
+            break
+        case ViewController.JS_FUN_COPY_TEXT:
+            let text = message.body as! String
+            let pasteboard = NSPasteboard.general
+            pasteboard.clearContents()
+            pasteboard.setString(text, forType: .string)
             break
         default:
             break

@@ -2,6 +2,9 @@ const lang = {
     text_dialog_delete_group: '确定要删除包含{item_count}个待办笔记的分组({group_name})吗?',
     text_new_todo_placeholder: '输入Todo笔记内容',
     text_new_tab_placeholder: '输入分组名',
+    text_menu_item_copy: '复制',
+    text_menu_item_delete: '删除',
+    text_toast_copied: '已复制',
     title_app_intention: '为什么要开发这款应用？',
     text_app_intention_1: '实际上我早就想做这样一款应用，主要是在写代码时，经常有一闪而过的点子，这种随手记录一下，可能要等很久才会安排时间来实现，这就需要一个待办应用，我曾经尝试过各种待办应用，大多数存在一些问题，比如：',
     text_app_problems: [

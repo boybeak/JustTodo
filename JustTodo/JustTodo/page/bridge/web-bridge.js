@@ -191,5 +191,9 @@ class WebBridge extends AbsBridge {
             deleteReq.onerror = this.onErrorWithLog('deleteTodoItemNative delete')
         }, this.onErrorWithLog('deleteTodoItemNative'))
     }
+
+    copyTextNative(text) {
+        navigator.clipboard.writeText(text)
+    }
 }
 const bridge = new WebBridge()

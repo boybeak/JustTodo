@@ -2,6 +2,9 @@ const lang = {
     text_dialog_delete_group: 'Are you sure to delete the group({group_name}) with {item_count} todo notes?',
     text_new_todo_placeholder: 'Type in todo note',
     text_new_tab_placeholder: 'Type in group name',
+    text_menu_item_copy: 'Copy',
+    text_menu_item_delete: 'Delete',
+    text_toast_copied: 'Copied',
     title_app_intention: 'Why develop this app?',
     text_app_intention_1: 'In fact, I have long wanted to create such an app. Mainly, when writing code, I often have fleeting ideas. Recording them casually might mean waiting a long time to find time to implement them. This requires a to-do app. I have tried various to-do apps before, but most have some issues, such as:',
     text_app_problems: [

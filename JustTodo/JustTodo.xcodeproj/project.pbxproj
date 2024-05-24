@@ -34,6 +34,8 @@
 		849FD8702BFDE31F00DDE91F /* AppIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 849FD86F2BFDE31F00DDE91F /* AppIcon.svg */; };
 		849FD8722BFE290F00DDE91F /* about.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8712BFE290F00DDE91F /* about.js */; };
 		84B19AFF2BFF32EA006656CA /* EmptyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19AFE2BFF32EA006656CA /* EmptyController.swift */; };
+		84B19B032C007866006656CA /* toast.css in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B002C007866006656CA /* toast.css */; };
+		84B19B042C007866006656CA /* toast.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B012C007866006656CA /* toast.js */; };
 		84D8E0FC2BFF2CB200D5BB97 /* BootLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +70,8 @@
 		849FD86F2BFDE31F00DDE91F /* AppIcon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppIcon.svg; sourceTree = "<group>"; };
 		849FD8712BFE290F00DDE91F /* about.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = about.js; sourceTree = "<group>"; };
 		84B19AFE2BFF32EA006656CA /* EmptyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyController.swift; sourceTree = "<group>"; };
+		84B19B002C007866006656CA /* toast.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = toast.css; sourceTree = "<group>"; };
+		84B19B012C007866006656CA /* toast.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = toast.js; sourceTree = "<group>"; };
 		84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootLauncher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +137,7 @@
 		849FD84B2BFB608E00DDE91F /* page */ = {
 			isa = PBXGroup;
 			children = (
+				84B19B022C007866006656CA /* toast */,
 				849FD8712BFE290F00DDE91F /* about.js */,
 				849FD86F2BFDE31F00DDE91F /* AppIcon.svg */,
 				849FD8572BFB747100DDE91F /* bridge */,
@@ -173,6 +178,15 @@
 				849FD8642BFCAD8000DDE91F /* Localizable.strings */,
 			);
 			path = "zh-Hans.lproj";
+			sourceTree = "<group>";
+		};
+		84B19B022C007866006656CA /* toast */ = {
+			isa = PBXGroup;
+			children = (
+				84B19B002C007866006656CA /* toast.css */,
+				84B19B012C007866006656CA /* toast.js */,
+			);
+			path = toast;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,8 +251,10 @@
 				849FD85B2BFB74F100DDE91F /* abs-bridge.js in Resources */,
 				849FD8542BFB608E00DDE91F /* utils.js in Resources */,
 				849FD8722BFE290F00DDE91F /* about.js in Resources */,
+				84B19B032C007866006656CA /* toast.css in Resources */,
 				849FD84D2BFB608E00DDE91F /* zh-CN.js in Resources */,
 				849FD8632BFCAD7200DDE91F /* Localizable.strings in Resources */,
+				84B19B042C007866006656CA /* toast.js in Resources */,
 				849FD84F2BFB608E00DDE91F /* empty.svg in Resources */,
 				849FD84E2BFB608E00DDE91F /* native-bridge.js in Resources */,
 				849FD8512BFB608E00DDE91F /* keyboard_return.svg in Resources */,

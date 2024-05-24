@@ -20,4 +20,5 @@ class AbsBridge {
     newTodoItemNative(groupId, text, callback) {}
     checkTodoItemNative(todoId, checked, callback) {}
     deleteTodoItemNative(todoId, callback) {}
+    copyTextNative(text) {}
 }

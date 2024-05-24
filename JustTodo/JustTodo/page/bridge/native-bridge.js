@@ -72,6 +72,9 @@ class NativeBridge extends AbsBridge {
         ]
         window.webkit.messageHandlers.deleteTodoItem.postMessage(params)
     }
+    copyTextNative(text) {
+        window.webkit.messageHandlers.copyText.postMessage(text)
+    }
 }
 
 const bridge = new NativeBridge()
