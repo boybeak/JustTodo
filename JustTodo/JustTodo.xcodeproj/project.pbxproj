@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		848410692C01CA3F008B0BF4 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848410682C01CA3F008B0BF4 /* AboutView.swift */; };
+		8484106B2C01CA65008B0BF4 /* AboutWinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484106A2C01CA65008B0BF4 /* AboutWinController.swift */; };
 		84B19B132C00DE9E006656CA /* JustTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B122C00DE9E006656CA /* JustTodoApp.swift */; };
 		84B19B152C00DE9E006656CA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B142C00DE9E006656CA /* ContentView.swift */; };
 		84B19B172C00DE9F006656CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B162C00DE9F006656CA /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		848410682C01CA3F008B0BF4 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		8484106A2C01CA65008B0BF4 /* AboutWinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWinController.swift; sourceTree = "<group>"; };
 		84B19B0F2C00DE9E006656CA /* JustTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B19B122C00DE9E006656CA /* JustTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustTodoApp.swift; sourceTree = "<group>"; };
 		84B19B142C00DE9E006656CA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		848410672C01CA20008B0BF4 /* about */ = {
+			isa = PBXGroup;
+			children = (
+				848410682C01CA3F008B0BF4 /* AboutView.swift */,
+				8484106A2C01CA65008B0BF4 /* AboutWinController.swift */,
+			);
+			path = about;
+			sourceTree = "<group>";
+		};
 		84B19B062C00DE9E006656CA = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +122,7 @@
 		84B19B112C00DE9E006656CA /* JustTodo */ = {
 			isa = PBXGroup;
 			children = (
+				848410672C01CA20008B0BF4 /* about */,
 				84B19B7C2C01AC8F006656CA /* page */,
 				84B19B5D2C01AB8F006656CA /* Info.plist */,
 				84B19B122C00DE9E006656CA /* JustTodoApp.swift */,
@@ -297,10 +311,12 @@
 				84B19B292C019055006656CA /* WebView.swift in Sources */,
 				84B19B5A2C0198B6006656CA /* JsHandlers.swift in Sources */,
 				84B19B152C00DE9E006656CA /* ContentView.swift in Sources */,
+				848410692C01CA3F008B0BF4 /* AboutView.swift in Sources */,
 				84B19B582C019864006656CA /* TodoDB.swift in Sources */,
 				84B19B932C01B723006656CA /* Tray.swift in Sources */,
 				84B19B272C00E000006656CA /* AppDelegate.swift in Sources */,
 				84B19B132C00DE9E006656CA /* JustTodoApp.swift in Sources */,
+				8484106B2C01CA65008B0BF4 /* AboutWinController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

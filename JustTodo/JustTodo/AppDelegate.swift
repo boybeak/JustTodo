@@ -17,29 +17,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     private func setupMainTray() {
-        let menu = NSMenu(title: "Translator")
-        let aboutMenuItem = NSMenuItem(title: "About", action: #selector(menuItemAbout), keyEquivalent: "")
-        aboutMenuItem.image = NSImage(systemSymbolName: "info.circle", accessibilityDescription: nil)
-        menu.addItem(aboutMenuItem)
-        
-        let quitMenuItem = NSMenuItem(title: "Quit", action: #selector(menuItemQuit), keyEquivalent: "")
-        quitMenuItem.image = NSImage(systemSymbolName: "power", accessibilityDescription: nil)
-        menu.addItem(quitMenuItem)
+        let menu = NSMenu()
+                
+        //        Can not make launch on boot work until now
+        //        let launchBootItem = NSMenuItem(title: NSLocalizedString("menu_item_launch_on_boot", comment: "launch on boot menu item"), action: #selector(actionLaunchOnBoot(_:)), keyEquivalent: "")
+        //
+        //        launchBootItem.state = if bootLauncher.isLaunchAgentEnabled() {
+        //            .on
+        //        } else {
+        //            .off
+        //        }
+        //        launchBootItem.target = self
+        //        menu.addItem(launchBootItem)
+                
+        //        menu.addItem(.separator())
+        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_about", comment: "About menu item"), action: #selector(actionAbout(_:)), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_quit", comment: "Quit menu item"), action: #selector(actionQuit(_:)), keyEquivalent: ""))
         tray.install(icon: NSImage(named: "TrayIcon")!, view: ContentView(), menu: menu)
     }
     
-    @objc func menuItemAbout() {
-        NSApp.sendAction(#selector(AppDelegate.doOpenAboutWindow), to: nil, from:nil)
-        NSApp.activate(ignoringOtherApps: true)
+    @objc func actionAbout(_ sender: NSMenuItem) {
+        let aboutController = AboutWinController()
+        aboutController.showWindow(nil)
     }
-    @objc func doOpenAboutWindow() {
-        
-    }
-    @objc func menuItemSettings() {
-        NSApp.sendAction(Selector(("showPreferencesWindow:")), to: nil, from: nil)
-        NSApp.activate(ignoringOtherApps: true)
-    }
-    @objc func menuItemQuit() {
+
+    @objc func actionQuit(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(nil)
     }
     

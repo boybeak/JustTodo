@@ -46,7 +46,6 @@ let indexJsHandlers: [String: (WKWebView, Any) -> Void] = [
         do {
             let json = try jsonEncoder.encode(groups)
             let jsonStr = String(data: json, encoding: .utf8)!
-            NSLog("jsonStr=\(jsonStr)")
             webView.jsHandleResult(eventId: eventId, result: jsonStr)
         } catch {
             
