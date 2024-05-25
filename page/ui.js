@@ -13,9 +13,29 @@ function onPageReady() {
     // 获取输入框元素
     var newTabInput = document.getElementById("newTabInput")
 
+    function checkTabName(text) {
+        
+        if (text.length > 24) {
+            return lang.text_error_tab_name_too_long
+        }
+        
+        if (text.includes('\n') || text.includes('\r')) {
+            return lang.text_error_tab_name_invalid_chars
+        }
+        
+        return ''
+    }
+
+    function isTabNameValid(text) {
+        return checkTabName(text).length == 0
+    }
+
     function createTab() {
         var textContent = newTabInput.value
         if (textContent.length <= 0) {
+            return
+        }
+        if (!isTabNameValid(textContent)) {
             return
         }
         newTab(textContent)
@@ -30,6 +50,18 @@ function onPageReady() {
         if (event.keyCode === 13) {
             createTab()
         }
+    })
+    var errorTip = document.getElementById('newTabInputErrorTip')
+    var errorTipText = document.getElementById('newTabInputErrorTipText')
+    newTabInput.addEventListener("input", (event) => {
+        var textContent = newTabInput.value
+        var error = checkTabName(textContent)
+        if (error.length > 0) {
+            errorTipText.textContent = error
+            showErrorTip(errorTip)
+            return
+        }
+        hideErrorTip(errorTip)
     })
 
     var newTabCommitBtn = document.getElementById("newTabCommitBtn")

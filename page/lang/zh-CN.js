@@ -19,5 +19,7 @@ const lang = {
         '经济性：开源、免费；',
         '美观性：采用Material Design风格的设计，美观有基本保障。',
     ],
-    title_app_open_source: '开源代码'
+    title_app_open_source: '开源代码',
+    text_error_tab_name_too_long: '分组名称不能超过24个字符',
+    text_error_tab_name_invalid_chars: '分组名称不能保护换行字符',
 }

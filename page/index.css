@@ -66,6 +66,7 @@ body {
     border: none;
     outline: none;
     background-color: transparent;
+    color: var(--mdc-theme-on-background);
 }
 
 .newTabInputWrapper {
