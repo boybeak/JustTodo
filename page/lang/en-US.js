@@ -19,5 +19,7 @@ const lang = {
         'Economy: Open-source and free.',
         'Aesthetics: Adopting a Material Design style ensures a visually pleasing and fundamentally sound design.'
     ],
-    title_app_open_source: 'Open source'
+    title_app_open_source: 'Open source',
+    text_error_tab_name_too_long: 'The group name cannot exceed 24 characters',
+    text_error_tab_name_invalid_chars: 'The group name cannot contain newline characters',
 }

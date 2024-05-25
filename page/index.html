@@ -18,11 +18,17 @@
                 loadScript('./native-bridge.js')
                 loadCSS('./toast.css')
                 loadScript('./toast.js')
+
+                loadCSS('./errortip.css')
+                loadScript('./errortip.js')
             } else {
                 loadScript('./bridge/abs-bridge.js')
                 loadScript('./bridge/web-bridge.js')
                 loadCSS('./toast/toast.css')
                 loadScript('./toast/toast.js')
+
+                loadCSS('./errortip/errortip.css')
+                loadScript('./errortip/errortip.js')
             }
             loadScript('./ui.js')
         })
@@ -91,15 +97,18 @@
         </div>
 
         <div id="newTabPage">
-            <div class="newTabInputWrapper" style="display: flex;">
-                <input id="newTabInput" type="text">
-                <s-icon-button id="newTabCommitBtn" slot="end">
-                    <s-icon slot="end">
-                        <svg class="svg-hint" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-                            <path d="M360-240 120-480l240-240 56 56-144 144h488v-160h80v240H272l144 144-56 56Z"></path>
-                        </svg>
-                    </s-icon>
-                </s-icon-button>
+            <div id="newTabInputErrorTip" class="errortip">
+                <span id="newTabInputErrorTipText" class="errortiptext">1122334</span>
+                <div class="newTabInputWrapper" style="display: flex;">
+                    <input id="newTabInput" type="text">
+                    <s-icon-button id="newTabCommitBtn" slot="end">
+                        <s-icon slot="end">
+                            <svg class="svg-hint" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+                                <path d="M360-240 120-480l240-240 56 56-144 144h488v-160h80v240H272l144 144-56 56Z"></path>
+                            </svg>
+                        </s-icon>
+                    </s-icon-button>
+                </div>
             </div>
         </div>
         <s-dialog id="dialog">
