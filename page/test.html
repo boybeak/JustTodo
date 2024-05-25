@@ -1,0 +1,12 @@
+<html>
+<head>
+<script>
+function callNativeFunction() {
+    webkit.messageHandlers.myHandler.postMessage("Hello from JavaScript");
+}
+</script>
+</head>
+<body>
+<button onclick="callNativeFunction()">Call Native Function</button>
+</body>
+</html>

@@ -1,0 +1,541 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		849FD82C2BFB5EFC00DDE91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD82B2BFB5EFC00DDE91F /* AppDelegate.swift */; };
+		849FD82E2BFB5EFC00DDE91F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD82D2BFB5EFC00DDE91F /* ViewController.swift */; };
+		849FD8312BFB5EFC00DDE91F /* JustTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849FD82F2BFB5EFC00DDE91F /* JustTodo.xcdatamodeld */; };
+		849FD8332BFB5EFC00DDE91F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8322BFB5EFC00DDE91F /* Assets.xcassets */; };
+		849FD83E2BFB5F5700DDE91F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD83D2BFB5F5700DDE91F /* main.swift */; };
+		849FD8402BFB5FBA00DDE91F /* Tray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD83F2BFB5FBA00DDE91F /* Tray.swift */; };
+		849FD84C2BFB608E00DDE91F /* en-US.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8412BFB608E00DDE91F /* en-US.js */; };
+		849FD84D2BFB608E00DDE91F /* zh-CN.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8422BFB608E00DDE91F /* zh-CN.js */; };
+		849FD84E2BFB608E00DDE91F /* native-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8442BFB608E00DDE91F /* native-bridge.js */; };
+		849FD84F2BFB608E00DDE91F /* empty.svg in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8452BFB608E00DDE91F /* empty.svg */; };
+		849FD8502BFB608E00DDE91F /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8462BFB608E00DDE91F /* index.html */; };
+		849FD8512BFB608E00DDE91F /* keyboard_return.svg in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8472BFB608E00DDE91F /* keyboard_return.svg */; };
+		849FD8522BFB608E00DDE91F /* sober.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8482BFB608E00DDE91F /* sober.min.js */; };
+		849FD8532BFB608E00DDE91F /* ui.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8492BFB608E00DDE91F /* ui.js */; };
+		849FD8542BFB608E00DDE91F /* utils.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD84A2BFB608E00DDE91F /* utils.js */; };
+		849FD8562BFB610C00DDE91F /* TodoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD8552BFB610C00DDE91F /* TodoDB.swift */; };
+		849FD8592BFB748900DDE91F /* web-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8582BFB748900DDE91F /* web-bridge.js */; };
+		849FD85B2BFB74F100DDE91F /* abs-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD85A2BFB74F100DDE91F /* abs-bridge.js */; };
+		849FD85D2BFC181800DDE91F /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 849FD85C2BFC181800DDE91F /* index.css */; };
+		849FD8632BFCAD7200DDE91F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8612BFCAD7200DDE91F /* Localizable.strings */; };
+		849FD8662BFCAD8000DDE91F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8642BFCAD8000DDE91F /* Localizable.strings */; };
+		849FD8682BFCD00F00DDE91F /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD8672BFCD00F00DDE91F /* AboutWindow.swift */; };
+		849FD86A2BFDDB2F00DDE91F /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8692BFDDB2F00DDE91F /* about.html */; };
+		849FD86C2BFDDEF600DDE91F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD86B2BFDDEF600DDE91F /* WebViewController.swift */; };
+		849FD8702BFDE31F00DDE91F /* AppIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 849FD86F2BFDE31F00DDE91F /* AppIcon.svg */; };
+		849FD8722BFE290F00DDE91F /* about.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8712BFE290F00DDE91F /* about.js */; };
+		84B19AFF2BFF32EA006656CA /* EmptyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19AFE2BFF32EA006656CA /* EmptyController.swift */; };
+		84B19B032C007866006656CA /* toast.css in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B002C007866006656CA /* toast.css */; };
+		84B19B042C007866006656CA /* toast.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B012C007866006656CA /* toast.js */; };
+		84D8E0FC2BFF2CB200D5BB97 /* BootLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		849FD8282BFB5EFC00DDE91F /* JustTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		849FD82B2BFB5EFC00DDE91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		849FD82D2BFB5EFC00DDE91F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		849FD8302BFB5EFC00DDE91F /* JustTodo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JustTodo.xcdatamodel; sourceTree = "<group>"; };
+		849FD8322BFB5EFC00DDE91F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		849FD8372BFB5EFC00DDE91F /* JustTodo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JustTodo.entitlements; sourceTree = "<group>"; };
+		849FD83D2BFB5F5700DDE91F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		849FD83F2BFB5FBA00DDE91F /* Tray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tray.swift; sourceTree = "<group>"; };
+		849FD8412BFB608E00DDE91F /* en-US.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "en-US.js"; sourceTree = "<group>"; };
+		849FD8422BFB608E00DDE91F /* zh-CN.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "zh-CN.js"; sourceTree = "<group>"; };
+		849FD8442BFB608E00DDE91F /* native-bridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "native-bridge.js"; sourceTree = "<group>"; };
+		849FD8452BFB608E00DDE91F /* empty.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = empty.svg; sourceTree = "<group>"; };
+		849FD8462BFB608E00DDE91F /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		849FD8472BFB608E00DDE91F /* keyboard_return.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keyboard_return.svg; sourceTree = "<group>"; };
+		849FD8482BFB608E00DDE91F /* sober.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sober.min.js; sourceTree = "<group>"; };
+		849FD8492BFB608E00DDE91F /* ui.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ui.js; sourceTree = "<group>"; };
+		849FD84A2BFB608E00DDE91F /* utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = utils.js; sourceTree = "<group>"; };
+		849FD8552BFB610C00DDE91F /* TodoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDB.swift; sourceTree = "<group>"; };
+		849FD8582BFB748900DDE91F /* web-bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "web-bridge.js"; sourceTree = "<group>"; };
+		849FD85A2BFB74F100DDE91F /* abs-bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "abs-bridge.js"; sourceTree = "<group>"; };
+		849FD85C2BFC181800DDE91F /* index.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
+		849FD85E2BFCAC2300DDE91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		849FD8622BFCAD7200DDE91F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		849FD8652BFCAD8000DDE91F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Localizable.strings; sourceTree = "<group>"; };
+		849FD8672BFCD00F00DDE91F /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
+		849FD8692BFDDB2F00DDE91F /* about.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		849FD86B2BFDDEF600DDE91F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		849FD86F2BFDE31F00DDE91F /* AppIcon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppIcon.svg; sourceTree = "<group>"; };
+		849FD8712BFE290F00DDE91F /* about.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = about.js; sourceTree = "<group>"; };
+		84B19AFE2BFF32EA006656CA /* EmptyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyController.swift; sourceTree = "<group>"; };
+		84B19B002C007866006656CA /* toast.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = toast.css; sourceTree = "<group>"; };
+		84B19B012C007866006656CA /* toast.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = toast.js; sourceTree = "<group>"; };
+		84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootLauncher.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		849FD8252BFB5EFC00DDE91F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		849FD81F2BFB5EFC00DDE91F = {
+			isa = PBXGroup;
+			children = (
+				849FD8602BFCAD1C00DDE91F /* zh-Hans.lproj */,
+				849FD85F2BFCAD0400DDE91F /* en.lproj */,
+				849FD82A2BFB5EFC00DDE91F /* JustTodo */,
+				849FD8292BFB5EFC00DDE91F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		849FD8292BFB5EFC00DDE91F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				849FD8282BFB5EFC00DDE91F /* JustTodo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		849FD82A2BFB5EFC00DDE91F /* JustTodo */ = {
+			isa = PBXGroup;
+			children = (
+				849FD85E2BFCAC2300DDE91F /* Info.plist */,
+				849FD84B2BFB608E00DDE91F /* page */,
+				849FD83D2BFB5F5700DDE91F /* main.swift */,
+				849FD82B2BFB5EFC00DDE91F /* AppDelegate.swift */,
+				849FD82D2BFB5EFC00DDE91F /* ViewController.swift */,
+				849FD8672BFCD00F00DDE91F /* AboutWindow.swift */,
+				849FD86B2BFDDEF600DDE91F /* WebViewController.swift */,
+				849FD8322BFB5EFC00DDE91F /* Assets.xcassets */,
+				849FD8372BFB5EFC00DDE91F /* JustTodo.entitlements */,
+				849FD82F2BFB5EFC00DDE91F /* JustTodo.xcdatamodeld */,
+				849FD83F2BFB5FBA00DDE91F /* Tray.swift */,
+				849FD8552BFB610C00DDE91F /* TodoDB.swift */,
+				84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */,
+				84B19AFE2BFF32EA006656CA /* EmptyController.swift */,
+			);
+			path = JustTodo;
+			sourceTree = "<group>";
+		};
+		849FD8432BFB608E00DDE91F /* lang */ = {
+			isa = PBXGroup;
+			children = (
+				849FD8412BFB608E00DDE91F /* en-US.js */,
+				849FD8422BFB608E00DDE91F /* zh-CN.js */,
+			);
+			path = lang;
+			sourceTree = "<group>";
+		};
+		849FD84B2BFB608E00DDE91F /* page */ = {
+			isa = PBXGroup;
+			children = (
+				84B19B022C007866006656CA /* toast */,
+				849FD8712BFE290F00DDE91F /* about.js */,
+				849FD86F2BFDE31F00DDE91F /* AppIcon.svg */,
+				849FD8572BFB747100DDE91F /* bridge */,
+				849FD8432BFB608E00DDE91F /* lang */,
+				849FD8452BFB608E00DDE91F /* empty.svg */,
+				849FD8462BFB608E00DDE91F /* index.html */,
+				849FD8472BFB608E00DDE91F /* keyboard_return.svg */,
+				849FD8482BFB608E00DDE91F /* sober.min.js */,
+				849FD8492BFB608E00DDE91F /* ui.js */,
+				849FD84A2BFB608E00DDE91F /* utils.js */,
+				849FD85C2BFC181800DDE91F /* index.css */,
+				849FD8692BFDDB2F00DDE91F /* about.html */,
+			);
+			path = page;
+			sourceTree = "<group>";
+		};
+		849FD8572BFB747100DDE91F /* bridge */ = {
+			isa = PBXGroup;
+			children = (
+				849FD8442BFB608E00DDE91F /* native-bridge.js */,
+				849FD8582BFB748900DDE91F /* web-bridge.js */,
+				849FD85A2BFB74F100DDE91F /* abs-bridge.js */,
+			);
+			path = bridge;
+			sourceTree = "<group>";
+		};
+		849FD85F2BFCAD0400DDE91F /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				849FD8612BFCAD7200DDE91F /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		849FD8602BFCAD1C00DDE91F /* zh-Hans.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				849FD8642BFCAD8000DDE91F /* Localizable.strings */,
+			);
+			path = "zh-Hans.lproj";
+			sourceTree = "<group>";
+		};
+		84B19B022C007866006656CA /* toast */ = {
+			isa = PBXGroup;
+			children = (
+				84B19B002C007866006656CA /* toast.css */,
+				84B19B012C007866006656CA /* toast.js */,
+			);
+			path = toast;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		849FD8272BFB5EFC00DDE91F /* JustTodo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 849FD83A2BFB5EFC00DDE91F /* Build configuration list for PBXNativeTarget "JustTodo" */;
+			buildPhases = (
+				849FD8242BFB5EFC00DDE91F /* Sources */,
+				849FD8252BFB5EFC00DDE91F /* Frameworks */,
+				849FD8262BFB5EFC00DDE91F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JustTodo;
+			productName = JustTodo;
+			productReference = 849FD8282BFB5EFC00DDE91F /* JustTodo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		849FD8202BFB5EFC00DDE91F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					849FD8272BFB5EFC00DDE91F = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 849FD8232BFB5EFC00DDE91F /* Build configuration list for PBXProject "JustTodo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = 849FD81F2BFB5EFC00DDE91F;
+			packageReferences = (
+				84B19B052C00B6BD006656CA /* XCRemoteSwiftPackageReference "MASShortcut" */,
+			);
+			productRefGroup = 849FD8292BFB5EFC00DDE91F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				849FD8272BFB5EFC00DDE91F /* JustTodo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		849FD8262BFB5EFC00DDE91F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				849FD85B2BFB74F100DDE91F /* abs-bridge.js in Resources */,
+				849FD8542BFB608E00DDE91F /* utils.js in Resources */,
+				849FD8722BFE290F00DDE91F /* about.js in Resources */,
+				84B19B032C007866006656CA /* toast.css in Resources */,
+				849FD84D2BFB608E00DDE91F /* zh-CN.js in Resources */,
+				849FD8632BFCAD7200DDE91F /* Localizable.strings in Resources */,
+				84B19B042C007866006656CA /* toast.js in Resources */,
+				849FD84F2BFB608E00DDE91F /* empty.svg in Resources */,
+				849FD84E2BFB608E00DDE91F /* native-bridge.js in Resources */,
+				849FD8512BFB608E00DDE91F /* keyboard_return.svg in Resources */,
+				849FD8522BFB608E00DDE91F /* sober.min.js in Resources */,
+				849FD86A2BFDDB2F00DDE91F /* about.html in Resources */,
+				849FD8502BFB608E00DDE91F /* index.html in Resources */,
+				849FD8532BFB608E00DDE91F /* ui.js in Resources */,
+				849FD8662BFCAD8000DDE91F /* Localizable.strings in Resources */,
+				849FD8702BFDE31F00DDE91F /* AppIcon.svg in Resources */,
+				849FD85D2BFC181800DDE91F /* index.css in Resources */,
+				849FD8592BFB748900DDE91F /* web-bridge.js in Resources */,
+				849FD8332BFB5EFC00DDE91F /* Assets.xcassets in Resources */,
+				849FD84C2BFB608E00DDE91F /* en-US.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		849FD8242BFB5EFC00DDE91F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84D8E0FC2BFF2CB200D5BB97 /* BootLauncher.swift in Sources */,
+				84B19AFF2BFF32EA006656CA /* EmptyController.swift in Sources */,
+				849FD8402BFB5FBA00DDE91F /* Tray.swift in Sources */,
+				849FD8312BFB5EFC00DDE91F /* JustTodo.xcdatamodeld in Sources */,
+				849FD82E2BFB5EFC00DDE91F /* ViewController.swift in Sources */,
+				849FD8562BFB610C00DDE91F /* TodoDB.swift in Sources */,
+				849FD83E2BFB5F5700DDE91F /* main.swift in Sources */,
+				849FD8682BFCD00F00DDE91F /* AboutWindow.swift in Sources */,
+				849FD82C2BFB5EFC00DDE91F /* AppDelegate.swift in Sources */,
+				849FD86C2BFDDEF600DDE91F /* WebViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		849FD8612BFCAD7200DDE91F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				849FD8622BFCAD7200DDE91F /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		849FD8642BFCAD8000DDE91F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				849FD8652BFCAD8000DDE91F /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		849FD8382BFB5EFC00DDE91F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		849FD8392BFB5EFC00DDE91F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		849FD83B2BFB5EFC00DDE91F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JustTodo/JustTodo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JustTodo/Info.plist;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.boybeak.JustTodo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		849FD83C2BFB5EFC00DDE91F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JustTodo/JustTodo.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JustTodo/Info.plist;
+				INFOPLIST_KEY_LSBackgroundOnly = YES;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.boybeak.JustTodo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		849FD8232BFB5EFC00DDE91F /* Build configuration list for PBXProject "JustTodo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				849FD8382BFB5EFC00DDE91F /* Debug */,
+				849FD8392BFB5EFC00DDE91F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		849FD83A2BFB5EFC00DDE91F /* Build configuration list for PBXNativeTarget "JustTodo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				849FD83B2BFB5EFC00DDE91F /* Debug */,
+				849FD83C2BFB5EFC00DDE91F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		84B19B052C00B6BD006656CA /* XCRemoteSwiftPackageReference "MASShortcut" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/shpakovski/MASShortcut";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCVersionGroup section */
+		849FD82F2BFB5EFC00DDE91F /* JustTodo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				849FD8302BFB5EFC00DDE91F /* JustTodo.xcdatamodel */,
+			);
+			currentVersion = 849FD8302BFB5EFC00DDE91F /* JustTodo.xcdatamodel */;
+			path = JustTodo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 849FD8202BFB5EFC00DDE91F /* Project object */;
+}
