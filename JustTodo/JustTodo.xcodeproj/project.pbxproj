@@ -7,76 +7,78 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		849FD82C2BFB5EFC00DDE91F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD82B2BFB5EFC00DDE91F /* AppDelegate.swift */; };
-		849FD82E2BFB5EFC00DDE91F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD82D2BFB5EFC00DDE91F /* ViewController.swift */; };
-		849FD8312BFB5EFC00DDE91F /* JustTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 849FD82F2BFB5EFC00DDE91F /* JustTodo.xcdatamodeld */; };
-		849FD8332BFB5EFC00DDE91F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8322BFB5EFC00DDE91F /* Assets.xcassets */; };
-		849FD83E2BFB5F5700DDE91F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD83D2BFB5F5700DDE91F /* main.swift */; };
-		849FD8402BFB5FBA00DDE91F /* Tray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD83F2BFB5FBA00DDE91F /* Tray.swift */; };
-		849FD84C2BFB608E00DDE91F /* en-US.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8412BFB608E00DDE91F /* en-US.js */; };
-		849FD84D2BFB608E00DDE91F /* zh-CN.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8422BFB608E00DDE91F /* zh-CN.js */; };
-		849FD84E2BFB608E00DDE91F /* native-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8442BFB608E00DDE91F /* native-bridge.js */; };
-		849FD84F2BFB608E00DDE91F /* empty.svg in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8452BFB608E00DDE91F /* empty.svg */; };
-		849FD8502BFB608E00DDE91F /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8462BFB608E00DDE91F /* index.html */; };
-		849FD8512BFB608E00DDE91F /* keyboard_return.svg in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8472BFB608E00DDE91F /* keyboard_return.svg */; };
-		849FD8522BFB608E00DDE91F /* sober.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8482BFB608E00DDE91F /* sober.min.js */; };
-		849FD8532BFB608E00DDE91F /* ui.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8492BFB608E00DDE91F /* ui.js */; };
-		849FD8542BFB608E00DDE91F /* utils.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD84A2BFB608E00DDE91F /* utils.js */; };
-		849FD8562BFB610C00DDE91F /* TodoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD8552BFB610C00DDE91F /* TodoDB.swift */; };
-		849FD8592BFB748900DDE91F /* web-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8582BFB748900DDE91F /* web-bridge.js */; };
-		849FD85B2BFB74F100DDE91F /* abs-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD85A2BFB74F100DDE91F /* abs-bridge.js */; };
-		849FD85D2BFC181800DDE91F /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 849FD85C2BFC181800DDE91F /* index.css */; };
-		849FD8632BFCAD7200DDE91F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8612BFCAD7200DDE91F /* Localizable.strings */; };
-		849FD8662BFCAD8000DDE91F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8642BFCAD8000DDE91F /* Localizable.strings */; };
-		849FD8682BFCD00F00DDE91F /* AboutWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD8672BFCD00F00DDE91F /* AboutWindow.swift */; };
-		849FD86A2BFDDB2F00DDE91F /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8692BFDDB2F00DDE91F /* about.html */; };
-		849FD86C2BFDDEF600DDE91F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849FD86B2BFDDEF600DDE91F /* WebViewController.swift */; };
-		849FD8702BFDE31F00DDE91F /* AppIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 849FD86F2BFDE31F00DDE91F /* AppIcon.svg */; };
-		849FD8722BFE290F00DDE91F /* about.js in Resources */ = {isa = PBXBuildFile; fileRef = 849FD8712BFE290F00DDE91F /* about.js */; };
-		84B19AFF2BFF32EA006656CA /* EmptyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19AFE2BFF32EA006656CA /* EmptyController.swift */; };
-		84B19B032C007866006656CA /* toast.css in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B002C007866006656CA /* toast.css */; };
-		84B19B042C007866006656CA /* toast.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B012C007866006656CA /* toast.js */; };
-		84D8E0FC2BFF2CB200D5BB97 /* BootLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */; };
+		84B19B132C00DE9E006656CA /* JustTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B122C00DE9E006656CA /* JustTodoApp.swift */; };
+		84B19B152C00DE9E006656CA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B142C00DE9E006656CA /* ContentView.swift */; };
+		84B19B172C00DE9F006656CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B162C00DE9F006656CA /* Assets.xcassets */; };
+		84B19B1A2C00DE9F006656CA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B192C00DE9F006656CA /* Preview Assets.xcassets */; };
+		84B19B1F2C00DE9F006656CA /* JustTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B1D2C00DE9F006656CA /* JustTodo.xcdatamodeld */; };
+		84B19B272C00E000006656CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B262C00E000006656CA /* AppDelegate.swift */; };
+		84B19B292C019055006656CA /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B282C019055006656CA /* WebView.swift */; };
+		84B19B582C019864006656CA /* TodoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B572C019864006656CA /* TodoDB.swift */; };
+		84B19B5A2C0198B6006656CA /* JsHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B592C0198B6006656CA /* JsHandlers.swift */; };
+		84B19B642C01AC01006656CA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B5F2C01AC01006656CA /* Localizable.strings */; };
+		84B19B652C01AC01006656CA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B622C01AC01006656CA /* Localizable.strings */; };
+		84B19B7D2C01AC8F006656CA /* abs-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B662C01AC8F006656CA /* abs-bridge.js */; };
+		84B19B7E2C01AC8F006656CA /* native-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B672C01AC8F006656CA /* native-bridge.js */; };
+		84B19B7F2C01AC8F006656CA /* web-bridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B682C01AC8F006656CA /* web-bridge.js */; };
+		84B19B802C01AC8F006656CA /* en-US.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B6A2C01AC8F006656CA /* en-US.js */; };
+		84B19B812C01AC8F006656CA /* zh-CN.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B6B2C01AC8F006656CA /* zh-CN.js */; };
+		84B19B822C01AC8F006656CA /* toast.css in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B6D2C01AC8F006656CA /* toast.css */; };
+		84B19B832C01AC8F006656CA /* toast.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B6E2C01AC8F006656CA /* toast.js */; };
+		84B19B842C01AC8F006656CA /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B702C01AC8F006656CA /* about.html */; };
+		84B19B852C01AC8F006656CA /* about.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B712C01AC8F006656CA /* about.js */; };
+		84B19B862C01AC8F006656CA /* AppIcon.svg in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B722C01AC8F006656CA /* AppIcon.svg */; };
+		84B19B872C01AC8F006656CA /* empty.svg in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B732C01AC8F006656CA /* empty.svg */; };
+		84B19B882C01AC8F006656CA /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B742C01AC8F006656CA /* icon.png */; };
+		84B19B892C01AC8F006656CA /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B752C01AC8F006656CA /* index.css */; };
+		84B19B8A2C01AC8F006656CA /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B762C01AC8F006656CA /* index.html */; };
+		84B19B8B2C01AC8F006656CA /* keyboard_return.svg in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B772C01AC8F006656CA /* keyboard_return.svg */; };
+		84B19B8C2C01AC8F006656CA /* sober.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B782C01AC8F006656CA /* sober.min.js */; };
+		84B19B8D2C01AC8F006656CA /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B792C01AC8F006656CA /* test.html */; };
+		84B19B8E2C01AC8F006656CA /* ui.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B7A2C01AC8F006656CA /* ui.js */; };
+		84B19B8F2C01AC8F006656CA /* utils.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B7B2C01AC8F006656CA /* utils.js */; };
+		84B19B932C01B723006656CA /* Tray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B922C01B723006656CA /* Tray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		849FD8282BFB5EFC00DDE91F /* JustTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		849FD82B2BFB5EFC00DDE91F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		849FD82D2BFB5EFC00DDE91F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		849FD8302BFB5EFC00DDE91F /* JustTodo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JustTodo.xcdatamodel; sourceTree = "<group>"; };
-		849FD8322BFB5EFC00DDE91F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		849FD8372BFB5EFC00DDE91F /* JustTodo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JustTodo.entitlements; sourceTree = "<group>"; };
-		849FD83D2BFB5F5700DDE91F /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		849FD83F2BFB5FBA00DDE91F /* Tray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tray.swift; sourceTree = "<group>"; };
-		849FD8412BFB608E00DDE91F /* en-US.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "en-US.js"; sourceTree = "<group>"; };
-		849FD8422BFB608E00DDE91F /* zh-CN.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "zh-CN.js"; sourceTree = "<group>"; };
-		849FD8442BFB608E00DDE91F /* native-bridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "native-bridge.js"; sourceTree = "<group>"; };
-		849FD8452BFB608E00DDE91F /* empty.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = empty.svg; sourceTree = "<group>"; };
-		849FD8462BFB608E00DDE91F /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		849FD8472BFB608E00DDE91F /* keyboard_return.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keyboard_return.svg; sourceTree = "<group>"; };
-		849FD8482BFB608E00DDE91F /* sober.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sober.min.js; sourceTree = "<group>"; };
-		849FD8492BFB608E00DDE91F /* ui.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ui.js; sourceTree = "<group>"; };
-		849FD84A2BFB608E00DDE91F /* utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = utils.js; sourceTree = "<group>"; };
-		849FD8552BFB610C00DDE91F /* TodoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDB.swift; sourceTree = "<group>"; };
-		849FD8582BFB748900DDE91F /* web-bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "web-bridge.js"; sourceTree = "<group>"; };
-		849FD85A2BFB74F100DDE91F /* abs-bridge.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "abs-bridge.js"; sourceTree = "<group>"; };
-		849FD85C2BFC181800DDE91F /* index.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
-		849FD85E2BFCAC2300DDE91F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		849FD8622BFCAD7200DDE91F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
-		849FD8652BFCAD8000DDE91F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Localizable.strings; sourceTree = "<group>"; };
-		849FD8672BFCD00F00DDE91F /* AboutWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutWindow.swift; sourceTree = "<group>"; };
-		849FD8692BFDDB2F00DDE91F /* about.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
-		849FD86B2BFDDEF600DDE91F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		849FD86F2BFDE31F00DDE91F /* AppIcon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppIcon.svg; sourceTree = "<group>"; };
-		849FD8712BFE290F00DDE91F /* about.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = about.js; sourceTree = "<group>"; };
-		84B19AFE2BFF32EA006656CA /* EmptyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyController.swift; sourceTree = "<group>"; };
-		84B19B002C007866006656CA /* toast.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = toast.css; sourceTree = "<group>"; };
-		84B19B012C007866006656CA /* toast.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = toast.js; sourceTree = "<group>"; };
-		84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootLauncher.swift; sourceTree = "<group>"; };
+		84B19B0F2C00DE9E006656CA /* JustTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84B19B122C00DE9E006656CA /* JustTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustTodoApp.swift; sourceTree = "<group>"; };
+		84B19B142C00DE9E006656CA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		84B19B162C00DE9F006656CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84B19B192C00DE9F006656CA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		84B19B1E2C00DE9F006656CA /* JustTodo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JustTodo.xcdatamodel; sourceTree = "<group>"; };
+		84B19B202C00DE9F006656CA /* JustTodo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JustTodo.entitlements; sourceTree = "<group>"; };
+		84B19B262C00E000006656CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		84B19B282C019055006656CA /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		84B19B572C019864006656CA /* TodoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDB.swift; sourceTree = "<group>"; };
+		84B19B592C0198B6006656CA /* JsHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsHandlers.swift; sourceTree = "<group>"; };
+		84B19B5D2C01AB8F006656CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		84B19B5E2C01AC01006656CA /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Localizable.strings; sourceTree = "<group>"; };
+		84B19B612C01AC01006656CA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		84B19B662C01AC8F006656CA /* abs-bridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "abs-bridge.js"; sourceTree = "<group>"; };
+		84B19B672C01AC8F006656CA /* native-bridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "native-bridge.js"; sourceTree = "<group>"; };
+		84B19B682C01AC8F006656CA /* web-bridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "web-bridge.js"; sourceTree = "<group>"; };
+		84B19B6A2C01AC8F006656CA /* en-US.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "en-US.js"; sourceTree = "<group>"; };
+		84B19B6B2C01AC8F006656CA /* zh-CN.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "zh-CN.js"; sourceTree = "<group>"; };
+		84B19B6D2C01AC8F006656CA /* toast.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = toast.css; sourceTree = "<group>"; };
+		84B19B6E2C01AC8F006656CA /* toast.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = toast.js; sourceTree = "<group>"; };
+		84B19B702C01AC8F006656CA /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		84B19B712C01AC8F006656CA /* about.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = about.js; sourceTree = "<group>"; };
+		84B19B722C01AC8F006656CA /* AppIcon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppIcon.svg; sourceTree = "<group>"; };
+		84B19B732C01AC8F006656CA /* empty.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = empty.svg; sourceTree = "<group>"; };
+		84B19B742C01AC8F006656CA /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		84B19B752C01AC8F006656CA /* index.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
+		84B19B762C01AC8F006656CA /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		84B19B772C01AC8F006656CA /* keyboard_return.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keyboard_return.svg; sourceTree = "<group>"; };
+		84B19B782C01AC8F006656CA /* sober.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sober.min.js; sourceTree = "<group>"; };
+		84B19B792C01AC8F006656CA /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
+		84B19B7A2C01AC8F006656CA /* ui.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ui.js; sourceTree = "<group>"; };
+		84B19B7B2C01AC8F006656CA /* utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = utils.js; sourceTree = "<group>"; };
+		84B19B922C01B723006656CA /* Tray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		849FD8252BFB5EFC00DDE91F /* Frameworks */ = {
+		84B19B0C2C00DE9E006656CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -86,119 +88,129 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		849FD81F2BFB5EFC00DDE91F = {
+		84B19B062C00DE9E006656CA = {
 			isa = PBXGroup;
 			children = (
-				849FD8602BFCAD1C00DDE91F /* zh-Hans.lproj */,
-				849FD85F2BFCAD0400DDE91F /* en.lproj */,
-				849FD82A2BFB5EFC00DDE91F /* JustTodo */,
-				849FD8292BFB5EFC00DDE91F /* Products */,
+				84B19B632C01AC01006656CA /* en.lproj */,
+				84B19B602C01AC01006656CA /* zh-Hans.lproj */,
+				84B19B112C00DE9E006656CA /* JustTodo */,
+				84B19B102C00DE9E006656CA /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		849FD8292BFB5EFC00DDE91F /* Products */ = {
+		84B19B102C00DE9E006656CA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				849FD8282BFB5EFC00DDE91F /* JustTodo.app */,
+				84B19B0F2C00DE9E006656CA /* JustTodo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		849FD82A2BFB5EFC00DDE91F /* JustTodo */ = {
+		84B19B112C00DE9E006656CA /* JustTodo */ = {
 			isa = PBXGroup;
 			children = (
-				849FD85E2BFCAC2300DDE91F /* Info.plist */,
-				849FD84B2BFB608E00DDE91F /* page */,
-				849FD83D2BFB5F5700DDE91F /* main.swift */,
-				849FD82B2BFB5EFC00DDE91F /* AppDelegate.swift */,
-				849FD82D2BFB5EFC00DDE91F /* ViewController.swift */,
-				849FD8672BFCD00F00DDE91F /* AboutWindow.swift */,
-				849FD86B2BFDDEF600DDE91F /* WebViewController.swift */,
-				849FD8322BFB5EFC00DDE91F /* Assets.xcassets */,
-				849FD8372BFB5EFC00DDE91F /* JustTodo.entitlements */,
-				849FD82F2BFB5EFC00DDE91F /* JustTodo.xcdatamodeld */,
-				849FD83F2BFB5FBA00DDE91F /* Tray.swift */,
-				849FD8552BFB610C00DDE91F /* TodoDB.swift */,
-				84D8E0FB2BFF2CB200D5BB97 /* BootLauncher.swift */,
-				84B19AFE2BFF32EA006656CA /* EmptyController.swift */,
+				84B19B7C2C01AC8F006656CA /* page */,
+				84B19B5D2C01AB8F006656CA /* Info.plist */,
+				84B19B122C00DE9E006656CA /* JustTodoApp.swift */,
+				84B19B142C00DE9E006656CA /* ContentView.swift */,
+				84B19B262C00E000006656CA /* AppDelegate.swift */,
+				84B19B282C019055006656CA /* WebView.swift */,
+				84B19B572C019864006656CA /* TodoDB.swift */,
+				84B19B592C0198B6006656CA /* JsHandlers.swift */,
+				84B19B162C00DE9F006656CA /* Assets.xcassets */,
+				84B19B202C00DE9F006656CA /* JustTodo.entitlements */,
+				84B19B1D2C00DE9F006656CA /* JustTodo.xcdatamodeld */,
+				84B19B182C00DE9F006656CA /* Preview Content */,
+				84B19B922C01B723006656CA /* Tray.swift */,
 			);
 			path = JustTodo;
 			sourceTree = "<group>";
 		};
-		849FD8432BFB608E00DDE91F /* lang */ = {
+		84B19B182C00DE9F006656CA /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				849FD8412BFB608E00DDE91F /* en-US.js */,
-				849FD8422BFB608E00DDE91F /* zh-CN.js */,
+				84B19B192C00DE9F006656CA /* Preview Assets.xcassets */,
 			);
-			path = lang;
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		849FD84B2BFB608E00DDE91F /* page */ = {
+		84B19B602C01AC01006656CA /* zh-Hans.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				84B19B022C007866006656CA /* toast */,
-				849FD8712BFE290F00DDE91F /* about.js */,
-				849FD86F2BFDE31F00DDE91F /* AppIcon.svg */,
-				849FD8572BFB747100DDE91F /* bridge */,
-				849FD8432BFB608E00DDE91F /* lang */,
-				849FD8452BFB608E00DDE91F /* empty.svg */,
-				849FD8462BFB608E00DDE91F /* index.html */,
-				849FD8472BFB608E00DDE91F /* keyboard_return.svg */,
-				849FD8482BFB608E00DDE91F /* sober.min.js */,
-				849FD8492BFB608E00DDE91F /* ui.js */,
-				849FD84A2BFB608E00DDE91F /* utils.js */,
-				849FD85C2BFC181800DDE91F /* index.css */,
-				849FD8692BFDDB2F00DDE91F /* about.html */,
-			);
-			path = page;
-			sourceTree = "<group>";
-		};
-		849FD8572BFB747100DDE91F /* bridge */ = {
-			isa = PBXGroup;
-			children = (
-				849FD8442BFB608E00DDE91F /* native-bridge.js */,
-				849FD8582BFB748900DDE91F /* web-bridge.js */,
-				849FD85A2BFB74F100DDE91F /* abs-bridge.js */,
-			);
-			path = bridge;
-			sourceTree = "<group>";
-		};
-		849FD85F2BFCAD0400DDE91F /* en.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				849FD8612BFCAD7200DDE91F /* Localizable.strings */,
-			);
-			path = en.lproj;
-			sourceTree = "<group>";
-		};
-		849FD8602BFCAD1C00DDE91F /* zh-Hans.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				849FD8642BFCAD8000DDE91F /* Localizable.strings */,
+				84B19B5F2C01AC01006656CA /* Localizable.strings */,
 			);
 			path = "zh-Hans.lproj";
 			sourceTree = "<group>";
 		};
-		84B19B022C007866006656CA /* toast */ = {
+		84B19B632C01AC01006656CA /* en.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				84B19B002C007866006656CA /* toast.css */,
-				84B19B012C007866006656CA /* toast.js */,
+				84B19B622C01AC01006656CA /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		84B19B692C01AC8F006656CA /* bridge */ = {
+			isa = PBXGroup;
+			children = (
+				84B19B662C01AC8F006656CA /* abs-bridge.js */,
+				84B19B672C01AC8F006656CA /* native-bridge.js */,
+				84B19B682C01AC8F006656CA /* web-bridge.js */,
+			);
+			path = bridge;
+			sourceTree = "<group>";
+		};
+		84B19B6C2C01AC8F006656CA /* lang */ = {
+			isa = PBXGroup;
+			children = (
+				84B19B6A2C01AC8F006656CA /* en-US.js */,
+				84B19B6B2C01AC8F006656CA /* zh-CN.js */,
+			);
+			path = lang;
+			sourceTree = "<group>";
+		};
+		84B19B6F2C01AC8F006656CA /* toast */ = {
+			isa = PBXGroup;
+			children = (
+				84B19B6D2C01AC8F006656CA /* toast.css */,
+				84B19B6E2C01AC8F006656CA /* toast.js */,
 			);
 			path = toast;
+			sourceTree = "<group>";
+		};
+		84B19B7C2C01AC8F006656CA /* page */ = {
+			isa = PBXGroup;
+			children = (
+				84B19B692C01AC8F006656CA /* bridge */,
+				84B19B6C2C01AC8F006656CA /* lang */,
+				84B19B6F2C01AC8F006656CA /* toast */,
+				84B19B702C01AC8F006656CA /* about.html */,
+				84B19B712C01AC8F006656CA /* about.js */,
+				84B19B722C01AC8F006656CA /* AppIcon.svg */,
+				84B19B732C01AC8F006656CA /* empty.svg */,
+				84B19B742C01AC8F006656CA /* icon.png */,
+				84B19B752C01AC8F006656CA /* index.css */,
+				84B19B762C01AC8F006656CA /* index.html */,
+				84B19B772C01AC8F006656CA /* keyboard_return.svg */,
+				84B19B782C01AC8F006656CA /* sober.min.js */,
+				84B19B792C01AC8F006656CA /* test.html */,
+				84B19B7A2C01AC8F006656CA /* ui.js */,
+				84B19B7B2C01AC8F006656CA /* utils.js */,
+			);
+			name = page;
+			path = ../../page;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		849FD8272BFB5EFC00DDE91F /* JustTodo */ = {
+		84B19B0E2C00DE9E006656CA /* JustTodo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 849FD83A2BFB5EFC00DDE91F /* Build configuration list for PBXNativeTarget "JustTodo" */;
+			buildConfigurationList = 84B19B232C00DE9F006656CA /* Build configuration list for PBXNativeTarget "JustTodo" */;
 			buildPhases = (
-				849FD8242BFB5EFC00DDE91F /* Sources */,
-				849FD8252BFB5EFC00DDE91F /* Frameworks */,
-				849FD8262BFB5EFC00DDE91F /* Resources */,
+				84B19B0B2C00DE9E006656CA /* Sources */,
+				84B19B0C2C00DE9E006656CA /* Frameworks */,
+				84B19B0D2C00DE9E006656CA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -206,25 +218,25 @@
 			);
 			name = JustTodo;
 			productName = JustTodo;
-			productReference = 849FD8282BFB5EFC00DDE91F /* JustTodo.app */;
+			productReference = 84B19B0F2C00DE9E006656CA /* JustTodo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		849FD8202BFB5EFC00DDE91F /* Project object */ = {
+		84B19B072C00DE9E006656CA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					849FD8272BFB5EFC00DDE91F = {
+					84B19B0E2C00DE9E006656CA = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
-			buildConfigurationList = 849FD8232BFB5EFC00DDE91F /* Build configuration list for PBXProject "JustTodo" */;
+			buildConfigurationList = 84B19B0A2C00DE9E006656CA /* Build configuration list for PBXProject "JustTodo" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -233,79 +245,80 @@
 				Base,
 				"zh-Hans",
 			);
-			mainGroup = 849FD81F2BFB5EFC00DDE91F;
-			productRefGroup = 849FD8292BFB5EFC00DDE91F /* Products */;
+			mainGroup = 84B19B062C00DE9E006656CA;
+			productRefGroup = 84B19B102C00DE9E006656CA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				849FD8272BFB5EFC00DDE91F /* JustTodo */,
+				84B19B0E2C00DE9E006656CA /* JustTodo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		849FD8262BFB5EFC00DDE91F /* Resources */ = {
+		84B19B0D2C00DE9E006656CA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				849FD85B2BFB74F100DDE91F /* abs-bridge.js in Resources */,
-				849FD8542BFB608E00DDE91F /* utils.js in Resources */,
-				849FD8722BFE290F00DDE91F /* about.js in Resources */,
-				84B19B032C007866006656CA /* toast.css in Resources */,
-				849FD84D2BFB608E00DDE91F /* zh-CN.js in Resources */,
-				849FD8632BFCAD7200DDE91F /* Localizable.strings in Resources */,
-				84B19B042C007866006656CA /* toast.js in Resources */,
-				849FD84F2BFB608E00DDE91F /* empty.svg in Resources */,
-				849FD84E2BFB608E00DDE91F /* native-bridge.js in Resources */,
-				849FD8512BFB608E00DDE91F /* keyboard_return.svg in Resources */,
-				849FD8522BFB608E00DDE91F /* sober.min.js in Resources */,
-				849FD86A2BFDDB2F00DDE91F /* about.html in Resources */,
-				849FD8502BFB608E00DDE91F /* index.html in Resources */,
-				849FD8532BFB608E00DDE91F /* ui.js in Resources */,
-				849FD8662BFCAD8000DDE91F /* Localizable.strings in Resources */,
-				849FD8702BFDE31F00DDE91F /* AppIcon.svg in Resources */,
-				849FD85D2BFC181800DDE91F /* index.css in Resources */,
-				849FD8592BFB748900DDE91F /* web-bridge.js in Resources */,
-				849FD8332BFB5EFC00DDE91F /* Assets.xcassets in Resources */,
-				849FD84C2BFB608E00DDE91F /* en-US.js in Resources */,
+				84B19B8E2C01AC8F006656CA /* ui.js in Resources */,
+				84B19B852C01AC8F006656CA /* about.js in Resources */,
+				84B19B8F2C01AC8F006656CA /* utils.js in Resources */,
+				84B19B842C01AC8F006656CA /* about.html in Resources */,
+				84B19B7F2C01AC8F006656CA /* web-bridge.js in Resources */,
+				84B19B8A2C01AC8F006656CA /* index.html in Resources */,
+				84B19B7E2C01AC8F006656CA /* native-bridge.js in Resources */,
+				84B19B892C01AC8F006656CA /* index.css in Resources */,
+				84B19B882C01AC8F006656CA /* icon.png in Resources */,
+				84B19B652C01AC01006656CA /* Localizable.strings in Resources */,
+				84B19B8C2C01AC8F006656CA /* sober.min.js in Resources */,
+				84B19B812C01AC8F006656CA /* zh-CN.js in Resources */,
+				84B19B802C01AC8F006656CA /* en-US.js in Resources */,
+				84B19B862C01AC8F006656CA /* AppIcon.svg in Resources */,
+				84B19B1A2C00DE9F006656CA /* Preview Assets.xcassets in Resources */,
+				84B19B7D2C01AC8F006656CA /* abs-bridge.js in Resources */,
+				84B19B8D2C01AC8F006656CA /* test.html in Resources */,
+				84B19B642C01AC01006656CA /* Localizable.strings in Resources */,
+				84B19B872C01AC8F006656CA /* empty.svg in Resources */,
+				84B19B8B2C01AC8F006656CA /* keyboard_return.svg in Resources */,
+				84B19B172C00DE9F006656CA /* Assets.xcassets in Resources */,
+				84B19B822C01AC8F006656CA /* toast.css in Resources */,
+				84B19B832C01AC8F006656CA /* toast.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		849FD8242BFB5EFC00DDE91F /* Sources */ = {
+		84B19B0B2C00DE9E006656CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D8E0FC2BFF2CB200D5BB97 /* BootLauncher.swift in Sources */,
-				84B19AFF2BFF32EA006656CA /* EmptyController.swift in Sources */,
-				849FD8402BFB5FBA00DDE91F /* Tray.swift in Sources */,
-				849FD8312BFB5EFC00DDE91F /* JustTodo.xcdatamodeld in Sources */,
-				849FD82E2BFB5EFC00DDE91F /* ViewController.swift in Sources */,
-				849FD8562BFB610C00DDE91F /* TodoDB.swift in Sources */,
-				849FD83E2BFB5F5700DDE91F /* main.swift in Sources */,
-				849FD8682BFCD00F00DDE91F /* AboutWindow.swift in Sources */,
-				849FD82C2BFB5EFC00DDE91F /* AppDelegate.swift in Sources */,
-				849FD86C2BFDDEF600DDE91F /* WebViewController.swift in Sources */,
+				84B19B1F2C00DE9F006656CA /* JustTodo.xcdatamodeld in Sources */,
+				84B19B292C019055006656CA /* WebView.swift in Sources */,
+				84B19B5A2C0198B6006656CA /* JsHandlers.swift in Sources */,
+				84B19B152C00DE9E006656CA /* ContentView.swift in Sources */,
+				84B19B582C019864006656CA /* TodoDB.swift in Sources */,
+				84B19B932C01B723006656CA /* Tray.swift in Sources */,
+				84B19B272C00E000006656CA /* AppDelegate.swift in Sources */,
+				84B19B132C00DE9E006656CA /* JustTodoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		849FD8612BFCAD7200DDE91F /* Localizable.strings */ = {
+		84B19B5F2C01AC01006656CA /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				849FD8622BFCAD7200DDE91F /* en */,
+				84B19B5E2C01AC01006656CA /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		849FD8642BFCAD8000DDE91F /* Localizable.strings */ = {
+		84B19B622C01AC01006656CA /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				849FD8652BFCAD8000DDE91F /* zh-Hans */,
+				84B19B612C01AC01006656CA /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -313,7 +326,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		849FD8382BFB5EFC00DDE91F /* Debug */ = {
+		84B19B212C00DE9F006656CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -376,7 +389,7 @@
 			};
 			name = Debug;
 		};
-		849FD8392BFB5EFC00DDE91F /* Release */ = {
+		84B19B222C00DE9F006656CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -431,7 +444,7 @@
 			};
 			name = Release;
 		};
-		849FD83B2BFB5EFC00DDE91F /* Debug */ = {
+		84B19B242C00DE9F006656CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -440,13 +453,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"JustTodo/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JustTodo/Info.plist;
-				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -459,7 +471,7 @@
 			};
 			name = Debug;
 		};
-		849FD83C2BFB5EFC00DDE91F /* Release */ = {
+		84B19B252C00DE9F006656CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -468,13 +480,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"JustTodo/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JustTodo/Info.plist;
-				INFOPLIST_KEY_LSBackgroundOnly = YES;
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMainStoryboardFile = Main;
-				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -490,20 +501,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		849FD8232BFB5EFC00DDE91F /* Build configuration list for PBXProject "JustTodo" */ = {
+		84B19B0A2C00DE9E006656CA /* Build configuration list for PBXProject "JustTodo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				849FD8382BFB5EFC00DDE91F /* Debug */,
-				849FD8392BFB5EFC00DDE91F /* Release */,
+				84B19B212C00DE9F006656CA /* Debug */,
+				84B19B222C00DE9F006656CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		849FD83A2BFB5EFC00DDE91F /* Build configuration list for PBXNativeTarget "JustTodo" */ = {
+		84B19B232C00DE9F006656CA /* Build configuration list for PBXNativeTarget "JustTodo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				849FD83B2BFB5EFC00DDE91F /* Debug */,
-				849FD83C2BFB5EFC00DDE91F /* Release */,
+				84B19B242C00DE9F006656CA /* Debug */,
+				84B19B252C00DE9F006656CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -511,17 +522,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		849FD82F2BFB5EFC00DDE91F /* JustTodo.xcdatamodeld */ = {
+		84B19B1D2C00DE9F006656CA /* JustTodo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				849FD8302BFB5EFC00DDE91F /* JustTodo.xcdatamodel */,
+				84B19B1E2C00DE9F006656CA /* JustTodo.xcdatamodel */,
 			);
-			currentVersion = 849FD8302BFB5EFC00DDE91F /* JustTodo.xcdatamodel */;
+			currentVersion = 84B19B1E2C00DE9F006656CA /* JustTodo.xcdatamodel */;
 			path = JustTodo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = 849FD8202BFB5EFC00DDE91F /* Project object */;
+	rootObject = 84B19B072C00DE9E006656CA /* Project object */;
 }
