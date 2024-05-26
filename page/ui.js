@@ -108,25 +108,23 @@ function showHeaders() {
         headerTabs = tabs
         tabCount = tabs.length
         tabs.forEach(function (item, index) {
-            var tabItem = document.createElement("s-tab-item")
-            tabItem.setAttribute("selected", index == 0)
-            tabItem.setAttribute("id", getTabElementId(item))
-
             if (item.isAddTab) {
+                var tabItem = document.createElement("s-tab-item")
+                tabItem.setAttribute("id", getTabElementId(item))
                 var sIcon = document.createElement("s-icon")
                 sIcon.setAttribute("slot", "icon")
                 sIcon.setAttribute("type", "add")
+
+                tabItem.setAttribute("selected", index == 0)
+
                 tabItem.appendChild(sIcon)
+                tab.appendChild(tabItem)
             } else {
                 // 创建 div 元素，并设置 slot 属性和内容
-                var divElement = document.createElement("div")
-                divElement.setAttribute("slot", "text")
-                divElement.textContent = item.title
+                var tabItem = newNormalTabEle(item, index == 0)
 
-                tabItem.appendChild(divElement)
+                tab.appendChild(tabItem)
             }
-            // tabItem.setAttribute("checked", item.isChecked)
-            tab.appendChild(tabItem)
         })
         onTabSelectedAsync()
     })
@@ -137,11 +135,28 @@ function newNormalTabEle(tabItem, checked) {
     tabItemEle.setAttribute("selected", checked)
     tabItemEle.setAttribute("id", getTabElementId(tabItem))
 
-    var divElement = document.createElement("div")
-    divElement.setAttribute("slot", "text")
-    divElement.textContent = tabItem.title
+    var divEle = document.createElement("div")
+    divEle.setAttribute("slot", "text")
 
-    tabItemEle.appendChild(divElement)
+    if (tabItem.icon.length == 0) {
+        divEle.textContent = tabItem.title
+    } else {
+        divEle.style.display = 'flex'
+        divEle.style.alignItems = 'center'
+        divEle.style.justifyContent = 'center'
+        var iconEle = document.createElement('s-icon')
+        iconEle.style.width = '24px'
+        iconEle.style.height = '24px'
+        iconEle.style.marginRight = '4px'
+        iconEle.innerHTML = tabItem.icon // svg code
+
+        var text = document.createTextNode(tabItem.title)
+
+        divEle.appendChild(iconEle)
+        divEle.appendChild(text)
+    }
+
+    tabItemEle.appendChild(divEle)
 
     return tabItemEle
 }
