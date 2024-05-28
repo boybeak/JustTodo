@@ -54,32 +54,41 @@ body {
 #newTabPage {
     display: none; 
     width: 100%; 
-    height: 352px; 
-    justify-content: center; 
-    align-items: center;
+    height: 432px;
 }
 
 #newTabInput {
-    width: 160px;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    background-color: transparent;
+    flex-grow: 1; 
+    height: 48px; 
+    display: flex; 
+    border: none; 
+    outline: none; 
     color: var(--mdc-theme-on-background);
+    background-color: transparent;
+    font-size: 15px;
 }
 
-.newTabInputWrapper {
-    border: 1px solid var(--s-color-outline-variant);
-    /* 边框样式 */
-    border-radius: 10px;
+#newTabInputWrapper {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    align-items: center;
+    border-top: 1px solid var(--s-color-outline-variant);
 }
 
-#todoScrollView::-webkit-scrollbar {
+.scrollViewNoBars::-webkit-scrollbar {
     display: none;
     /* For Chrome, Safari, and Opera */
 }
 
-.svg-hint path {
-    fill: darkgray
+.svg-hint {
+    color: darkgray;
+}
+
+.tab-icon {
+    color: var(--s-color-secondary);
+}
+.tab-icon[selected=true] {
+    color: var(--s-color-primary);
 }

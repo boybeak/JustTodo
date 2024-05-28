@@ -3,6 +3,7 @@ class NativeBridge extends AbsBridge {
     constructor() {
         super()
         this.callbackMap = new Map();
+        this.iconsBuildInCache = null; // 用于缓存图标结果
     }
 
     handleResult(eventId, result) {
@@ -29,11 +30,11 @@ class NativeBridge extends AbsBridge {
         this.callbackMap.set(eventId, callback)
         window.webkit.messageHandlers.getGroups.postMessage(eventId)
     }
-    newTabNative(title, callback) {
+    newTabNative(title, icon, callback) {
         let eventId = this.newEventId()
         this.callbackMap.set(eventId, callback)
         var params = [
-            eventId, title
+            eventId, title, btoa(icon)
         ]
         window.webkit.messageHandlers.newGroup.postMessage(params)
     }
@@ -79,6 +80,38 @@ class NativeBridge extends AbsBridge {
         let eventId = this.newEventId()
         this.callbackMap.set(eventId, callback)
         window.webkit.messageHandlers.readClipboard.postMessage(eventId)
+    }
+    
+    getIcons(callback) {
+        if (this.iconsCache) {
+            // 如果有缓存，直接调用回调并返回
+            callback(this.iconsCache);
+            return;
+        }
+        let eventId = this.newEventId()
+        let nativeCallback = (iconsBase64) => {
+            var iconsDecoded = window.atob(iconsBase64)
+            var icons = JSON.parse(iconsDecoded)
+            callback(icons);
+        }
+        this.callbackMap.set(eventId, nativeCallback)
+        window.webkit.messageHandlers.getBuildInIcons.postMessage(eventId)
+    }
+
+    getBuildInIcons(callback) {
+        if (this.iconsBuildInCache) {
+            // 如果有缓存，直接调用回调并返回
+            callback(this.iconsBuildInCache);
+            return;
+        }
+        let eventId = this.newEventId()
+        let nativeCallback = (iconsBase64) => {
+            var iconsDecoded = window.atob(iconsBase64)
+            var icons = JSON.parse(iconsDecoded)
+            callback(icons);
+        }
+        this.callbackMap.set(eventId, nativeCallback)
+        window.webkit.messageHandlers.getBuildInIcons.postMessage(eventId)
     }
 }
 

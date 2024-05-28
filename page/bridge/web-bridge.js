@@ -3,6 +3,11 @@ class WebBridge extends AbsBridge {
     static TABLE_NAME_GROUP = 'groups'
     static TABLE_NAME_ITEM = 'items'
 
+    constructor() {
+        super()
+        // this.iconsCache = null; // 用于缓存图标结果
+    }
+
     obtainDB(callback) {
         if (this.db) {
             callback(this.db)
@@ -88,11 +93,11 @@ class WebBridge extends AbsBridge {
         }, this.onSuccessWithJSON(callback), this.onErrorWithLog('getTabsNative'))
     }
 
-    newTabNative(title, callback) {
+    newTabNative(title, icon, callback) {
         this.storeWriteOf(WebBridge.TABLE_NAME_GROUP, (store) => {
             var group = {
                 title: title,
-                icon: "",
+                icon: icon,
                 keep_front: false,
                 create_at: Date()
             }
@@ -204,6 +209,30 @@ class WebBridge extends AbsBridge {
             .catch(err => {
                 callback("")
             })
+    }
+
+    getIcons(callback) {
+        if (this.iconsCache) {
+            callback(self.iconsCache)
+            return
+        }
+        let apiUrl = 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/metadata/icons.json'
+        // fetch('https://cors-anywhere.herokuapp.com/' + apiUrl)
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                this.iconsCache = JSON.parse(data)
+                callback(this.iconsCache)
+                // 处理返回的数据
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
     }
 }
 const bridge = new WebBridge()

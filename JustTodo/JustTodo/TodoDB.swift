@@ -86,7 +86,7 @@ class GroupTable {
         return nil
     }
     
-    func newGroup(title: String)-> Group? {
+    func newGroup(title: String, icon: String? = "")-> Group? {
         if (context == nil) {
             return nil
         }
@@ -97,7 +97,7 @@ class GroupTable {
         group.title = title
         group.create_at = Date()
         group.keep_front = false
-        group.icon = ""
+        group.icon = icon
         
         context?.insert(group)
         

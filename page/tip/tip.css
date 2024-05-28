@@ -1,0 +1,22 @@
+.tip {
+    position: absolute;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px;
+    display: none; /* Initially hidden */
+    background-color: var(--background-color, #333); /* Default background color */
+    color: var(--text-color, white); /* Default text color */
+    transform: translateX(-50%);
+}
+
+.tip::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* Position the arrow at the bottom of the tip */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--background-color, #333) transparent transparent transparent; /* Create an up-pointing arrow */
+}
