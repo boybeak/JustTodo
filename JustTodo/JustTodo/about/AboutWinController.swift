@@ -11,10 +11,10 @@ import SwiftUI
 class AboutWinController: NSWindowController {
     convenience init() {
         let window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 320, height: 480),
-            styleMask: [.titled, .closable, .resizable, .miniaturizable],
+            contentRect: NSRect(x: 0, y: 0, width: 480, height: 640),
+            styleMask: [.titled, .closable, .miniaturizable],
             backing: .buffered, defer: false)
-        window.title = "New Window"
+        window.title = NSLocalizedString("menu_item_about", comment: "About menu item")
         window.center()
         window.level = .floating
         

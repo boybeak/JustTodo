@@ -283,9 +283,11 @@ function onTabSelected() {
     if (selectedTab.isAddTab) {
         setVisibility("dataTableContainer", false)
         setVisibility("newTabPage", true)
+        document.getElementById('newTabInput').focus()
     } else {
         setVisibility("dataTableContainer", true)
         setVisibility("newTabPage", false)
+        document.getElementById('newTodoInput').focus()
 
         refreshTodoItems()
     }
