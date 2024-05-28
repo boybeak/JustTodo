@@ -1,4 +1,5 @@
 class AbsBridge {
+
     getTabs(callback) {
         this.getTabsNative((result) => {
             let tabs = JSON.parse(result)
@@ -14,7 +15,7 @@ class AbsBridge {
     }
 
     getTabsNative(callback) {}
-    newTabNative(title, callback) {}
+    newTabNative(title, icon, callback) {}
     deleteTabNative(id) {}
     getTodoItemsNative(groupId, callback) {}
     newTodoItemNative(groupId, text, callback) {}
@@ -22,4 +23,6 @@ class AbsBridge {
     deleteTodoItemNative(todoId, callback) {}
     copyTextNative(text) {}
     readClipboard(callback) {}
+    getIcons(callback) {}
+    getBuildInIcons(callback) {}
 }

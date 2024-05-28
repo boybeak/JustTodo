@@ -19,13 +19,15 @@ enum JsFunction: String {
     case deleteTodoItem = "deleteTodoItem"
     case copyText = "copyText"
     case readClipboard = "readClipboard"
+    case getIcons = "getIcons"
+    case getBuildInIcons = "getBuildInIcons"
 }
 
 extension WKWebView {
     func jsHandleResult(eventId: String, result: String) {
         evaluateJavaScript("bridge.handleResult('\(eventId)', '\(result)')") { (result, error) in
             if let error = error {
-                NSLog("Error evaluating JavaScript: \(error.localizedDescription)")
+                NSLog("Error evaluating JavaScript: \(error)")
             }
         }
     }
@@ -55,8 +57,9 @@ let indexJsHandlers: [String: (WKWebView, Any) -> Void] = [
         let params = msg as! [String]
         let eventId = params[0]
         let title = params[1]
+        let icon = params[2]
         
-        let group = TodoDB.shared.groupTable.newGroup(title: title)
+        let group = TodoDB.shared.groupTable.newGroup(title: title, icon: icon)
         do {
             if (group != nil) {
                 let json = try jsonEncoder.encode(group)
@@ -146,5 +149,35 @@ let indexJsHandlers: [String: (WKWebView, Any) -> Void] = [
             }
         }
         webView.jsHandleResult(eventId: eventId, result: result)
+    },
+    JsFunction.getIcons.rawValue: { webView, msg in
+        let eventId = msg as! String
+        
+        IconManager.shared.getIcons { icons in
+            NSLog("getIcons=\(icons!)")
+            DispatchQueue.main.async {
+                NSLog("aaaaa icons.size=\(String(describing: icons?.count))")
+                do {
+                    let json = try jsonEncoder.encode(icons!)
+                    let result = String(data: json, encoding: .utf8)!
+                    webView.jsHandleResult(eventId: eventId, result: result)
+                } catch {
+                    
+                }
+            }
+        }
+    },
+    JsFunction.getBuildInIcons.rawValue: { webView, msg in
+        let eventId = msg as! String
+        IconManager.shared.getBuildInIcons { icons in
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: icons, options: .prettyPrinted)
+                let base64 = jsonData.base64EncodedString(options: .endLineWithLineFeed)
+                webView.jsHandleResult(eventId: eventId, result: base64)
+            } catch {
+                
+            }
+            
+        }
     }
 ]

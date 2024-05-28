@@ -5,6 +5,17 @@ var lastTabId = ""
 var lastTabEleId = ""
 const ADD_TAB_ID = "tab_add"
 
+let tip = new Tip()
+var selectedIconEle
+var currentIconSvg = ''
+var svgEmpty = `
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+    <path
+        d="M120-120v-200h80v120h120v80H120Zm520 0v-80h120v-120h80v200H640ZM120-640v-200h200v80H200v120h-80Zm640 0v-120H640v-80h200v200h-80Z">
+    </path>
+</svg>
+`
+
 onPageReady()
 
 function onPageReady() {
@@ -38,8 +49,9 @@ function onPageReady() {
         if (!isTabNameValid(textContent)) {
             return
         }
-        newTab(textContent)
+        newTab(textContent, currentIconSvg)
         newTabInput.value = ''
+        clearSelectedIcon()
     }
 
     newTabInput.setAttribute('placeholder', lang.text_new_tab_placeholder)
@@ -51,17 +63,15 @@ function onPageReady() {
             createTab()
         }
     })
-    var errorTip = document.getElementById('newTabInputErrorTip')
-    var errorTipText = document.getElementById('newTabInputErrorTipText')
+
     newTabInput.addEventListener("input", (event) => {
         var textContent = newTabInput.value
         var error = checkTabName(textContent)
         if (error.length > 0) {
-            errorTipText.textContent = error
-            showErrorTip(errorTip)
+            tip.showError(newTabInput, error)
             return
         }
-        hideErrorTip(errorTip)
+        tip.hide()
     })
 
     var newTabCommitBtn = document.getElementById("newTabCommitBtn")
@@ -97,6 +107,7 @@ function onPageReady() {
         createTodo()
     })
     showHeaders()
+    showIcons()
 }
 
 function showHeaders() {
@@ -108,28 +119,85 @@ function showHeaders() {
         headerTabs = tabs
         tabCount = tabs.length
         tabs.forEach(function (item, index) {
-            var tabItem = document.createElement("s-tab-item")
-            tabItem.setAttribute("selected", index == 0)
-            tabItem.setAttribute("id", getTabElementId(item))
-
             if (item.isAddTab) {
+                var tabItem = document.createElement("s-tab-item")
+                tabItem.setAttribute("id", getTabElementId(item))
                 var sIcon = document.createElement("s-icon")
                 sIcon.setAttribute("slot", "icon")
                 sIcon.setAttribute("type", "add")
+
+                tabItem.setAttribute("selected", index == 0)
+
                 tabItem.appendChild(sIcon)
+                tab.appendChild(tabItem)
             } else {
                 // 创建 div 元素，并设置 slot 属性和内容
-                var divElement = document.createElement("div")
-                divElement.setAttribute("slot", "text")
-                divElement.textContent = item.title
+                var tabItem = newNormalTabEle(item, index == 0)
 
-                tabItem.appendChild(divElement)
+                tab.appendChild(tabItem)
             }
-            // tabItem.setAttribute("checked", item.isChecked)
-            tab.appendChild(tabItem)
         })
         onTabSelectedAsync()
     })
+}
+
+function showIcons() {
+    var newTabIcon = document.getElementById('newTabIcon')
+    bridge.getBuildInIcons((icons) => {
+        var iconTableBody = document.getElementById('iconTableBody')
+        var lastRow;
+        icons.forEach((icon, index) => {
+            if (index % 8 == 0) {
+                var row = document.createElement('tr')
+                iconTableBody.appendChild(row)
+                lastRow = row
+            }
+            var td = document.createElement('td')
+            td.style.width = '40px'
+            td.style.height = '40px'
+
+            var div = document.createElement('div')
+            div.style.width = '100%'
+            div.style.height = '100%'
+            div.style.alignItems = 'center'
+            div.style.justifyContent = 'center'
+            div.style.display = 'flex'
+            div.style.borderRadius = '8px'
+            div.style.border = '1px solid transparent'
+
+            var sIcon = document.createElement('s-icon')
+            sIcon.innerHTML = icon
+
+            div.appendChild(sIcon)
+            td.appendChild(div)
+            lastRow.appendChild(td)
+
+            td.onclick = (event) => {
+                if (selectedIconEle) {
+                    selectedIconEle.style.border = '1px solid transparent'
+                }
+                newTabIcon.innerHTML = icon
+                newTabIcon.style.color = 'var(--s-color-secondary)'
+                selectedIconEle = div
+                currentIconSvg = icon
+                
+                selectedIconEle.style.border = '1px solid var(--s-color-outline-variant)'
+            }
+        })
+    })
+    document.getElementById('newTabIconBtn').onclick = (event) => {
+        clearSelectedIcon()
+    }
+}
+
+function clearSelectedIcon() {
+    if (selectedIconEle) {
+        selectedIconEle.style.border = '1px solid transparent'
+        selectedIconEle = undefined
+        currentIconSvg = ''
+    }
+    newTabIcon.innerHTML = svgEmpty
+    newTabIcon.style.color = 'darkgray'
 }
 
 function newNormalTabEle(tabItem, checked) {
@@ -137,11 +205,29 @@ function newNormalTabEle(tabItem, checked) {
     tabItemEle.setAttribute("selected", checked)
     tabItemEle.setAttribute("id", getTabElementId(tabItem))
 
-    var divElement = document.createElement("div")
-    divElement.setAttribute("slot", "text")
-    divElement.textContent = tabItem.title
+    var divEle = document.createElement("div")
+    divEle.setAttribute("slot", "text")
 
-    tabItemEle.appendChild(divElement)
+    if (tabItem.icon.length == 0) {
+        divEle.textContent = tabItem.title
+    } else {
+        divEle.style.display = 'flex'
+        divEle.style.alignItems = 'center'
+        divEle.style.justifyContent = 'center'
+        var iconEle = document.createElement('s-icon')
+        iconEle.className = 'tab-icon'
+        iconEle.style.width = '24px'
+        iconEle.style.height = '24px'
+        iconEle.style.marginRight = '4px'
+        iconEle.innerHTML = atob(tabItem.icon) // svg code
+
+        var text = document.createTextNode(tabItem.title)
+
+        divEle.appendChild(iconEle)
+        divEle.appendChild(text)
+    }
+
+    tabItemEle.appendChild(divEle)
 
     return tabItemEle
 }
@@ -168,9 +254,13 @@ function onTabSelected() {
     }
     if (lastTabEleId.length > 0) {
         var lastTabEle = document.getElementById(lastTabEleId)
+        var iconEle = document.querySelector('#' + lastTabEleId + ' .tab-icon')
         if (lastTabEle) {
             // 检查合法性在执行，不然在删除时，会有错误出现
             lastTabEle.removeEventListener("contextmenu", onTabRightClick)
+        }
+        if (iconEle) {
+            iconEle.setAttribute('selected', false)
         }
     }
 
@@ -179,6 +269,11 @@ function onTabSelected() {
         var tabElementId = getTabElementId(selectedTab)
         var tabItem = document.getElementById(tabElementId)
         tabItem.addEventListener('contextmenu', onTabRightClick.bind(null, selectedTab))
+
+        var iconEle = document.querySelector('#' + tabElementId + ' .tab-icon')
+        if (iconEle) {
+            iconEle.setAttribute('selected', true)
+        }
 
         lastTabId = selectedTab.id
         lastTabEleId = tabElementId
@@ -205,13 +300,14 @@ function refreshTodoItems() {
 
 function fillTodoItems(todoItems) {
     var todoList = document.getElementById('todoList')
+    var emptyView = document.getElementById('emptyView')
     todoList.innerHTML = ''
     if (todoItems.length == 0) {
-        setVisibility('emptyView', true)
+        emptyView.style.display = 'flex'
         setVisibility('todoList', false)
         return
     }
-    setVisibility('emptyView', false)
+    emptyView.style.display = 'none'
     setVisibility('todoList', true)
 
     todoItems.forEach(function (item, index) {
@@ -232,17 +328,17 @@ function onTabRightClick(tabItem, event) {
 function setVisibility(id, visible) {
     let element = document.getElementById(id)
     if (visible) {
-        element.style.display = "flex"
+        element.style.display = "block"
     } else {
         element.style.display = "none"
     }
 }
 
-function newTab(title) {
+function newTab(title, icon) {
     if (title.trim() === "") {
         return
     }
-    bridge.newTabNative(title, (result) => {
+    bridge.newTabNative(title, icon, (result) => {
         var newTabItem = JSON.parse(result)
         headerTabs.splice(headerTabs.length - 1, 0, newTabItem)
 
