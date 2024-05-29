@@ -21,6 +21,8 @@ enum JsFunction: String {
     case readClipboard = "readClipboard"
     case getIcons = "getIcons"
     case getBuildInIcons = "getBuildInIcons"
+    case getCustomIcons = "getCustomIcons"
+    case addCustomIcons = "addCustomIcons"
 }
 
 extension WKWebView {
@@ -177,7 +179,30 @@ let indexJsHandlers: [String: (WKWebView, Any) -> Void] = [
             } catch {
                 
             }
-            
+        }
+    },
+    JsFunction.getCustomIcons.rawValue: { webView, msg in
+        let eventId = msg as! String
+        IconManager.shared.getCustomIcons { icons in
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: icons, options: .prettyPrinted)
+                let base64 = jsonData.base64EncodedString(options: .endLineWithLineFeed)
+                webView.jsHandleResult(eventId: eventId, result: base64)
+            } catch {
+                
+            }
+        }
+    },
+    JsFunction.addCustomIcons.rawValue: { webView, msg in
+        let eventId = msg as! String
+        IconManager.shared.chooseIcon { icons in
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: icons, options: .prettyPrinted)
+                let base64 = jsonData.base64EncodedString(options: .endLineWithLineFeed)
+                webView.jsHandleResult(eventId: eventId, result: base64)
+            } catch {
+                
+            }
         }
     }
 ]

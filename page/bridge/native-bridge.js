@@ -113,6 +113,26 @@ class NativeBridge extends AbsBridge {
         this.callbackMap.set(eventId, nativeCallback)
         window.webkit.messageHandlers.getBuildInIcons.postMessage(eventId)
     }
+    addCustomIcons(callback) {
+        let eventId = this.newEventId()
+        let nativeCallback = (iconsBase64) => {
+            var iconsDecoded = window.atob(iconsBase64)
+            var icons = JSON.parse(iconsDecoded)
+            callback(icons);
+        }
+        this.callbackMap.set(eventId, nativeCallback)
+        window.webkit.messageHandlers.addCustomIcons.postMessage(eventId)
+    }
+    getCustomIcons(callback) {
+        let eventId = this.newEventId()
+        let nativeCallback = (iconsBase64) => {
+            var iconsDecoded = window.atob(iconsBase64)
+            var icons = JSON.parse(iconsDecoded)
+            callback(icons);
+        }
+        this.callbackMap.set(eventId, nativeCallback)
+        window.webkit.messageHandlers.getCustomIcons.postMessage(eventId)
+    }
 }
 
 const bridge = new NativeBridge()

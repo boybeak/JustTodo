@@ -15,6 +15,7 @@ var svgEmpty = `
     </path>
 </svg>
 `
+var customIconsCache = []
 
 onPageReady()
 
@@ -143,56 +144,95 @@ function showHeaders() {
 
 function showIcons() {
     var newTabIcon = document.getElementById('newTabIcon')
-    bridge.getBuildInIcons((icons) => {
-        var iconTableBody = document.getElementById('iconTableBody')
+    function addCustomIcons() {
+        bridge.addCustomIcons((icons) => {
+            customIconsCache.push(...icons)
+            var icons = []
+            icons.push(...customIconsCache)
+            icons.push('add')
+            var iconCustomTableBody = document.getElementById('iconsCustomTableBody')
+            fillIcons(iconCustomTableBody, icons)
+        })
+    }
+    function fillIcons(tableBody, icons) {
         var lastRow;
+        tableBody.innerHTML = ''
         icons.forEach((icon, index) => {
             if (index % 8 == 0) {
                 var row = document.createElement('tr')
-                iconTableBody.appendChild(row)
+                tableBody.appendChild(row)
                 lastRow = row
             }
-            var td = document.createElement('td')
-            td.style.width = '40px'
-            td.style.height = '40px'
-
-            var div = document.createElement('div')
-            div.style.width = '100%'
-            div.style.height = '100%'
-            div.style.alignItems = 'center'
-            div.style.justifyContent = 'center'
-            div.style.display = 'flex'
-            div.style.borderRadius = '8px'
-            div.style.border = '1px solid transparent'
-
-            var sIcon = document.createElement('s-icon')
-            sIcon.innerHTML = icon
-
-            div.appendChild(sIcon)
-            td.appendChild(div)
+            
+            var td = createIconTD(icon)
+            
             lastRow.appendChild(td)
 
             td.onclick = (event) => {
-                if (selectedIconEle) {
-                    selectedIconEle.style.border = '1px solid transparent'
+                var isAdd = td.getAttribute('isAdd')
+                if (isAdd === 'true') {
+                    addCustomIcons()
+                } else {
+                    if (selectedIconEle) {
+                        selectedIconEle.setAttribute('selected', false)
+                    }
+                    newTabIcon.innerHTML = icon
+                    newTabIcon.style.color = 'var(--s-color-secondary)'
+                    selectedIconEle = td
+                    currentIconSvg = icon
+                    
+                    selectedIconEle.setAttribute('selected', true)
                 }
-                newTabIcon.innerHTML = icon
-                newTabIcon.style.color = 'var(--s-color-secondary)'
-                selectedIconEle = div
-                currentIconSvg = icon
-                
-                selectedIconEle.style.border = '1px solid var(--s-color-outline-variant)'
             }
         })
+    }
+
+    bridge.getBuildInIcons((icons) => {
+        var iconBuildInTableBody = document.getElementById('iconsBuildInTableBody')
+        fillIcons(iconBuildInTableBody, icons)
+    })
+    bridge.getCustomIcons((icons) => {
+        customIconsCache = []
+        customIconsCache.push(...icons)
+        icons.push('add')
+        var iconCustomTableBody = document.getElementById('iconsCustomTableBody')
+        fillIcons(iconCustomTableBody, icons)
+
     })
     document.getElementById('newTabIconBtn').onclick = (event) => {
         clearSelectedIcon()
     }
 }
 
+function createIconTD(iconSvg) {
+    var isAdd = iconSvg == 'add'
+    var td = document.createElement('td')
+    td.setAttribute('isAdd', isAdd)
+
+    var div = document.createElement('div')
+    div.style.width = '100%'
+    div.style.height = '100%'
+    div.style.alignItems = 'center'
+    div.style.justifyContent = 'center'
+    div.style.display = 'flex'
+
+    var sIcon = document.createElement('s-icon')
+    if (isAdd) {
+        sIcon.setAttribute('type', 'add')
+        sIcon.style.color = 'darkgray'
+    } else {
+        sIcon.innerHTML = iconSvg
+    }
+
+    div.appendChild(sIcon)
+    td.appendChild(div)
+
+    return td
+}
+
 function clearSelectedIcon() {
     if (selectedIconEle) {
-        selectedIconEle.style.border = '1px solid transparent'
+        selectedIconEle.setAttribute('selected', false)
         selectedIconEle = undefined
         currentIconSvg = ''
     }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AppKit
 
 class IconManager {
     static let shared = IconManager()
@@ -41,6 +42,25 @@ class IconManager {
             }
         }
         completion(iconArray)
+    }
+    
+    func getCustomIcons(completion: @escaping ([String]) -> Void) {
+        readFilesAsync(from: "icons", completion: completion)
+    }
+    
+    func chooseIcon(completion: @escaping ([String]) -> Void) {
+        let panel = NSOpenPanel()
+        panel.canChooseFiles = true
+        panel.canChooseDirectories = false
+        panel.allowedContentTypes = [.svg]
+        panel.allowsMultipleSelection = true
+        
+        if panel.runModal() == .OK {
+            copyFilesToSandbox(urls: panel.urls, subDir: "icons") { urls in
+                let contents = readFileContents(urls: urls)
+                completion(contents)
+            }
+        }
     }
     
     func getIcons(completion: @escaping (String?) -> Void) {

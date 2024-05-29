@@ -51,6 +51,8 @@
 		84C8C7C92C048F6C00C466AD /* icon-application.svg in Resources */ = {isa = PBXBuildFile; fileRef = 84C8C7C82C048F6C00C466AD /* icon-application.svg */; };
 		84C8C7CD2C059B0A00C466AD /* tip.css in Resources */ = {isa = PBXBuildFile; fileRef = 84C8C7CA2C059B0A00C466AD /* tip.css */; };
 		84C8C7CE2C059B0A00C466AD /* tip.js in Resources */ = {isa = PBXBuildFile; fileRef = 84C8C7CB2C059B0A00C466AD /* tip.js */; };
+		84F83D332C06DC340094346C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F83D322C06DC340094346C /* Utils.swift */; };
+		84F83D352C072E330094346C /* square-table.css in Resources */ = {isa = PBXBuildFile; fileRef = 84F83D342C072E330094346C /* square-table.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +103,8 @@
 		84C8C7C82C048F6C00C466AD /* icon-application.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "icon-application.svg"; sourceTree = "<group>"; };
 		84C8C7CA2C059B0A00C466AD /* tip.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = tip.css; sourceTree = "<group>"; };
 		84C8C7CB2C059B0A00C466AD /* tip.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = tip.js; sourceTree = "<group>"; };
+		84F83D322C06DC340094346C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		84F83D342C072E330094346C /* square-table.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "square-table.css"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,12 +158,13 @@
 				84B19B282C019055006656CA /* WebView.swift */,
 				84B19B572C019864006656CA /* TodoDB.swift */,
 				84B19B592C0198B6006656CA /* JsHandlers.swift */,
+				84B19B922C01B723006656CA /* Tray.swift */,
+				84C8C7A52C03629300C466AD /* IconManager.swift */,
 				84B19B162C00DE9F006656CA /* Assets.xcassets */,
 				84B19B202C00DE9F006656CA /* JustTodo.entitlements */,
 				84B19B1D2C00DE9F006656CA /* JustTodo.xcdatamodeld */,
 				84B19B182C00DE9F006656CA /* Preview Content */,
-				84B19B922C01B723006656CA /* Tray.swift */,
-				84C8C7A52C03629300C466AD /* IconManager.swift */,
+				84F83D322C06DC340094346C /* Utils.swift */,
 			);
 			path = JustTodo;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				84B19B6F2C01AC8F006656CA /* toast */,
 				84B19B702C01AC8F006656CA /* about.html */,
 				84B19B712C01AC8F006656CA /* about.js */,
+				84F83D342C072E330094346C /* square-table.css */,
 				84B19B722C01AC8F006656CA /* AppIcon.svg */,
 				84B19B732C01AC8F006656CA /* empty.svg */,
 				84B19B742C01AC8F006656CA /* icon.png */,
@@ -324,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C8C7C22C04322500C466AD /* icon-movie.svg in Resources */,
+				84F83D352C072E330094346C /* square-table.css in Resources */,
 				84B19B8E2C01AC8F006656CA /* ui.js in Resources */,
 				84B19B852C01AC8F006656CA /* about.js in Resources */,
 				84B19B8F2C01AC8F006656CA /* utils.js in Resources */,
@@ -377,6 +384,7 @@
 				84B19B132C00DE9E006656CA /* JustTodoApp.swift in Sources */,
 				84C8C7A62C03629400C466AD /* IconManager.swift in Sources */,
 				8484106B2C01CA65008B0BF4 /* AboutWinController.swift in Sources */,
+				84F83D332C06DC340094346C /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

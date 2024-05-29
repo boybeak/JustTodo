@@ -12,7 +12,7 @@ class AboutWinController: NSWindowController {
     convenience init() {
         let window = NSWindow(
             contentRect: NSRect(x: 0, y: 0, width: 480, height: 640),
-            styleMask: [.titled, .closable, .miniaturizable],
+            styleMask: [.titled, .closable],
             backing: .buffered, defer: false)
         window.title = NSLocalizedString("menu_item_about", comment: "About menu item")
         window.center()
