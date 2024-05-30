@@ -107,11 +107,15 @@ class NativeBridge extends AbsBridge {
             icons.forEach( icon => {
                 icon.svg = atob(icon.svgBase64)
                 icon.svgBase64 = ''
+                icon.isCustom = true
             });
             callback(icons)
         }
         this.callbackMap.set(eventId, nativeCallback)
         window.webkit.messageHandlers.addCustomIcons.postMessage(eventId)
+    }
+    deleteCustomIcon(icon) {
+        window.webkit.messageHandlers.removeCustomIcon.postMessage(icon.iconId)
     }
     getCustomIcons(callback) {
         let eventId = this.newEventId()
@@ -120,6 +124,7 @@ class NativeBridge extends AbsBridge {
             icons.forEach( icon => {
                 icon.svg = atob(icon.svgBase64)
                 icon.svgBase64 = ''
+                icon.isCustom = true
             });
             callback(icons)
         }

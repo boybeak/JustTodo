@@ -100,3 +100,30 @@ func readFileContents(urls: [URL])-> [URL:Data] {
 func readFileContent(url: URL)-> Data {
     return try! Data(contentsOf: url)
 }
+
+func deleteFile(subdirectory: String, filename: String) {
+    // 获取沙盒文档目录的路径
+    guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        return
+    }
+    
+    // 构建子目录路径
+    let subdirectoryURL = documentsDirectory.appendingPathComponent(subdirectory)
+    
+    // 构建要删除的文件路径
+    let fileURL = subdirectoryURL.appendingPathComponent(filename)
+    
+    // 检查文件是否存在
+    guard FileManager.default.fileExists(atPath: fileURL.path) else {
+        return
+    }
+    
+    // 执行文件删除操作
+    DispatchQueue.global().async {
+        do {
+            // 删除文件
+            try FileManager.default.removeItem(at: fileURL)
+        } catch {
+        }
+    }
+}

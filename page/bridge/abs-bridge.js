@@ -25,5 +25,6 @@ class AbsBridge {
     readClipboard(callback) {}
     getBuildInIcons(callback) {}
     addCustomIcons(callback) {}
+    deleteCustomIcon(icon) {}
     getCustomIcons(callback) {}
 }

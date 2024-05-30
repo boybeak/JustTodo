@@ -148,14 +148,17 @@ function showHeaders() {
 
 function showIcons() {
     var newTabIcon = document.getElementById('newTabIcon')
+    function refreshCustomIcons(customIcons) {
+        var icons = []
+        icons.push(...customIcons)
+        icons.push(iconAddBtn)
+        var iconCustomTableBody = document.getElementById('iconsCustomTableBody')
+        fillIcons(iconCustomTableBody, icons)
+    }
     function addCustomIcons() {
         bridge.addCustomIcons((icons) => {
             customIconsCache.push(...icons)
-            var icons = []
-            icons.push(...customIconsCache)
-            icons.push(iconAddBtn)
-            var iconCustomTableBody = document.getElementById('iconsCustomTableBody')
-            fillIcons(iconCustomTableBody, icons)
+            refreshCustomIcons(customIconsCache)
         })
     }
     function fillIcons(tableBody, icons) {
@@ -187,6 +190,21 @@ function showIcons() {
                     selectedIconEle.setAttribute('selected', true)
                 }
             }
+            if (icon.isCustom) {
+                td.addEventListener('contextmenu', (event) => {
+                    showCommonMenu(event, [
+                        {
+                            title: lang.text_delete,
+                            onClick: (event) => {
+                                bridge.deleteCustomIcon(icon)
+                                customIconsCache = customIconsCache.filter( item => item.iconId != icon.iconId)
+                                refreshCustomIcons(customIconsCache)
+                            }
+                        }
+                    ])
+                    event.preventDefault()
+                })
+            }
         })
     }
 
@@ -197,10 +215,7 @@ function showIcons() {
     bridge.getCustomIcons((icons) => {
         customIconsCache = []
         customIconsCache.push(...icons)
-        icons.push(iconAddBtn)
-        var iconCustomTableBody = document.getElementById('iconsCustomTableBody')
-        fillIcons(iconCustomTableBody, icons)
-
+        refreshCustomIcons(customIconsCache)
     })
     document.getElementById('newTabIconBtn').onclick = (event) => {
         clearSelectedIcon()
@@ -539,4 +554,19 @@ function deleteTodoItem(todoItemId) {
 
 function getTodoItemsCountUnderCurrentTab() {
     return document.getElementById('todoList').children.length
+}
+
+function showCommonMenu(anchor, items) {
+    var menu = document.getElementById('common_menu')
+    menu.innerHTML = ''
+    items.forEach( item => {
+        var itemEle = document.createElement('s-menu-item')
+        itemEle.textContent = item.title
+        if (item.onClick) {
+            itemEle.onclick = item.onClick
+        }
+        
+        menu.appendChild(itemEle)
+    })
+    menu.show(anchor)
 }

@@ -22,6 +22,7 @@ enum JsFunction: String {
     case getBuildInIcons = "getBuildInIcons"
     case getCustomIcons = "getCustomIcons"
     case addCustomIcons = "addCustomIcons"
+    case removeCustomIcon = "removeCustomIcon"
 }
 
 extension WKWebView {
@@ -175,7 +176,7 @@ let indexJsHandlers: [String: (WKWebView, Any) -> Void] = [
     },
     JsFunction.addCustomIcons.rawValue: { webView, msg in
         let eventId = msg as! String
-        IconManager.shared.chooseIcon { icons in
+        IconManager.shared.chooseIcon(view: webView) { icons in
             do {
                 let jsonData = try jsonEncoder.encode(icons)
                 if let jsonString = String(data: jsonData, encoding: .utf8) {
@@ -183,5 +184,9 @@ let indexJsHandlers: [String: (WKWebView, Any) -> Void] = [
                 }
             } catch {}
         }
+    },
+    JsFunction.removeCustomIcon.rawValue: { webView, msg in
+        let iconId = msg as! String
+        IconManager.shared.deleteIcon(iconId: iconId)
     }
 ]
