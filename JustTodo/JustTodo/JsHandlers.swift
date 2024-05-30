@@ -19,7 +19,6 @@ enum JsFunction: String {
     case deleteTodoItem = "deleteTodoItem"
     case copyText = "copyText"
     case readClipboard = "readClipboard"
-    case getIcons = "getIcons"
     case getBuildInIcons = "getBuildInIcons"
     case getCustomIcons = "getCustomIcons"
     case addCustomIcons = "addCustomIcons"
@@ -152,57 +151,37 @@ let indexJsHandlers: [String: (WKWebView, Any) -> Void] = [
         }
         webView.jsHandleResult(eventId: eventId, result: result)
     },
-    JsFunction.getIcons.rawValue: { webView, msg in
-        let eventId = msg as! String
-        
-        IconManager.shared.getIcons { icons in
-            NSLog("getIcons=\(icons!)")
-            DispatchQueue.main.async {
-                NSLog("aaaaa icons.size=\(String(describing: icons?.count))")
-                do {
-                    let json = try jsonEncoder.encode(icons!)
-                    let result = String(data: json, encoding: .utf8)!
-                    webView.jsHandleResult(eventId: eventId, result: result)
-                } catch {
-                    
-                }
-            }
-        }
-    },
     JsFunction.getBuildInIcons.rawValue: { webView, msg in
         let eventId = msg as! String
         IconManager.shared.getBuildInIcons { icons in
             do {
-                let jsonData = try JSONSerialization.data(withJSONObject: icons, options: .prettyPrinted)
-                let base64 = jsonData.base64EncodedString(options: .endLineWithLineFeed)
-                webView.jsHandleResult(eventId: eventId, result: base64)
-            } catch {
-                
-            }
+                let jsonData = try jsonEncoder.encode(icons)
+                if let jsonString = String(data: jsonData, encoding: .utf8) {
+                    webView.jsHandleResult(eventId: eventId, result: jsonString)
+                }
+            } catch {}
         }
     },
     JsFunction.getCustomIcons.rawValue: { webView, msg in
         let eventId = msg as! String
         IconManager.shared.getCustomIcons { icons in
             do {
-                let jsonData = try JSONSerialization.data(withJSONObject: icons, options: .prettyPrinted)
-                let base64 = jsonData.base64EncodedString(options: .endLineWithLineFeed)
-                webView.jsHandleResult(eventId: eventId, result: base64)
-            } catch {
-                
-            }
+                let jsonData = try jsonEncoder.encode(icons)
+                if let jsonString = String(data: jsonData, encoding: .utf8) {
+                    webView.jsHandleResult(eventId: eventId, result: jsonString)
+                }
+            } catch {}
         }
     },
     JsFunction.addCustomIcons.rawValue: { webView, msg in
         let eventId = msg as! String
         IconManager.shared.chooseIcon { icons in
             do {
-                let jsonData = try JSONSerialization.data(withJSONObject: icons, options: .prettyPrinted)
-                let base64 = jsonData.base64EncodedString(options: .endLineWithLineFeed)
-                webView.jsHandleResult(eventId: eventId, result: base64)
-            } catch {
-                
-            }
+                let jsonData = try jsonEncoder.encode(icons)
+                if let jsonString = String(data: jsonData, encoding: .utf8) {
+                    webView.jsHandleResult(eventId: eventId, result: jsonString)
+                }
+            } catch {}
         }
     }
 ]

@@ -25,13 +25,13 @@ class IconManager {
         fileURL = documentsDirectory.appendingPathComponent("icons.json")
     }
     
-    func getBuildInIcons(completion: @escaping ([String]) -> Void) {
-        var iconArray: [String] = []
+    func getBuildInIcons(completion: @escaping ([Icon]) -> Void) {
+        var iconArray: [Icon] = []
         IconManager.buildInIcons.forEach { iconName in
             if let path = Bundle.main.path(forResource: iconName, ofType: "svg") {
                 do {
                     let fileContent = try Data(contentsOf: URL(fileURLWithPath: path))
-                    iconArray.append(String(data: fileContent, encoding: .utf8)!)
+                    iconArray.append(Icon(iconId: iconName, svgData: fileContent))
                     // 处理 fileContent
                 } catch {
                     // 处理错误
@@ -44,11 +44,17 @@ class IconManager {
         completion(iconArray)
     }
     
-    func getCustomIcons(completion: @escaping ([String]) -> Void) {
-        readFilesAsync(from: "icons", completion: completion)
+    func getCustomIcons(completion: @escaping ([Icon]) -> Void) {
+        readFilesAsync(from: "icons") { result in
+            var icons = [Icon]()
+            result.forEach { url, content in
+                icons.append(Icon(iconId: url.lastPathComponent, svgData: content))
+            }
+            completion(icons)
+        }
     }
     
-    func chooseIcon(completion: @escaping ([String]) -> Void) {
+    func chooseIcon(completion: @escaping ([Icon]) -> Void) {
         let panel = NSOpenPanel()
         panel.canChooseFiles = true
         panel.canChooseDirectories = false
@@ -57,8 +63,17 @@ class IconManager {
         
         if panel.runModal() == .OK {
             copyFilesToSandbox(urls: panel.urls, subDir: "icons") { urls in
-                let contents = readFileContents(urls: urls)
-                completion(contents)
+                DispatchQueue.global().async {
+                    var icons = [Icon]()
+                    urls.forEach { url in
+                        icons.append(Icon(iconId: url.lastPathComponent, svgData: readFileContent(url: url)))
+                    }
+                    
+                    DispatchQueue.main.async {
+                        completion(icons)
+                    }
+                }
+                
             }
         }
     }

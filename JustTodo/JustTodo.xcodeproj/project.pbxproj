@@ -53,6 +53,7 @@
 		84C8C7CE2C059B0A00C466AD /* tip.js in Resources */ = {isa = PBXBuildFile; fileRef = 84C8C7CB2C059B0A00C466AD /* tip.js */; };
 		84F83D332C06DC340094346C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F83D322C06DC340094346C /* Utils.swift */; };
 		84F83D352C072E330094346C /* square-table.css in Resources */ = {isa = PBXBuildFile; fileRef = 84F83D342C072E330094346C /* square-table.css */; };
+		84F83D372C086A240094346C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F83D362C086A240094346C /* Icon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		84C8C7CB2C059B0A00C466AD /* tip.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = tip.js; sourceTree = "<group>"; };
 		84F83D322C06DC340094346C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		84F83D342C072E330094346C /* square-table.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "square-table.css"; sourceTree = "<group>"; };
+		84F83D362C086A240094346C /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				84B19B1D2C00DE9F006656CA /* JustTodo.xcdatamodeld */,
 				84B19B182C00DE9F006656CA /* Preview Content */,
 				84F83D322C06DC340094346C /* Utils.swift */,
+				84F83D362C086A240094346C /* Icon.swift */,
 			);
 			path = JustTodo;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				84B19B932C01B723006656CA /* Tray.swift in Sources */,
 				84B19B272C00E000006656CA /* AppDelegate.swift in Sources */,
 				84B19B132C00DE9E006656CA /* JustTodoApp.swift in Sources */,
+				84F83D372C086A240094346C /* Icon.swift in Sources */,
 				84C8C7A62C03629400C466AD /* IconManager.swift in Sources */,
 				8484106B2C01CA65008B0BF4 /* AboutWinController.swift in Sources */,
 				84F83D332C06DC340094346C /* Utils.swift in Sources */,

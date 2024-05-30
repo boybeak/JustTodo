@@ -211,30 +211,6 @@ class WebBridge extends AbsBridge {
             })
     }
 
-    getIcons(callback) {
-        if (this.iconsCache) {
-            callback(self.iconsCache)
-            return
-        }
-        let apiUrl = 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/metadata/icons.json'
-        // fetch('https://cors-anywhere.herokuapp.com/' + apiUrl)
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(data => {
-                this.iconsCache = JSON.parse(data)
-                callback(this.iconsCache)
-                // 处理返回的数据
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-            });
-    }
-
     getBuildInIcons(callback) {
         callback([
             '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"></path></svg>'

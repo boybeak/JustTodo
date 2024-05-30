@@ -23,7 +23,6 @@ class AbsBridge {
     deleteTodoItemNative(todoId, callback) {}
     copyTextNative(text) {}
     readClipboard(callback) {}
-    getIcons(callback) {}
     getBuildInIcons(callback) {}
     addCustomIcons(callback) {}
     getCustomIcons(callback) {}

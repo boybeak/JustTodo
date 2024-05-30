@@ -16,6 +16,10 @@ var svgEmpty = `
 </svg>
 `
 var customIconsCache = []
+let iconAddBtn = {
+    iconId: 'addIconBtn',
+    isAdd: true
+}
 
 onPageReady()
 
@@ -149,7 +153,7 @@ function showIcons() {
             customIconsCache.push(...icons)
             var icons = []
             icons.push(...customIconsCache)
-            icons.push('add')
+            icons.push(iconAddBtn)
             var iconCustomTableBody = document.getElementById('iconsCustomTableBody')
             fillIcons(iconCustomTableBody, icons)
         })
@@ -169,17 +173,16 @@ function showIcons() {
             lastRow.appendChild(td)
 
             td.onclick = (event) => {
-                var isAdd = td.getAttribute('isAdd')
-                if (isAdd === 'true') {
+                if (icon.isAdd) {
                     addCustomIcons()
                 } else {
                     if (selectedIconEle) {
                         selectedIconEle.setAttribute('selected', false)
                     }
-                    newTabIcon.innerHTML = icon
+                    newTabIcon.innerHTML = icon.svg
                     newTabIcon.style.color = 'var(--s-color-secondary)'
                     selectedIconEle = td
-                    currentIconSvg = icon
+                    currentIconSvg = icon.svg
                     
                     selectedIconEle.setAttribute('selected', true)
                 }
@@ -194,7 +197,7 @@ function showIcons() {
     bridge.getCustomIcons((icons) => {
         customIconsCache = []
         customIconsCache.push(...icons)
-        icons.push('add')
+        icons.push(iconAddBtn)
         var iconCustomTableBody = document.getElementById('iconsCustomTableBody')
         fillIcons(iconCustomTableBody, icons)
 
@@ -204,10 +207,8 @@ function showIcons() {
     }
 }
 
-function createIconTD(iconSvg) {
-    var isAdd = iconSvg == 'add'
+function createIconTD(icon) {
     var td = document.createElement('td')
-    td.setAttribute('isAdd', isAdd)
 
     var div = document.createElement('div')
     div.style.width = '100%'
@@ -217,11 +218,11 @@ function createIconTD(iconSvg) {
     div.style.display = 'flex'
 
     var sIcon = document.createElement('s-icon')
-    if (isAdd) {
+    if (icon.isAdd) {
         sIcon.setAttribute('type', 'add')
         sIcon.style.color = 'darkgray'
     } else {
-        sIcon.innerHTML = iconSvg
+        sIcon.innerHTML = icon.svg
     }
 
     div.appendChild(sIcon)

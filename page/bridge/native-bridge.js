@@ -81,22 +81,6 @@ class NativeBridge extends AbsBridge {
         this.callbackMap.set(eventId, callback)
         window.webkit.messageHandlers.readClipboard.postMessage(eventId)
     }
-    
-    getIcons(callback) {
-        if (this.iconsCache) {
-            // 如果有缓存，直接调用回调并返回
-            callback(this.iconsCache);
-            return;
-        }
-        let eventId = this.newEventId()
-        let nativeCallback = (iconsBase64) => {
-            var iconsDecoded = window.atob(iconsBase64)
-            var icons = JSON.parse(iconsDecoded)
-            callback(icons);
-        }
-        this.callbackMap.set(eventId, nativeCallback)
-        window.webkit.messageHandlers.getBuildInIcons.postMessage(eventId)
-    }
 
     getBuildInIcons(callback) {
         if (this.iconsBuildInCache) {
@@ -105,30 +89,39 @@ class NativeBridge extends AbsBridge {
             return;
         }
         let eventId = this.newEventId()
-        let nativeCallback = (iconsBase64) => {
-            var iconsDecoded = window.atob(iconsBase64)
-            var icons = JSON.parse(iconsDecoded)
-            callback(icons);
+        let nativeCallback = (iconsJson) => {
+            var icons = JSON.parse(iconsJson)
+            icons.forEach( icon => {
+                icon.svg = atob(icon.svgBase64)
+                icon.svgBase64 = ''
+            });
+            callback(icons)
         }
         this.callbackMap.set(eventId, nativeCallback)
         window.webkit.messageHandlers.getBuildInIcons.postMessage(eventId)
     }
     addCustomIcons(callback) {
         let eventId = this.newEventId()
-        let nativeCallback = (iconsBase64) => {
-            var iconsDecoded = window.atob(iconsBase64)
-            var icons = JSON.parse(iconsDecoded)
-            callback(icons);
+        let nativeCallback = (iconsJson) => {
+            var icons = JSON.parse(iconsJson)
+            icons.forEach( icon => {
+                icon.svg = atob(icon.svgBase64)
+                icon.svgBase64 = ''
+            });
+            callback(icons)
         }
         this.callbackMap.set(eventId, nativeCallback)
         window.webkit.messageHandlers.addCustomIcons.postMessage(eventId)
     }
     getCustomIcons(callback) {
         let eventId = this.newEventId()
-        let nativeCallback = (iconsBase64) => {
-            var iconsDecoded = window.atob(iconsBase64)
-            var icons = JSON.parse(iconsDecoded)
-            callback(icons);
+        let nativeCallback = (iconsJson) => {
+            var icons = JSON.parse(iconsJson)
+            icons.forEach( icon => {
+                icon.svg = atob(icon.svgBase64)
+                icon.svgBase64 = ''
+            });
+            callback(icons)
         }
         this.callbackMap.set(eventId, nativeCallback)
         window.webkit.messageHandlers.getCustomIcons.postMessage(eventId)
