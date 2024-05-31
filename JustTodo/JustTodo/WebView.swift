@@ -19,10 +19,12 @@ struct WebView: NSViewRepresentable {
     let url: URL
     let javascriptHandlers: [String: (WKWebView, Any) -> Void]
 
-    init(url: URL, javascriptHandlers: [String: (WKWebView, Any) -> Void]) {
+    init(url: URL, javascriptHandlers: [String: (WKWebView, Any) -> Void], holder: WKWebViewHolder? = nil) {
         self.url = url
         self.javascriptHandlers = javascriptHandlers
-        self.webView = WKWebView()
+        let wv = WKWebView()
+        self.webView = wv
+        holder?.wkWebView = wv
     }
 
     func makeNSView(context: Context) -> WKWebView {
@@ -34,6 +36,8 @@ struct WebView: NSViewRepresentable {
         
         let webPreferences = webView.configuration.defaultWebpagePreferences
         webPreferences!.allowsContentJavaScript = true
+        
+        disableContextMenu()
 
         return webView
     }
@@ -46,5 +50,31 @@ struct WebView: NSViewRepresentable {
 
     func makeCoordinator() -> WebViewCoordinator {
         return WebViewCoordinator()
+    }
+    
+    private func disableContextMenu() {
+        webView.evaluateJavaScript("document.body.setAttribute('oncontextmenu', 'event.preventDefault();');", completionHandler: nil)
+    }
+}
+
+class WKWebViewHolder {
+    weak var wkWebView: WKWebView? = nil
+}
+
+extension WKWebView {
+    func jsHandleResult(eventId: String, result: String) {
+        evaluateJavaScript("bridge.handleResult('\(eventId)', '\(result)')") { (result, error) in
+            if let error = error {
+                NSLog("Error evaluating JavaScript: \(error)")
+            }
+        }
+    }
+    
+    func jsOnEvent(eventName: String, message: String) {
+        evaluateJavaScript("bridge.onEvent('\(eventName)', '\(message)')") { result, error in
+            if let error = error {
+                NSLog("Error evaluating JavaScript: \(error)")
+            }
+        }
     }
 }

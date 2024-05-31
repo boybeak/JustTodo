@@ -36,7 +36,6 @@
 		84B19B8A2C01AC8F006656CA /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B762C01AC8F006656CA /* index.html */; };
 		84B19B8B2C01AC8F006656CA /* keyboard_return.svg in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B772C01AC8F006656CA /* keyboard_return.svg */; };
 		84B19B8C2C01AC8F006656CA /* sober.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B782C01AC8F006656CA /* sober.min.js */; };
-		84B19B8D2C01AC8F006656CA /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B792C01AC8F006656CA /* test.html */; };
 		84B19B8E2C01AC8F006656CA /* ui.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B7A2C01AC8F006656CA /* ui.js */; };
 		84B19B8F2C01AC8F006656CA /* utils.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B7B2C01AC8F006656CA /* utils.js */; };
 		84B19B932C01B723006656CA /* Tray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B922C01B723006656CA /* Tray.swift */; };
@@ -54,6 +53,11 @@
 		84F83D332C06DC340094346C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F83D322C06DC340094346C /* Utils.swift */; };
 		84F83D352C072E330094346C /* square-table.css in Resources */ = {isa = PBXBuildFile; fileRef = 84F83D342C072E330094346C /* square-table.css */; };
 		84F83D372C086A240094346C /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F83D362C086A240094346C /* Icon.swift */; };
+		84F83D3A2C08B85F0094346C /* IconWinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F83D392C08B85F0094346C /* IconWinController.swift */; };
+		84F83D3C2C098AE80094346C /* icons.html in Resources */ = {isa = PBXBuildFile; fileRef = 84F83D3B2C098AE80094346C /* icons.html */; };
+		84F83D3E2C098B4A0094346C /* icons.js in Resources */ = {isa = PBXBuildFile; fileRef = 84F83D3D2C098B4A0094346C /* icons.js */; };
+		84F83D402C098EE50094346C /* utils.css in Resources */ = {isa = PBXBuildFile; fileRef = 84F83D3F2C098EE50094346C /* utils.css */; };
+		84F83D422C0999280094346C /* icons-ui.js in Resources */ = {isa = PBXBuildFile; fileRef = 84F83D412C0999280094346C /* icons-ui.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,7 +93,6 @@
 		84B19B762C01AC8F006656CA /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		84B19B772C01AC8F006656CA /* keyboard_return.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keyboard_return.svg; sourceTree = "<group>"; };
 		84B19B782C01AC8F006656CA /* sober.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sober.min.js; sourceTree = "<group>"; };
-		84B19B792C01AC8F006656CA /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		84B19B7A2C01AC8F006656CA /* ui.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ui.js; sourceTree = "<group>"; };
 		84B19B7B2C01AC8F006656CA /* utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = utils.js; sourceTree = "<group>"; };
 		84B19B922C01B723006656CA /* Tray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tray.swift; sourceTree = "<group>"; };
@@ -107,6 +110,11 @@
 		84F83D322C06DC340094346C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		84F83D342C072E330094346C /* square-table.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "square-table.css"; sourceTree = "<group>"; };
 		84F83D362C086A240094346C /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		84F83D392C08B85F0094346C /* IconWinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWinController.swift; sourceTree = "<group>"; };
+		84F83D3B2C098AE80094346C /* icons.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = icons.html; sourceTree = "<group>"; };
+		84F83D3D2C098B4A0094346C /* icons.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = icons.js; sourceTree = "<group>"; };
+		84F83D3F2C098EE50094346C /* utils.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = utils.css; sourceTree = "<group>"; };
+		84F83D412C0999280094346C /* icons-ui.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = "icons-ui.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,7 @@
 		84B19B112C00DE9E006656CA /* JustTodo */ = {
 			isa = PBXGroup;
 			children = (
+				84F83D382C08B82C0094346C /* icon */,
 				84C8C7A72C042ED900C466AD /* svg */,
 				848410672C01CA20008B0BF4 /* about */,
 				84B19B7C2C01AC8F006656CA /* page */,
@@ -161,13 +170,11 @@
 				84B19B572C019864006656CA /* TodoDB.swift */,
 				84B19B592C0198B6006656CA /* JsHandlers.swift */,
 				84B19B922C01B723006656CA /* Tray.swift */,
-				84C8C7A52C03629300C466AD /* IconManager.swift */,
+				84F83D322C06DC340094346C /* Utils.swift */,
 				84B19B162C00DE9F006656CA /* Assets.xcassets */,
 				84B19B202C00DE9F006656CA /* JustTodo.entitlements */,
 				84B19B1D2C00DE9F006656CA /* JustTodo.xcdatamodeld */,
 				84B19B182C00DE9F006656CA /* Preview Content */,
-				84F83D322C06DC340094346C /* Utils.swift */,
-				84F83D362C086A240094346C /* Icon.swift */,
 			);
 			path = JustTodo;
 			sourceTree = "<group>";
@@ -241,9 +248,12 @@
 				84B19B762C01AC8F006656CA /* index.html */,
 				84B19B772C01AC8F006656CA /* keyboard_return.svg */,
 				84B19B782C01AC8F006656CA /* sober.min.js */,
-				84B19B792C01AC8F006656CA /* test.html */,
 				84B19B7A2C01AC8F006656CA /* ui.js */,
 				84B19B7B2C01AC8F006656CA /* utils.js */,
+				84F83D3B2C098AE80094346C /* icons.html */,
+				84F83D3D2C098B4A0094346C /* icons.js */,
+				84F83D3F2C098EE50094346C /* utils.css */,
+				84F83D412C0999280094346C /* icons-ui.js */,
 			);
 			name = page;
 			path = ../../page;
@@ -271,6 +281,16 @@
 				84C8C7CB2C059B0A00C466AD /* tip.js */,
 			);
 			path = tip;
+			sourceTree = "<group>";
+		};
+		84F83D382C08B82C0094346C /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				84C8C7A52C03629300C466AD /* IconManager.swift */,
+				84F83D362C086A240094346C /* Icon.swift */,
+				84F83D392C08B85F0094346C /* IconWinController.swift */,
+			);
+			path = icon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +369,8 @@
 				84B19B892C01AC8F006656CA /* index.css in Resources */,
 				84B19B882C01AC8F006656CA /* icon.png in Resources */,
 				84B19B652C01AC01006656CA /* Localizable.strings in Resources */,
+				84F83D3C2C098AE80094346C /* icons.html in Resources */,
+				84F83D422C0999280094346C /* icons-ui.js in Resources */,
 				84B19B8C2C01AC8F006656CA /* sober.min.js in Resources */,
 				84C8C7C72C048F3500C466AD /* icon-book.svg in Resources */,
 				84B19B812C01AC8F006656CA /* zh-CN.js in Resources */,
@@ -356,14 +378,15 @@
 				84C8C7BD2C04313800C466AD /* icon-calendar.svg in Resources */,
 				84B19B862C01AC8F006656CA /* AppIcon.svg in Resources */,
 				84B19B1A2C00DE9F006656CA /* Preview Assets.xcassets in Resources */,
+				84F83D3E2C098B4A0094346C /* icons.js in Resources */,
 				84B19B7D2C01AC8F006656CA /* abs-bridge.js in Resources */,
-				84B19B8D2C01AC8F006656CA /* test.html in Resources */,
 				84C8C7C52C048E5B00C466AD /* icon-board.svg in Resources */,
 				84B19B642C01AC01006656CA /* Localizable.strings in Resources */,
 				84B19B872C01AC8F006656CA /* empty.svg in Resources */,
 				84B19B8B2C01AC8F006656CA /* keyboard_return.svg in Resources */,
 				84C8C7BA2C04313800C466AD /* icon-account.svg in Resources */,
 				84B19B172C00DE9F006656CA /* Assets.xcassets in Resources */,
+				84F83D402C098EE50094346C /* utils.css in Resources */,
 				84B19B822C01AC8F006656CA /* toast.css in Resources */,
 				84B19B832C01AC8F006656CA /* toast.js in Resources */,
 			);
@@ -385,6 +408,7 @@
 				84B19B932C01B723006656CA /* Tray.swift in Sources */,
 				84B19B272C00E000006656CA /* AppDelegate.swift in Sources */,
 				84B19B132C00DE9E006656CA /* JustTodoApp.swift in Sources */,
+				84F83D3A2C08B85F0094346C /* IconWinController.swift in Sources */,
 				84F83D372C086A240094346C /* Icon.swift in Sources */,
 				84C8C7A62C03629400C466AD /* IconManager.swift in Sources */,
 				8484106B2C01CA65008B0BF4 /* AboutWinController.swift in Sources */,

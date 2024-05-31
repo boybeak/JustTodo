@@ -24,6 +24,7 @@ let iconAddBtn = {
 onPageReady()
 
 function onPageReady() {
+    disableContextMenu()
     var app = document.getElementById('app')
     app.setAttribute('theme', 'auto')
     // 获取输入框元素
@@ -146,71 +147,44 @@ function showHeaders() {
     })
 }
 
+function onIconsAdded(iconsJson) {
+    var icons = JSON.parse(iconsJson)
+    bridge.manageIcons(icons, true)
+    customIconsCache.push(...icons)
+
+    var iconsTBody = document.getElementById('iconsCustomTableBody')
+    showIcons(iconsTBody, customIconsCache)
+}
+
 function showIcons() {
+    bridge.addEventCallback('onIconsAdd', onIconsAdded)
+
     var newTabIcon = document.getElementById('newTabIcon')
+
+    function onNormalIconClick(icon) {
+        if (selectedIconEle) {
+            selectedIconEle.setAttribute('selected', false)
+        }
+        newTabIcon.innerHTML = icon.svg
+        newTabIcon.style.color = 'var(--s-color-secondary)'
+        selectedIconEle = td
+        currentIconSvg = icon.svg
+        
+        selectedIconEle.setAttribute('selected', true)
+    }
     function refreshCustomIcons(customIcons) {
         var icons = []
         icons.push(...customIcons)
         icons.push(iconAddBtn)
         var iconCustomTableBody = document.getElementById('iconsCustomTableBody')
-        fillIcons(iconCustomTableBody, icons)
-    }
-    function addCustomIcons() {
-        bridge.addCustomIcons((icons) => {
-            customIconsCache.push(...icons)
-            refreshCustomIcons(customIconsCache)
-        })
-    }
-    function fillIcons(tableBody, icons) {
-        var lastRow;
-        tableBody.innerHTML = ''
-        icons.forEach((icon, index) => {
-            if (index % 8 == 0) {
-                var row = document.createElement('tr')
-                tableBody.appendChild(row)
-                lastRow = row
-            }
-            
-            var td = createIconTD(icon)
-            
-            lastRow.appendChild(td)
-
-            td.onclick = (event) => {
-                if (icon.isAdd) {
-                    addCustomIcons()
-                } else {
-                    if (selectedIconEle) {
-                        selectedIconEle.setAttribute('selected', false)
-                    }
-                    newTabIcon.innerHTML = icon.svg
-                    newTabIcon.style.color = 'var(--s-color-secondary)'
-                    selectedIconEle = td
-                    currentIconSvg = icon.svg
-                    
-                    selectedIconEle.setAttribute('selected', true)
-                }
-            }
-            if (icon.isCustom) {
-                td.addEventListener('contextmenu', (event) => {
-                    showCommonMenu(event, [
-                        {
-                            title: lang.text_delete,
-                            onClick: (event) => {
-                                bridge.deleteCustomIcon(icon)
-                                customIconsCache = customIconsCache.filter( item => item.iconId != icon.iconId)
-                                refreshCustomIcons(customIconsCache)
-                            }
-                        }
-                    ])
-                    event.preventDefault()
-                })
-            }
-        })
+        fillIcons(iconCustomTableBody, icons, () => {
+            bridge.openIconsWindow()
+        }, onNormalIconClick)
     }
 
     bridge.getBuildInIcons((icons) => {
         var iconBuildInTableBody = document.getElementById('iconsBuildInTableBody')
-        fillIcons(iconBuildInTableBody, icons)
+        fillIcons(iconBuildInTableBody, icons, null, onNormalIconClick)
     })
     bridge.getCustomIcons((icons) => {
         customIconsCache = []
@@ -235,7 +209,7 @@ function createIconTD(icon) {
     var sIcon = document.createElement('s-icon')
     if (icon.isAdd) {
         sIcon.setAttribute('type', 'add')
-        sIcon.style.color = 'darkgray'
+        sIcon.style.color = 'rgba(127, 127, 127, 0.4)'
     } else {
         sIcon.innerHTML = icon.svg
     }

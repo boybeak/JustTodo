@@ -77,11 +77,6 @@ body {
     border-top: 1px solid var(--s-color-outline-variant);
 }
 
-.scrollViewNoBars::-webkit-scrollbar {
-    display: none;
-    /* For Chrome, Safari, and Opera */
-}
-
 .svg-hint {
     color: darkgray;
 }

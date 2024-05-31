@@ -9,9 +9,11 @@
     <link rel="icon" href="./icon.png" type="image/png">
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./square-table.css">
+    <link rel="stylesheet" href="./utils.css">
 
     <script src="./sober.min.js"></script>
     <script src="./utils.js"></script>
+    <script src="./icons-ui.js"></script>
     <script>
         initUtils((isNative) => {
             if (isNative) {
@@ -91,17 +93,13 @@
                     <table class="square-table">
                         <tbody id="iconsBuildInTableBody">
                         </tbody>
+                        <s-divider style="margin: 0px;"></s-divider>
+                        <table class="square-table">
+                            <tbody id="iconsCustomTableBody">
+                            </tbody>
+                        </table>
                     </table>
                 </div>
-                
-                <s-divider style="margin: 0px;"></s-divider>
-                <div style="padding: 8px;">
-                    <table class="square-table">
-                        <tbody id="iconsCustomTableBody">
-                        </tbody>
-                    </table>
-                </div>
-                
             </s-scroll-view>
             <div id="newTabInputWrapper">
                 <s-icon-button id="newTabIconBtn" slot="end">

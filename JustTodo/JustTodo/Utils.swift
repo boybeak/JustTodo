@@ -68,7 +68,7 @@ func readFilesAsync(from directory: String, completion: @escaping ([URL:Data]) -
             let directoryURL = userDirectory.appendingPathComponent(directory)
             
             // 获取目录下的所有文件路径
-            let fileURLs = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil)
+            var fileURLs = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil)
             
             let fileContents = readFileContents(urls: fileURLs)
             
@@ -82,6 +82,23 @@ func readFilesAsync(from directory: String, completion: @escaping ([URL:Data]) -
                 completion([URL:Data]())
             }
         }
+    }
+}
+
+func getUrlsAsync(from directory: String) -> [URL]  {
+    let fileManager = FileManager.default
+    
+    do {
+        // 获取用户目录
+        let userDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let directoryURL = userDirectory.appendingPathComponent(directory)
+        
+        // 获取目录下的所有文件路径
+        var fileURLs = try fileManager.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil)
+        
+        return fileURLs
+    } catch _ {
+        return []
     }
 }
 
@@ -126,4 +143,22 @@ func deleteFile(subdirectory: String, filename: String) {
         } catch {
         }
     }
+}
+
+func newIconCallback(holder: WKWebViewHolder) -> ([Icon]) -> Void {
+    let callback: ([Icon]) -> Void = { icons in
+        do {
+            let jsonData = try JSONEncoder().encode(icons)
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                holder.wkWebView?.jsOnEvent(eventName: "onIconsAdd", message: jsonString)
+            }
+        } catch {
+            
+        }
+    }
+    return callback
+}
+
+func mapOf<K, V>(_ pairs: (K, V)...) -> [K: V] {
+    return Dictionary(uniqueKeysWithValues: pairs)
 }

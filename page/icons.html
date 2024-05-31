@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>JustTodo</title>
+    <link rel="icon" href="./icon.png" type="image/png">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./square-table.css">
+    <link rel="stylesheet" href="./utils.css">
+
+    <script src="./sober.min.js"></script>
+    <script src="./utils.js"></script>
+    <script>
+        initUtils((isNative) => {
+            if (isNative) {
+                loadScript('./abs-bridge.js')
+                loadScript('./native-bridge.js')
+                loadCSS('./toast.css')
+                loadScript('./toast.js')
+
+                loadCSS('./tip.css')
+                loadScript('./tip.js')
+            } else {
+                loadScript('./bridge/abs-bridge.js')
+                loadScript('./bridge/web-bridge.js')
+                loadCSS('./toast/toast.css')
+                loadScript('./toast/toast.js')
+
+                loadCSS('./tip/tip.css')
+                loadScript('./tip/tip.js')
+            }
+
+        })
+    </script>
+    <script src="./icons-ui.js"></script>
+    <script src="./icons.js"></script>
+</head>
+
+<body>
+    <s-page id="app">
+        <div style="padding: 16px; text-align: center;">Drop svg files or click '+' button</div>
+        <s-divider></s-divider>
+        <s-scroll-view class="scrollViewNoBars" style="width: 100%; height: 100%;">
+            <div style="padding: 16px;">
+                <table class="square-table">
+                    <tbody id="icons-tbody"></tbody>
+                </table>
+            </div>
+        </s-scroll-view>
+    </s-page>
+    <script>
+        
+    </script>
+</body>
+<div id="toast"></div>
+
+</html>

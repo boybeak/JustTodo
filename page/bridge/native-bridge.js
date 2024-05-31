@@ -4,12 +4,43 @@ class NativeBridge extends AbsBridge {
         super()
         this.callbackMap = new Map();
         this.iconsBuildInCache = null; // 用于缓存图标结果
+
+        this.eventListener = new Map();
     }
 
     handleResult(eventId, result) {
         let callback = this.callbackMap.get(eventId)
         callback(result)
         this.callbackMap.delete(eventId)
+    }
+
+    onEvent(eventName, result) {
+        var callbacks = this.eventListener.get(eventName)
+        console.log('onEvent callbacks=', callbacks)
+        if (callbacks == undefined) {
+            return
+        }
+
+        callbacks.forEach(callback => {
+            callback(result)
+        })
+    }
+
+    addEventCallback(eventName, callback) {
+        console.log('addEventCallback eventName=', eventName)
+        var callbacks = this.eventListener.get(eventName)
+        if (callbacks == undefined) {
+            callbacks = []
+            this.eventListener.set(eventName, callbacks)
+        }
+        callbacks.push(callback)
+    }
+    removeEventCallback(eventName, callback){
+        var callbacks = this.eventListener.get(eventName)
+        if (callbacks == undefined) {
+            return
+        }
+        this.callbackMap[eventName] = callbacks.filter(c => c != callback)
     }
 
     newEventId() {
@@ -82,6 +113,14 @@ class NativeBridge extends AbsBridge {
         window.webkit.messageHandlers.readClipboard.postMessage(eventId)
     }
 
+    manageIcons(icons, isCustom) {
+        icons.forEach( icon => {
+            icon.svg = atob(icon.svgBase64)
+            icon.svgBase64 = ''
+            icon.isCustom = isCustom
+        });
+    }
+
     getBuildInIcons(callback) {
         if (this.iconsBuildInCache) {
             // 如果有缓存，直接调用回调并返回
@@ -91,29 +130,13 @@ class NativeBridge extends AbsBridge {
         let eventId = this.newEventId()
         let nativeCallback = (iconsJson) => {
             var icons = JSON.parse(iconsJson)
-            icons.forEach( icon => {
-                icon.svg = atob(icon.svgBase64)
-                icon.svgBase64 = ''
-            });
+            this.manageIcons(icons, false)
             callback(icons)
         }
         this.callbackMap.set(eventId, nativeCallback)
         window.webkit.messageHandlers.getBuildInIcons.postMessage(eventId)
     }
-    addCustomIcons(callback) {
-        let eventId = this.newEventId()
-        let nativeCallback = (iconsJson) => {
-            var icons = JSON.parse(iconsJson)
-            icons.forEach( icon => {
-                icon.svg = atob(icon.svgBase64)
-                icon.svgBase64 = ''
-                icon.isCustom = true
-            });
-            callback(icons)
-        }
-        this.callbackMap.set(eventId, nativeCallback)
-        window.webkit.messageHandlers.addCustomIcons.postMessage(eventId)
-    }
+
     deleteCustomIcon(icon) {
         window.webkit.messageHandlers.removeCustomIcon.postMessage(icon.iconId)
     }
@@ -121,15 +144,17 @@ class NativeBridge extends AbsBridge {
         let eventId = this.newEventId()
         let nativeCallback = (iconsJson) => {
             var icons = JSON.parse(iconsJson)
-            icons.forEach( icon => {
-                icon.svg = atob(icon.svgBase64)
-                icon.svgBase64 = ''
-                icon.isCustom = true
-            });
+            this.manageIcons(icons)
             callback(icons)
         }
         this.callbackMap.set(eventId, nativeCallback)
         window.webkit.messageHandlers.getCustomIcons.postMessage(eventId)
+    }
+    openIconsWindow() {
+        window.webkit.messageHandlers.openIconsWindow.postMessage([])
+    }
+    openIconsChooser() {
+        window.webkit.messageHandlers.openIconsChooser.postMessage([])
     }
 }
 

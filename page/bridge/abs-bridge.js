@@ -14,6 +14,9 @@ class AbsBridge {
         })
     }
 
+    addEventCallback(callback){}
+    removeEventCallback(callback){}
+
     getTabsNative(callback) {}
     newTabNative(title, icon, callback) {}
     deleteTabNative(id) {}
@@ -24,7 +27,8 @@ class AbsBridge {
     copyTextNative(text) {}
     readClipboard(callback) {}
     getBuildInIcons(callback) {}
-    addCustomIcons(callback) {}
     deleteCustomIcon(icon) {}
     getCustomIcons(callback) {}
+    openIconsWindow() {}
+    openIconsChooser() {}
 }
