@@ -1,4 +1,4 @@
-function fillIcons(tableBody, icons, onAddIconClick, onNormalIconClick) {
+function fillIcons(tableBody, icons, onAddIconClick, onNormalIconClick, onCustomRightClick) {
     var lastRow;
     tableBody.innerHTML = ''
     icons.forEach((icon, index) => {
@@ -23,19 +23,9 @@ function fillIcons(tableBody, icons, onAddIconClick, onNormalIconClick) {
                 }
             }
         }
-        if (icon.isCustom) {
+        if (icon.isCustom && onCustomRightClick) {
             td.addEventListener('contextmenu', (event) => {
-                showCommonMenu(event, [
-                    {
-                        title: lang.text_delete,
-                        onClick: (event) => {
-                            bridge.deleteCustomIcon(icon)
-                            customIconsCache = customIconsCache.filter( item => item.iconId != icon.iconId)
-                            refreshCustomIcons(customIconsCache)
-                        }
-                    }
-                ])
-                event.preventDefault()
+                onCustomRightClick(event, icon)
             })
         }
     })

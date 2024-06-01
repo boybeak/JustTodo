@@ -14,18 +14,30 @@ function onNewIcons(iconsJson) {
     bridge.manageIcons(icons, true)
     customIconsCache.push(...icons)
 
-    var iconsTBody = document.getElementById('icons-tbody')
-    showIcons(iconsTBody, customIconsCache)
+    showIcons(customIconsCache)
 }
 
-function showIcons(iconsTBody, icons) {
+function showIcons(icons) {
     var iconsNew = []
     iconsNew.push(...icons)
     iconsNew.push(iconAddBtn)
 
+    var iconsTBody = document.getElementById('icons-tbody')
     fillIcons(iconsTBody, iconsNew, () => {
         bridge.openIconsChooser()
-    }, null)
+    }, null, (event, icon) => {
+        showCommonMenu('common_menu', event, [
+            {
+                title: lang.text_delete,
+                onClick: (event) => {
+                    bridge.deleteCustomIcon(icon)
+                    customIconsCache = customIconsCache.filter( item => item.iconId != icon.iconId)
+                    showIcons(customIconsCache)
+                }
+            }
+        ])
+        event.preventDefault()
+    })
 }
 
 function onPageReady() {
@@ -36,7 +48,6 @@ function onPageReady() {
     bridge.addEventCallback('onIconsAdd', onNewIcons)
     bridge.getCustomIcons(icons => {
         customIconsCache.push(...icons)
-        var iconsTBody = document.getElementById('icons-tbody')
-        showIcons(iconsTBody, icons)
+        showIcons(icons)
     })
 }

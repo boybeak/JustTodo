@@ -16,7 +16,6 @@ class NativeBridge extends AbsBridge {
 
     onEvent(eventName, result) {
         var callbacks = this.eventListener.get(eventName)
-        console.log('onEvent callbacks=', callbacks)
         if (callbacks == undefined) {
             return
         }
@@ -27,7 +26,6 @@ class NativeBridge extends AbsBridge {
     }
 
     addEventCallback(eventName, callback) {
-        console.log('addEventCallback eventName=', eventName)
         var callbacks = this.eventListener.get(eventName)
         if (callbacks == undefined) {
             callbacks = []
@@ -144,7 +142,7 @@ class NativeBridge extends AbsBridge {
         let eventId = this.newEventId()
         let nativeCallback = (iconsJson) => {
             var icons = JSON.parse(iconsJson)
-            this.manageIcons(icons)
+            this.manageIcons(icons, true)
             callback(icons)
         }
         this.callbackMap.set(eventId, nativeCallback)

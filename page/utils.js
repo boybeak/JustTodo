@@ -53,3 +53,18 @@ function formatString(template, data) {
 function disableContextMenu() {
     document.body.setAttribute('oncontextmenu', 'event.preventDefault();')
 }
+
+function showCommonMenu(menuId, anchor, items) {
+    var menu = document.getElementById(menuId)
+    menu.innerHTML = ''
+    items.forEach( item => {
+        var itemEle = document.createElement('s-menu-item')
+        itemEle.textContent = item.title
+        if (item.onClick) {
+            itemEle.onclick = item.onClick
+        }
+        
+        menu.appendChild(itemEle)
+    })
+    menu.show(anchor)
+}

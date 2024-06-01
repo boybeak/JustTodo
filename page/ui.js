@@ -179,7 +179,19 @@ function showIcons() {
         var iconCustomTableBody = document.getElementById('iconsCustomTableBody')
         fillIcons(iconCustomTableBody, icons, () => {
             bridge.openIconsWindow()
-        }, onNormalIconClick)
+        }, onNormalIconClick, (event, icon) => {
+            showCommonMenu('common_menu', event, [
+                {
+                    title: lang.text_delete,
+                    onClick: (event) => {
+                        bridge.deleteCustomIcon(icon)
+                        customIconsCache = customIconsCache.filter( item => item.iconId != icon.iconId)
+                        refreshCustomIcons(customIconsCache)
+                    }
+                }
+            ])
+            event.preventDefault()
+        })
     }
 
     bridge.getBuildInIcons((icons) => {
@@ -282,8 +294,11 @@ function onTabSelected() {
     if (index < 0) {
         return
     }
+    console.log('onTabSelected lastTabEleId=', lastTabEleId)
     if (lastTabEleId.length > 0) {
+        console.log('onTabSelected 1111=')
         var lastTabEle = document.getElementById(lastTabEleId)
+        console.log('onTabSelected lastTabEle=', lastTabEle)
         var iconEle = document.querySelector('#' + lastTabEleId + ' .tab-icon')
         if (lastTabEle) {
             // 检查合法性在执行，不然在删除时，会有错误出现
@@ -295,8 +310,8 @@ function onTabSelected() {
     }
 
     let selectedTab = headerTabs[index]
+    var tabElementId = getTabElementId(selectedTab)
     if (!selectedTab.isAddTab) {
-        var tabElementId = getTabElementId(selectedTab)
         var tabItem = document.getElementById(tabElementId)
         tabItem.addEventListener('contextmenu', onTabRightClick.bind(null, selectedTab))
 
@@ -306,9 +321,10 @@ function onTabSelected() {
         }
 
         lastTabId = selectedTab.id
-        lastTabEleId = tabElementId
-        lastSelectedTabIndex = index
     }
+
+    lastTabEleId = tabElementId
+    lastSelectedTabIndex = index
 
     if (selectedTab.isAddTab) {
         setVisibility("dataTableContainer", false)
@@ -528,19 +544,4 @@ function deleteTodoItem(todoItemId) {
 
 function getTodoItemsCountUnderCurrentTab() {
     return document.getElementById('todoList').children.length
-}
-
-function showCommonMenu(anchor, items) {
-    var menu = document.getElementById('common_menu')
-    menu.innerHTML = ''
-    items.forEach( item => {
-        var itemEle = document.createElement('s-menu-item')
-        itemEle.textContent = item.title
-        if (item.onClick) {
-            itemEle.onclick = item.onClick
-        }
-        
-        menu.appendChild(itemEle)
-    })
-    menu.show(anchor)
 }

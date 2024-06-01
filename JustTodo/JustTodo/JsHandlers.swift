@@ -192,5 +192,5 @@ let indexJsHandlers: [String: (WKWebView, Any) -> Void] = mapOf(
     getBuildInIcons, getCustomIcons, removeCustomIcon, openIconsWindow
 )
 let iconsJsHandlers:  [String: (WKWebView, Any) -> Void] = mapOf(
-    consoleLog, getCustomIcons, openIconsChooser
+    consoleLog, getCustomIcons, removeCustomIcon, openIconsChooser
 )
