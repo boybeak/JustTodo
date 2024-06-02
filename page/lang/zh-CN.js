@@ -23,4 +23,5 @@ const lang = {
     title_app_open_source: '开源代码',
     text_error_tab_name_too_long: '分组名称不能超过24个字符',
     text_error_tab_name_invalid_chars: '分组名称不能保护换行字符',
+    text_icons_window_drop: '拖放svg文件至此或点击\'+\'按钮'
 }

@@ -23,4 +23,5 @@ const lang = {
     title_app_open_source: 'Open source',
     text_error_tab_name_too_long: 'The group name cannot exceed 24 characters',
     text_error_tab_name_invalid_chars: 'The group name cannot contain newline characters',
+    text_icons_window_drop: 'Drop svg files or click \'+\' button'
 }
