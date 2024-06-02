@@ -17,6 +17,11 @@ function onNewIcons(iconsJson) {
     showIcons(customIconsCache)
 }
 
+function onIconRemoved(iconId) {
+    customIconsCache = customIconsCache.filter( item => item.iconId != iconId)
+    showIcons(customIconsCache)
+}
+
 function showIcons(icons) {
     var iconsNew = []
     iconsNew.push(...icons)
@@ -31,8 +36,6 @@ function showIcons(icons) {
                 title: lang.text_delete,
                 onClick: (event) => {
                     bridge.deleteCustomIcon(icon)
-                    customIconsCache = customIconsCache.filter( item => item.iconId != icon.iconId)
-                    showIcons(customIconsCache)
                 }
             }
         ])
@@ -45,7 +48,9 @@ function onPageReady() {
     var app = document.getElementById('app')
     app.setAttribute('theme', 'auto')
 
-    bridge.addEventCallback('onIconsAdd', onNewIcons)
+    bridge.addEventCallback('onIconsAdded', onNewIcons)
+    bridge.addEventCallback('onIconRemoved', onIconRemoved)
+
     bridge.getCustomIcons(icons => {
         customIconsCache.push(...icons)
         showIcons(icons)

@@ -147,17 +147,23 @@ function showHeaders() {
     })
 }
 
-function onIconsAdded(iconsJson) {
-    var icons = JSON.parse(iconsJson)
-    bridge.manageIcons(icons, true)
-    customIconsCache.push(...icons)
-
-    var iconsTBody = document.getElementById('iconsCustomTableBody')
-    showIcons(iconsTBody, customIconsCache)
-}
-
 function showIcons() {
-    bridge.addEventCallback('onIconsAdd', onIconsAdded)
+    function onIconsAdded(iconsJson) {
+        var icons = JSON.parse(iconsJson)
+        bridge.manageIcons(icons, true)
+        customIconsCache.push(...icons)
+    
+        var iconsTBody = document.getElementById('iconsCustomTableBody')
+        showIcons(iconsTBody, customIconsCache)
+    }
+    
+    function onIconRemoved(iconId) {
+        customIconsCache = customIconsCache.filter( item => item.iconId != iconId)
+        refreshCustomIcons(customIconsCache)
+    }
+
+    bridge.addEventCallback('onIconsAdded', onIconsAdded)
+    bridge.addEventCallback('onIconRemoved', onIconRemoved)
 
     var newTabIcon = document.getElementById('newTabIcon')
 
@@ -172,6 +178,7 @@ function showIcons() {
         
         selectedIconEle.setAttribute('selected', true)
     }
+    
     function refreshCustomIcons(customIcons) {
         var icons = []
         icons.push(...customIcons)
@@ -185,8 +192,6 @@ function showIcons() {
                     title: lang.text_delete,
                     onClick: (event) => {
                         bridge.deleteCustomIcon(icon)
-                        customIconsCache = customIconsCache.filter( item => item.iconId != icon.iconId)
-                        refreshCustomIcons(customIconsCache)
                     }
                 }
             ])
@@ -249,6 +254,7 @@ function newNormalTabEle(tabItem, checked) {
 
     var divEle = document.createElement("div")
     divEle.setAttribute("slot", "text")
+    divEle.tabItem = tabItem
 
     if (tabItem.icon.length == 0) {
         divEle.textContent = tabItem.title
@@ -289,7 +295,11 @@ function onTabSelectedAsync() {
 }
 
 function onTabSelected() {
-    const index = document.getElementById('headerTabs').selectedIndex
+    const tabEle = document.getElementById('headerTabs')
+    tabEle.options.forEach(o => {
+        console.log('onTabSelected o=', o)
+    })
+    const index = tabEle.selectedIndex
 
     if (index < 0) {
         return
@@ -298,9 +308,9 @@ function onTabSelected() {
     if (lastTabEleId.length > 0) {
         console.log('onTabSelected 1111=')
         var lastTabEle = document.getElementById(lastTabEleId)
-        console.log('onTabSelected lastTabEle=', lastTabEle)
         var iconEle = document.querySelector('#' + lastTabEleId + ' .tab-icon')
         if (lastTabEle) {
+            console.log('onTabSelected remove contextmenu id', lastTabEle.getAttribute('id'))
             // 检查合法性在执行，不然在删除时，会有错误出现
             lastTabEle.removeEventListener("contextmenu", onTabRightClick)
         }
@@ -313,7 +323,8 @@ function onTabSelected() {
     var tabElementId = getTabElementId(selectedTab)
     if (!selectedTab.isAddTab) {
         var tabItem = document.getElementById(tabElementId)
-        tabItem.addEventListener('contextmenu', onTabRightClick.bind(null, selectedTab))
+
+        tabItem.addEventListener('contextmenu', onTabRightClick)
 
         var iconEle = document.querySelector('#' + tabElementId + ' .tab-icon')
         if (iconEle) {
@@ -363,9 +374,12 @@ function fillTodoItems(todoItems) {
     })
 }
 
-function onTabRightClick(tabItem, event) {
-    var currentId = getTabElementId(tabItem)
-    var currentTab = document.getElementById(currentId)
+function onTabRightClick(event) {
+    // var currentId = getTabElementId(tabItem)
+    var currentTab = event.target;
+    console.log('onTabRightClick currentTab=', currentTab)
+    var tabItem = currentTab.tabItem
+    console.log('onTabRightClick tabItem=', tabItem)
     var menu = document.querySelector('#tabContextMenu')
     var deleteItem = document.getElementById('tab_menu_item_delete')
     deleteItem.onclick = showDelTabDialog.bind(null, tabItem)

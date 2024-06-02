@@ -20,7 +20,7 @@ struct ContentView: View {
                 WebView(url: fileURL, javascriptHandlers: indexJsHandlers, holder: webViewHolder)
             }
         }.onAppear(perform: {
-            self.callbackId = IconManager.shared.addCallback(callback: newIconCallback(holder: webViewHolder))
+            self.callbackId = IconManager.shared.addCallback(callback: newIconCallback(holder: self.webViewHolder))
         })
         .onDisappear(perform: {
             IconManager.shared.removeCallback(id: callbackId!)

@@ -17,33 +17,16 @@ class IconManager {
         "icon-movie", "icon-clock", "icon-application",
         "icon-board", "icon-book"
     ]
-    
-    private class CallbackWrapper {
-        let id: UUID
-        let callback: ([Icon]) -> Void
 
-        init(id: UUID = UUID(), callback: @escaping ([Icon]) -> Void) {
-            self.id = id
-            self.callback = callback
-        }
-    }
-
-    private var callbacks = [CallbackWrapper]()
+    private var callbacks = [IconCallback]()
     
-    func addCallback(callback: @escaping ([Icon]) -> Void) -> UUID {
-        let wrapper = CallbackWrapper(callback: callback)
-        callbacks.append(wrapper)
-        return wrapper.id
+    func addCallback(callback: IconCallback) -> UUID {
+        callbacks.append(callback)
+        return callback.id
     }
     
     func removeCallback(id: UUID) {
         callbacks.removeAll { $0.id == id }
-    }
-
-    func notifyCallbacks(icons: [Icon]) {
-        for wrapper in callbacks {
-            wrapper.callback(icons)
-        }
     }
     
     func getBuildInIcons(completion: @escaping ([Icon]) -> Void) {
@@ -85,14 +68,18 @@ class IconManager {
             iconUrls.forEach { iconUrl in
                 icons.append(Icon(url: iconUrl))
             }
-            self.callbacks.forEach { wrapper in
-                wrapper.callback(icons)
+        
+            self.callbacks.forEach { callback in
+                callback.onIconsAdded(icons: icons)
             }
         }
     }
     
     func deleteIcon(iconId: String) {
         deleteFile(subdirectory: "icons", filename: iconId)
+        self.callbacks.forEach { callback in
+            callback.onIconRemoved(iconId: iconId)
+        }
     }
     
     func openIconsWindow() {
@@ -115,6 +102,26 @@ class IconManager {
                 }
             }
         }
+    }
+}
+
+struct IconCallback {
+    
+    let id = UUID()
+    private let onIconsAddedHandler: ([Icon]) -> Void
+    private let onIconRemovedHandler: (String) -> Void
+    
+    init(onIconsAdded: @escaping ([Icon]) -> Void, onIconRemoved: @escaping (String) -> Void) {
+        self.onIconsAddedHandler = onIconsAdded
+        self.onIconRemovedHandler = onIconRemoved
+    }
+    
+    func onIconsAdded(icons: [Icon]) {
+        self.onIconsAddedHandler(icons)
+    }
+    
+    func onIconRemoved(iconId: String) {
+        self.onIconRemovedHandler(iconId)
     }
     
 }

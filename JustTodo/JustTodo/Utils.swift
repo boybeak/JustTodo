@@ -145,18 +145,22 @@ func deleteFile(subdirectory: String, filename: String) {
     }
 }
 
-func newIconCallback(holder: WKWebViewHolder) -> ([Icon]) -> Void {
-    let callback: ([Icon]) -> Void = { icons in
-        do {
-            let jsonData = try JSONEncoder().encode(icons)
-            if let jsonString = String(data: jsonData, encoding: .utf8) {
-                holder.wkWebView?.jsOnEvent(eventName: "onIconsAdd", message: jsonString)
+func newIconCallback(holder: WKWebViewHolder) -> IconCallback {
+    return IconCallback(
+        onIconsAdded: { icons in
+            do {
+                let jsonData = try JSONEncoder().encode(icons)
+                if let jsonString = String(data: jsonData, encoding: .utf8) {
+                    holder.wkWebView?.jsOnEvent(eventName: "onIconsAdded", message: jsonString)
+                }
+            } catch {
+                
             }
-        } catch {
-            
+        },
+        onIconRemoved: { iconId in
+            holder.wkWebView?.jsOnEvent(eventName: "onIconRemoved", message: iconId)
         }
-    }
-    return callback
+    )
 }
 
 func mapOf<K, V>(_ pairs: (K, V)...) -> [K: V] {

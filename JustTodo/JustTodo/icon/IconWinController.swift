@@ -60,16 +60,7 @@ struct IconReceiverView: View {
                     return true
                 }
         }.onAppear(perform: {
-            self.callbackId = IconManager.shared.addCallback { icons in
-                do {
-                    let jsonData = try JSONEncoder().encode(icons)
-                    if let jsonString = String(data: jsonData, encoding: .utf8) {
-                        self.webViewHolder.wkWebView?.jsOnEvent(eventName: "onIconsAdd", message: jsonString)
-                    }
-                } catch {
-                    
-                }
-            }
+            self.callbackId = IconManager.shared.addCallback(callback: newIconCallback(holder: self.webViewHolder))
         })
         .onDisappear(perform: {
             IconManager.shared.removeCallback(id: callbackId!)
