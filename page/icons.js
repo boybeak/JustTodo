@@ -48,6 +48,8 @@ function onPageReady() {
     var app = document.getElementById('app')
     app.setAttribute('theme', 'auto')
 
+    document.getElementById('icons_window_tip').textContent = lang.text_icons_window_drop
+
     bridge.addEventCallback('onIconsAdded', onNewIcons)
     bridge.addEventCallback('onIconRemoved', onIconRemoved)
 
