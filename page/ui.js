@@ -6,7 +6,7 @@ var lastTabEleId = ""
 const ADD_TAB_ID = "tab_add"
 
 let tip = new Tip()
-var selectedIconEle
+var selectedIconEle = undefined
 var currentIconSvg = ''
 var svgEmpty = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
@@ -55,6 +55,7 @@ function onPageReady() {
         if (!isTabNameValid(textContent)) {
             return
         }
+
         newTab(textContent, currentIconSvg)
         newTabInput.value = ''
         clearSelectedIcon()
@@ -173,7 +174,7 @@ function showIcons() {
         }
         newTabIcon.innerHTML = icon.svg
         newTabIcon.style.color = 'var(--s-color-secondary)'
-        selectedIconEle = td
+        selectedIconEle = newTabIcon
         currentIconSvg = icon.svg
         
         selectedIconEle.setAttribute('selected', true)
@@ -296,21 +297,16 @@ function onTabSelectedAsync() {
 
 function onTabSelected() {
     const tabEle = document.getElementById('headerTabs')
-    tabEle.options.forEach(o => {
-        console.log('onTabSelected o=', o)
-    })
     const index = tabEle.selectedIndex
 
     if (index < 0) {
         return
     }
-    console.log('onTabSelected lastTabEleId=', lastTabEleId)
+    
     if (lastTabEleId.length > 0) {
-        console.log('onTabSelected 1111=')
         var lastTabEle = document.getElementById(lastTabEleId)
         var iconEle = document.querySelector('#' + lastTabEleId + ' .tab-icon')
         if (lastTabEle) {
-            console.log('onTabSelected remove contextmenu id', lastTabEle.getAttribute('id'))
             // 检查合法性在执行，不然在删除时，会有错误出现
             lastTabEle.removeEventListener("contextmenu", onTabRightClick)
         }
@@ -377,9 +373,7 @@ function fillTodoItems(todoItems) {
 function onTabRightClick(event) {
     // var currentId = getTabElementId(tabItem)
     var currentTab = event.target;
-    console.log('onTabRightClick currentTab=', currentTab)
     var tabItem = currentTab.tabItem
-    console.log('onTabRightClick tabItem=', tabItem)
     var menu = document.querySelector('#tabContextMenu')
     var deleteItem = document.getElementById('tab_menu_item_delete')
     deleteItem.onclick = showDelTabDialog.bind(null, tabItem)
