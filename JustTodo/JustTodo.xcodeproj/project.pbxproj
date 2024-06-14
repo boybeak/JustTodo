@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		845A30902C1C169E00834D65 /* Tray in Frameworks */ = {isa = PBXBuildFile; productRef = 845A308F2C1C169E00834D65 /* Tray */; };
 		848410692C01CA3F008B0BF4 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848410682C01CA3F008B0BF4 /* AboutView.swift */; };
 		8484106B2C01CA65008B0BF4 /* AboutWinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484106A2C01CA65008B0BF4 /* AboutWinController.swift */; };
 		84B19B132C00DE9E006656CA /* JustTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B122C00DE9E006656CA /* JustTodoApp.swift */; };
@@ -38,7 +39,6 @@
 		84B19B8C2C01AC8F006656CA /* sober.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B782C01AC8F006656CA /* sober.min.js */; };
 		84B19B8E2C01AC8F006656CA /* ui.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B7A2C01AC8F006656CA /* ui.js */; };
 		84B19B8F2C01AC8F006656CA /* utils.js in Resources */ = {isa = PBXBuildFile; fileRef = 84B19B7B2C01AC8F006656CA /* utils.js */; };
-		84B19B932C01B723006656CA /* Tray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B19B922C01B723006656CA /* Tray.swift */; };
 		84C8C7A62C03629400C466AD /* IconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C8C7A52C03629300C466AD /* IconManager.swift */; };
 		84C8C7BA2C04313800C466AD /* icon-account.svg in Resources */ = {isa = PBXBuildFile; fileRef = 84C8C7B42C04313800C466AD /* icon-account.svg */; };
 		84C8C7BD2C04313800C466AD /* icon-calendar.svg in Resources */ = {isa = PBXBuildFile; fileRef = 84C8C7B72C04313800C466AD /* icon-calendar.svg */; };
@@ -95,7 +95,6 @@
 		84B19B782C01AC8F006656CA /* sober.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sober.min.js; sourceTree = "<group>"; };
 		84B19B7A2C01AC8F006656CA /* ui.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ui.js; sourceTree = "<group>"; };
 		84B19B7B2C01AC8F006656CA /* utils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = utils.js; sourceTree = "<group>"; };
-		84B19B922C01B723006656CA /* Tray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tray.swift; sourceTree = "<group>"; };
 		84C8C7A52C03629300C466AD /* IconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconManager.swift; sourceTree = "<group>"; };
 		84C8C7B42C04313800C466AD /* icon-account.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "icon-account.svg"; sourceTree = "<group>"; };
 		84C8C7B72C04313800C466AD /* icon-calendar.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "icon-calendar.svg"; sourceTree = "<group>"; };
@@ -122,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845A30902C1C169E00834D65 /* Tray in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,7 +169,6 @@
 				84B19B282C019055006656CA /* WebView.swift */,
 				84B19B572C019864006656CA /* TodoDB.swift */,
 				84B19B592C0198B6006656CA /* JsHandlers.swift */,
-				84B19B922C01B723006656CA /* Tray.swift */,
 				84F83D322C06DC340094346C /* Utils.swift */,
 				84B19B162C00DE9F006656CA /* Assets.xcassets */,
 				84B19B202C00DE9F006656CA /* JustTodo.entitlements */,
@@ -309,6 +308,9 @@
 			dependencies = (
 			);
 			name = JustTodo;
+			packageProductDependencies = (
+				845A308F2C1C169E00834D65 /* Tray */,
+			);
 			productName = JustTodo;
 			productReference = 84B19B0F2C00DE9E006656CA /* JustTodo.app */;
 			productType = "com.apple.product-type.application";
@@ -338,6 +340,9 @@
 				"zh-Hans",
 			);
 			mainGroup = 84B19B062C00DE9E006656CA;
+			packageReferences = (
+				845A308E2C1C169E00834D65 /* XCRemoteSwiftPackageReference "Tray" */,
+			);
 			productRefGroup = 84B19B102C00DE9E006656CA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -405,7 +410,6 @@
 				84B19B152C00DE9E006656CA /* ContentView.swift in Sources */,
 				848410692C01CA3F008B0BF4 /* AboutView.swift in Sources */,
 				84B19B582C019864006656CA /* TodoDB.swift in Sources */,
-				84B19B932C01B723006656CA /* Tray.swift in Sources */,
 				84B19B272C00E000006656CA /* AppDelegate.swift in Sources */,
 				84B19B132C00DE9E006656CA /* JustTodoApp.swift in Sources */,
 				84F83D3A2C08B85F0094346C /* IconWinController.swift in Sources */,
@@ -632,6 +636,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		845A308E2C1C169E00834D65 /* XCRemoteSwiftPackageReference "Tray" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/boybeak/Tray.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		845A308F2C1C169E00834D65 /* Tray */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 845A308E2C1C169E00834D65 /* XCRemoteSwiftPackageReference "Tray" */;
+			productName = Tray;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		84B19B1D2C00DE9F006656CA /* JustTodo.xcdatamodeld */ = {

@@ -7,16 +7,21 @@
 
 import AppKit
 import SwiftUI
+import Tray
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    private let tray = Tray()
+    private var tray: Tray!
     
     func applicationDidFinishLaunching(_ notification: Notification) {
-        setupMainTray()
+        tray = Tray.install(named: "TrayIcon") { tray in
+            setupMainTray(tray: tray)
+        }
+        
     }
     
-    private func setupMainTray() {
+    private func setupMainTray(tray: Tray) {
+        tray.setView(content: ContentView(), size: CGSize(width: 320, height: 480))
         let menu = NSMenu()
                 
         //        Can not make launch on boot work until now
@@ -33,7 +38,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //        menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_about", comment: "About menu item"), action: #selector(actionAbout(_:)), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_quit", comment: "Quit menu item"), action: #selector(actionQuit(_:)), keyEquivalent: ""))
-        tray.install(icon: NSImage(named: "TrayIcon")!, view: ContentView(), menu: menu)
+        tray.setMenu(menu: menu)
     }
     
     @objc func actionAbout(_ sender: NSMenuItem) {
