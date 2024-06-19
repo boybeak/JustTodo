@@ -535,6 +535,30 @@ function createTodoItemEle(todoItem, isLastOne) {
     li.appendChild(textContainer)
     li.appendChild(iconButton)
 
+    li.addEventListener('contextmenu', (e) => {
+        showCommonMenu('common_menu', e, [
+            {
+                title: lang.text_copy,
+                onClick: async (_) => {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        try {
+                            await navigator.clipboard.writeText(todoItem.text);
+                            showToast('toast', lang.text_toast_copied)
+                        } catch (err) {
+                            console.log('Failed to copy text: ', err);
+                        }
+                    }
+                }
+            },
+            {
+                title: lang.text_edit,
+                onClick: (event) => {
+                    
+                }
+            },
+        ])
+    })
+
     return li
 }
 
