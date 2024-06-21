@@ -94,6 +94,14 @@ class NativeBridge extends AbsBridge {
         ]
         window.webkit.messageHandlers.checkTodoItem.postMessage(params)
     }
+    updateTodoItemTextNative(todoId, text, callback) {
+        let eventId = this.newEventId()
+        this.callbackMap.set(eventId, callback)
+        var params = [
+            eventId, todoId, text
+        ]
+        window.webkit.messageHandlers.updateTodoItemText.postMessage(params)
+    }
     deleteTodoItemNative(todoId, callback) {
         let eventId = this.newEventId()
         this.callbackMap.set(eventId, callback)

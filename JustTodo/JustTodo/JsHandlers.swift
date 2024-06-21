@@ -16,6 +16,7 @@ enum JsFunction: String {
     case getTodoItems = "getTodoItems"
     case newTodoItem = "newTodoItem"
     case checkTodoItem = "checkTodoItem"
+    case updateTodoItemText = "updateTodoItemText"
     case deleteTodoItem = "deleteTodoItem"
     case getBuildInIcons = "getBuildInIcons"
     case getCustomIcons = "getCustomIcons"
@@ -126,6 +127,28 @@ let checkTodoItem: (String, (WKWebView, Any) -> Void) = ("checkTodoItem", { webV
     webView.jsHandleResult(eventId: eventId, result: result)
 })
 
+let updateTodoItemText: (String, (WKWebView, Any) -> Void) = ("updateTodoItemText", { webView, msg in
+    let params = msg as! [Any]
+    let eventId = params[0] as! String
+    let todoId = params[1] as! String
+    let text = params[2] as! String
+    
+    let item = TodoDB.shared.todoItemTable.updateItemText(todoId: todoId, text: text)
+    
+    let result: String
+    if item == nil {
+        result = ""
+    } else {
+        do {
+            let json = try jsonEncoder.encode(item!)
+            result = String(data: json, encoding: .utf8)!
+        } catch {
+            result = ""
+        }
+    }
+    webView.jsHandleResult(eventId: eventId, result: result)
+})
+
 let deleteTodoItem: (String, (WKWebView, Any) -> Void) = ("deleteTodoItem", { webView, msg in
     let params = msg as! [String]
     let eventId = params[0]
@@ -188,7 +211,7 @@ let jsonEncoder = JSONEncoder()
 let indexJsHandlers: [String: (WKWebView, Any) -> Void] = mapOf(
     consoleLog, 
     getGroups, newGroup, deleteGroup,
-    getTodoItems, newTodoItem, checkTodoItem, deleteTodoItem,
+    getTodoItems, newTodoItem, checkTodoItem, updateTodoItemText, deleteTodoItem,
     getBuildInIcons, getCustomIcons, removeCustomIcon, openIconsWindow
 )
 let iconsJsHandlers:  [String: (WKWebView, Any) -> Void] = mapOf(

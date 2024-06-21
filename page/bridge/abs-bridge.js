@@ -23,6 +23,7 @@ class AbsBridge {
     getTodoItemsNative(groupId, callback) {}
     newTodoItemNative(groupId, text, callback) {}
     checkTodoItemNative(todoId, checked, callback) {}
+    updateTodoItemTextNative(todoId, text, callback) {}
     deleteTodoItemNative(todoId, callback) {}
     copyTextNative(text) {}
     readClipboard(callback) {}

@@ -553,7 +553,11 @@ function createTodoItemEle(todoItem, isLastOne) {
             {
                 title: lang.text_edit,
                 onClick: (event) => {
-                    
+                    showMask('mask', todoItem.text, (text) => {
+                        bridge.updateTodoItemTextNative(todoItem.id, text, (_) => {
+                            refreshTodoItems()
+                        })
+                    })
                 }
             },
         ])

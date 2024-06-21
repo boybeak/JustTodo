@@ -215,6 +215,17 @@ class TodoItemTable {
         return item
     }
     
+    func updateItemText(todoId: String, text: String)-> Item? {
+        let item = getItem(todoId: todoId)
+        if (item == nil) {
+            return nil
+        }
+        
+        item?.text = text
+        commit()
+        return item
+    }
+    
     func deleteItem(todoId: String)-> Item? {
         let item = getItem(todoId: todoId)
         if (item == nil) {

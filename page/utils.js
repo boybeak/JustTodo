@@ -68,3 +68,30 @@ function showCommonMenu(menuId, anchor, items) {
     })
     menu.show(anchor)
 }
+
+function showMask(id, text, onCommit) {
+    let mask = document.getElementById(id)
+    mask.style.display = 'block';
+    mask.onclick = (e) => {
+        if (e.target.id === id) {
+            hideMask(id)
+            onCommit(reeditor.value)
+        }
+    }
+    document.body.style.overflow = 'hidden'; // 禁止底部内容滚动
+    let reeditor = document.getElementById('reeditor')
+    reeditor.value = text
+    reeditor.addEventListener('keypress', (e) => {
+        if (e.key == 'Enter') {
+            hideMask(id)
+            onCommit(reeditor.value)
+            e.preventDefault()
+        }
+    })
+}
+
+function hideMask(id) {
+    document.getElementById(id).style.display = 'none';
+    mask.onclick = null
+    document.body.style.overflow = ''; // 恢复底部内容滚动
+}
