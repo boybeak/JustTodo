@@ -1,13 +1,16 @@
 <svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
     <!-- <rect width="512" height="512" stroke="darkgray" fill="none" /> -->
     <rect x="32" y="32" width="448" height="448" rx="90" ry="90" fill="#2B2D30" />
-    <text x="10%" y="35%" text-anchor="start" dominant-baseline="middle" font-size="132" font-family="monospace" font-weight="bold" fill="#5F826B">
+    <text x="10%" y="35%" text-anchor="start" dominant-baseline="middle" font-size="132" font-family="monospace"
+        font-weight="bold" fill="#5F826B">
         Just
     </text>
-    <text x="10%" y="65%" text-anchor="start" dominant-baseline="middle" font-size="100" font-family="monospace" font-weight="bold" fill="#7A7E85">
+    <text x="10%" y="65%" text-anchor="start" dominant-baseline="middle" font-size="100" font-family="monospace"
+        font-weight="bold" fill="#7A7E85">
         //
     </text>
-    <text x="36%" y="65%" text-anchor="start" dominant-baseline="middle" font-size="100" font-family="monospace" font-style="italic" font-weight="bold" fill="#B3AE60">
+    <text x="36%" y="65%" text-anchor="start" dominant-baseline="middle" font-size="100" font-family="monospace"
+        font-style="italic" font-weight="bold" fill="#B3AE60">
         TODO
     </text>
 </svg>
