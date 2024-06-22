@@ -536,7 +536,8 @@ function createTodoItemEle(todoItem, isLastOne) {
     li.appendChild(iconButton)
 
     li.addEventListener('contextmenu', (e) => {
-        showCommonMenu('common_menu', e, [
+
+        let menuItems = [
             {
                 title: lang.text_copy,
                 onClick: async (_) => {
@@ -549,18 +550,24 @@ function createTodoItemEle(todoItem, isLastOne) {
                         }
                     }
                 }
-            },
-            {
-                title: lang.text_edit,
-                onClick: (event) => {
-                    showMask('mask', todoItem.text, (text) => {
-                        bridge.updateTodoItemTextNative(todoItem.id, text, (_) => {
-                            refreshTodoItems()
+            }
+        ]
+        if (!todoItem.finished) {
+            menuItems.push(
+                {
+                    title: lang.text_edit,
+                    onClick: (event) => {
+                        showMask('mask', todoItem.text, text, (text) => {
+                            bridge.updateTodoItemTextNative(todoItem.id, text, (_) => {
+                                refreshTodoItems()
+                            })
                         })
-                    })
+                    }
                 }
-            },
-        ])
+            )
+        }
+
+        showCommonMenu('common_menu', e, menuItems)
     })
 
     return li

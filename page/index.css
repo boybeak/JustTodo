@@ -87,3 +87,16 @@ body {
 .tab-icon[selected=true] {
     color: var(--s-color-primary);
 }
+
+#reeditor {
+    width: 100%;
+    height: 80px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 14px;
+    background-color: var(--s-color-background);
+    outline: none;
+    resize: none;
+}

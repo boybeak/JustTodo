@@ -69,25 +69,44 @@ function showCommonMenu(menuId, anchor, items) {
     menu.show(anchor)
 }
 
-function showMask(id, text, onCommit) {
+function showMask(id, text, alignTo, onCommit) {
     let mask = document.getElementById(id)
+    let reeditor = document.getElementById('reeditor')
+
+    function commitText() {
+        hideMask(id)
+        let newText = reeditor.value
+        if (newText.length <= 0) {
+            return
+        }
+        onCommit(newText)
+    }
+
     mask.style.display = 'block';
     mask.onclick = (e) => {
         if (e.target.id === id) {
-            hideMask(id)
-            onCommit(reeditor.value)
+            commitText()
         }
     }
     document.body.style.overflow = 'hidden'; // 禁止底部内容滚动
-    let reeditor = document.getElementById('reeditor')
+    
     reeditor.value = text
+    reeditor.setAttribute('placeholder', lang.text_new_todo_placeholder)
     reeditor.addEventListener('keypress', (e) => {
         if (e.key == 'Enter') {
-            hideMask(id)
-            onCommit(reeditor.value)
+            commitText()
             e.preventDefault()
         }
     })
+
+    let rect = alignTo.getBoundingClientRect()
+    reeditor.style.position = 'absolute'
+    // reeditor.style.minHeight = rect.height + 'px'
+    // reeditor.style.height = rect.height + 'px'
+    reeditor.style.top = rect.top + 'px'
+
+    reeditor.focus()
+
 }
 
 function hideMask(id) {
