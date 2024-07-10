@@ -1,13 +1,22 @@
 {
-  "originHash" : "95b4a7d86d6ca24d35d4a4b62f2f0f9e85b34831f3f477c6490663c6dd95bd69",
+  "originHash" : "e76b77291f0d1a293ae844c11da8593001a99a6c67b3fb8c0a9e36586e4a6c7e",
   "pins" : [
+    {
+      "identity" : "launchatlogin-modern",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/LaunchAtLogin-Modern",
+      "state" : {
+        "revision" : "a04ec1c363be3627734f6dad757d82f5d4fa8fcc",
+        "version" : "1.1.0"
+      }
+    },
     {
       "identity" : "tray",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/boybeak/Tray.git",
       "state" : {
         "branch" : "main",
-        "revision" : "6f2a64ec6cc10280a3156c3b872a7fac508d1a0c"
+        "revision" : "1014c1ea7a4e140ae5c33903ef3e408bead0cf22"
       }
     }
   ],
