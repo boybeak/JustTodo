@@ -57,6 +57,25 @@ body {
     height: 432px;
 }
 
+#newTabFastScrollTip {
+    border: 1px solid var(--s-color-outline); 
+    border-radius: 8px; 
+    padding: 8px; 
+    margin: 8px; 
+    display: none; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: center;
+}
+
+#newTabFastScrollTipText {
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
+    align-items: center; 
+    justify-content: center;
+}
+
 #newTabInput {
     flex-grow: 1; 
     height: 48px; 

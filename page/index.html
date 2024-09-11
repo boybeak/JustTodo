@@ -73,7 +73,7 @@
                     </s-icon>
                 </s-icon-button>
             </div>
-            <s-menu id="todoItemContextMenu"">
+            <s-menu id="todoItemContextMenu">
                 <s-menu-item id=" todo_menu_item_move_to">
                 <s-icon slot="start">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
@@ -88,6 +88,15 @@
         </div>
 
         <div id="newTabPage">
+            <div id="newTabFastScrollTip">
+                <div id="newTabFastScrollTipText">
+                    <b>Shift + Mouse wheel</b> to fast scroll tabs
+                </div>
+                <s-icon-button id="newTabFastScrollTipCloseBtn">
+                    <s-icon type="close"></s-icon>
+                </s-icon-button>
+            </div>
+            
             <s-scroll-view class="scrollViewNoBars" style="width: 100%; height: 376px;">
                 <div style="padding: 8px;">
                     <table class="square-table">

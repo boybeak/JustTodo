@@ -115,6 +115,27 @@ function onPageReady() {
     })
     showHeaders()
     showIcons()
+
+    const newTabFastScrollTip = document.getElementById("newTabFastScrollTip")
+    if (typeof(Storage) !== "undefined") {
+        const fastScrollTabTipHide = localStorage.getItem('fastScrollTabTipHide') || false
+        if (fastScrollTabTipHide) {
+            newTabFastScrollTip.style.display = 'none'
+        } else {
+            newTabFastScrollTip.style.display = 'flex'
+        }
+    } else {
+        console.log("localStorage 不被支持");
+    }
+    const newTabFastScrollTipCloseBtn = document.getElementById("newTabFastScrollTipCloseBtn")
+    newTabFastScrollTipCloseBtn.onclick = () => {
+        if (typeof(Storage) !== "undefined") {
+            localStorage.setItem('fastScrollTabTipHide', true)
+            newTabFastScrollTip.style.display = 'none'
+        } else {
+            console.log("localStorage 不被支持");
+        }
+    }
 }
 
 function showHeaders() {
