@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import NoLaunchWin
 
 @main
 struct JustTodoApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
-        Settings {
+        WindowGroup {
+            NoLaunchWinView()
         }
     }
 }

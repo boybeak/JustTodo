@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8450C9CA2C9D31B00028DDA1 /* NoLaunchWin in Frameworks */ = {isa = PBXBuildFile; productRef = 8450C9C92C9D31B00028DDA1 /* NoLaunchWin */; };
 		845A30902C1C169E00834D65 /* Tray in Frameworks */ = {isa = PBXBuildFile; productRef = 845A308F2C1C169E00834D65 /* Tray */; };
 		848410692C01CA3F008B0BF4 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848410682C01CA3F008B0BF4 /* AboutView.swift */; };
 		8484106B2C01CA65008B0BF4 /* AboutWinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484106A2C01CA65008B0BF4 /* AboutWinController.swift */; };
@@ -122,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8450C9CA2C9D31B00028DDA1 /* NoLaunchWin in Frameworks */,
 				848D7B542C3EA9AE00CF4416 /* LaunchAtLogin in Frameworks */,
 				845A30902C1C169E00834D65 /* Tray in Frameworks */,
 			);
@@ -313,6 +315,7 @@
 			packageProductDependencies = (
 				845A308F2C1C169E00834D65 /* Tray */,
 				848D7B532C3EA9AE00CF4416 /* LaunchAtLogin */,
+				8450C9C92C9D31B00028DDA1 /* NoLaunchWin */,
 			);
 			productName = JustTodo;
 			productReference = 84B19B0F2C00DE9E006656CA /* JustTodo.app */;
@@ -346,6 +349,7 @@
 			packageReferences = (
 				845A308E2C1C169E00834D65 /* XCRemoteSwiftPackageReference "Tray" */,
 				848D7B522C3EA9AE00CF4416 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+				8450C9C82C9D31B00028DDA1 /* XCRemoteSwiftPackageReference "NoLaunchWin" */,
 			);
 			productRefGroup = 84B19B102C00DE9E006656CA /* Products */;
 			projectDirPath = "";
@@ -572,7 +576,7 @@
 				CODE_SIGN_ENTITLEMENTS = JustTodo/JustTodo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1302;
+				CURRENT_PROJECT_VERSION = 1310;
 				DEVELOPMENT_ASSET_PATHS = "\"JustTodo/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -583,7 +587,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.02;
+				MARKETING_VERSION = 1.3.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.boybeak.JustTodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -599,7 +603,7 @@
 				CODE_SIGN_ENTITLEMENTS = JustTodo/JustTodo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1302;
+				CURRENT_PROJECT_VERSION = 1310;
 				DEVELOPMENT_ASSET_PATHS = "\"JustTodo/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -610,7 +614,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.02;
+				MARKETING_VERSION = 1.3.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.boybeak.JustTodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -642,6 +646,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8450C9C82C9D31B00028DDA1 /* XCRemoteSwiftPackageReference "NoLaunchWin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/boybeak/NoLaunchWin.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
 		845A308E2C1C169E00834D65 /* XCRemoteSwiftPackageReference "Tray" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/boybeak/Tray.git";
@@ -661,6 +673,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8450C9C92C9D31B00028DDA1 /* NoLaunchWin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8450C9C82C9D31B00028DDA1 /* XCRemoteSwiftPackageReference "NoLaunchWin" */;
+			productName = NoLaunchWin;
+		};
 		845A308F2C1C169E00834D65 /* Tray */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 845A308E2C1C169E00834D65 /* XCRemoteSwiftPackageReference "Tray" */;
