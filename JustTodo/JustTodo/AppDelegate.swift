@@ -46,7 +46,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func checkUpdate(_ sender: NSMenuItem) {
         let checker = GithubReleaseChecker()
 
+        let alert = self.showLoadingDialog()
         checker.checkUpdate(for: .userRepo("boybeak/JustTodo")) { result in
+            DispatchQueue.main.async {
+                alert.close()
+            }
             switch result {
             case .success(let (newVersion, hasUpdate)):
                 if hasUpdate, let releaseInfo = newVersion {
@@ -58,6 +62,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 print("检查更新失败：\(error)")
             }
         }
+    }
+    
+    private func showLoadingDialog()-> NSWindow {
+        let window = openSwiftUIWindow { win in
+            VStack {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(1.5)
+            }
+            .frame(width: 100, height: 100)
+        }
+        
+        window.level = .floating
+        window.center()
+        
+        return window
     }
     
     private func showUpdateWindow(info: ReleaseInfo) {

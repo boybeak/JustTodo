@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		8450C9CA2C9D31B00028DDA1 /* NoLaunchWin in Frameworks */ = {isa = PBXBuildFile; productRef = 8450C9C92C9D31B00028DDA1 /* NoLaunchWin */; };
 		845A30902C1C169E00834D65 /* Tray in Frameworks */ = {isa = PBXBuildFile; productRef = 845A308F2C1C169E00834D65 /* Tray */; };
-		8477D5792D0D9F11005B3BC8 /* GithubReleaseChecker in Frameworks */ = {isa = PBXBuildFile; productRef = 8477D5782D0D9F11005B3BC8 /* GithubReleaseChecker */; };
 		8477D57C2D0DAB6E005B3BC8 /* SwiftUIWindow in Frameworks */ = {isa = PBXBuildFile; productRef = 8477D57B2D0DAB6E005B3BC8 /* SwiftUIWindow */; };
 		8477D57F2D0DB0AD005B3BC8 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 8477D57E2D0DB0AD005B3BC8 /* Ink */; };
+		8477D5822D0DB2A4005B3BC8 /* GithubReleaseChecker in Frameworks */ = {isa = PBXBuildFile; productRef = 8477D5812D0DB2A4005B3BC8 /* GithubReleaseChecker */; };
 		848410692C01CA3F008B0BF4 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848410682C01CA3F008B0BF4 /* AboutView.swift */; };
 		8484106B2C01CA65008B0BF4 /* AboutWinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484106A2C01CA65008B0BF4 /* AboutWinController.swift */; };
 		848D7B542C3EA9AE00CF4416 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 848D7B532C3EA9AE00CF4416 /* LaunchAtLogin */; };
@@ -127,7 +127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8450C9CA2C9D31B00028DDA1 /* NoLaunchWin in Frameworks */,
-				8477D5792D0D9F11005B3BC8 /* GithubReleaseChecker in Frameworks */,
+				8477D5822D0DB2A4005B3BC8 /* GithubReleaseChecker in Frameworks */,
 				848D7B542C3EA9AE00CF4416 /* LaunchAtLogin in Frameworks */,
 				8477D57F2D0DB0AD005B3BC8 /* Ink in Frameworks */,
 				8477D57C2D0DAB6E005B3BC8 /* SwiftUIWindow in Frameworks */,
@@ -322,9 +322,9 @@
 				845A308F2C1C169E00834D65 /* Tray */,
 				848D7B532C3EA9AE00CF4416 /* LaunchAtLogin */,
 				8450C9C92C9D31B00028DDA1 /* NoLaunchWin */,
-				8477D5782D0D9F11005B3BC8 /* GithubReleaseChecker */,
 				8477D57B2D0DAB6E005B3BC8 /* SwiftUIWindow */,
 				8477D57E2D0DB0AD005B3BC8 /* Ink */,
+				8477D5812D0DB2A4005B3BC8 /* GithubReleaseChecker */,
 			);
 			productName = JustTodo;
 			productReference = 84B19B0F2C00DE9E006656CA /* JustTodo.app */;
@@ -359,9 +359,9 @@
 				845A308E2C1C169E00834D65 /* XCRemoteSwiftPackageReference "Tray" */,
 				848D7B522C3EA9AE00CF4416 /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
 				8450C9C82C9D31B00028DDA1 /* XCRemoteSwiftPackageReference "NoLaunchWin" */,
-				8477D5772D0D9F11005B3BC8 /* XCLocalSwiftPackageReference "../../../Downloads/GithubReleaseChecker" */,
 				8477D57A2D0DAB6E005B3BC8 /* XCRemoteSwiftPackageReference "SwiftUIWindow" */,
 				8477D57D2D0DB0AD005B3BC8 /* XCRemoteSwiftPackageReference "ink" */,
+				8477D5802D0DB2A4005B3BC8 /* XCLocalSwiftPackageReference "../../GithubReleaseChecker" */,
 			);
 			productRefGroup = 84B19B102C00DE9E006656CA /* Products */;
 			projectDirPath = "";
@@ -658,9 +658,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		8477D5772D0D9F11005B3BC8 /* XCLocalSwiftPackageReference "../../../Downloads/GithubReleaseChecker" */ = {
+		8477D5802D0DB2A4005B3BC8 /* XCLocalSwiftPackageReference "../../GithubReleaseChecker" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../../Downloads/GithubReleaseChecker;
+			relativePath = ../../GithubReleaseChecker;
 		};
 /* End XCLocalSwiftPackageReference section */
 
@@ -718,10 +718,6 @@
 			package = 845A308E2C1C169E00834D65 /* XCRemoteSwiftPackageReference "Tray" */;
 			productName = Tray;
 		};
-		8477D5782D0D9F11005B3BC8 /* GithubReleaseChecker */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = GithubReleaseChecker;
-		};
 		8477D57B2D0DAB6E005B3BC8 /* SwiftUIWindow */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8477D57A2D0DAB6E005B3BC8 /* XCRemoteSwiftPackageReference "SwiftUIWindow" */;
@@ -731,6 +727,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8477D57D2D0DB0AD005B3BC8 /* XCRemoteSwiftPackageReference "ink" */;
 			productName = Ink;
+		};
+		8477D5812D0DB2A4005B3BC8 /* GithubReleaseChecker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GithubReleaseChecker;
 		};
 		848D7B532C3EA9AE00CF4416 /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
