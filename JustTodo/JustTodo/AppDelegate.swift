@@ -9,6 +9,9 @@ import AppKit
 import SwiftUI
 import Tray
 import LaunchAtLogin
+import GithubReleaseChecker
+import SwiftUIWindow
+import Ink
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
@@ -34,9 +37,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menu.addItem(launchBootItem)
         
         menu.addItem(.separator())
+        menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_version_check", comment: "Check update"), action: #selector(checkUpdate(_:)), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_about", comment: "About menu item"), action: #selector(actionAbout(_:)), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: NSLocalizedString("menu_item_quit", comment: "Quit menu item"), action: #selector(actionQuit(_:)), keyEquivalent: ""))
         tray.setMenu(menu: menu)
+    }
+    
+    @objc func checkUpdate(_ sender: NSMenuItem) {
+        let checker = GithubReleaseChecker()
+
+        checker.checkUpdate(for: .userRepo("boybeak/JustTodo")) { result in
+            switch result {
+            case .success(let (newVersion, hasUpdate)):
+                if hasUpdate, let releaseInfo = newVersion {
+                    self.showUpdateWindow(info: releaseInfo)
+                } else {
+                    print("当前已经是最新版本")
+                }
+            case .failure(let error):
+                print("检查更新失败：\(error)")
+            }
+        }
+    }
+    
+    private func showUpdateWindow(info: ReleaseInfo) {
+        if let markdown = info.body {
+            let parser = MarkdownParser()
+            let html = parser.html(from: markdown)
+            let window = openSwiftUIWindow { win in
+                WebView(html: html)
+                    .frame(width: 300, height: 400)
+            }
+            
+            window.center()
+        }
+        
     }
     
     @objc func actionAbout(_ sender: NSMenuItem) {

@@ -1,6 +1,15 @@
 {
-  "originHash" : "3f7f98846023566404c9a22d9f37b01abd828cd86c1cd9e3fba89436ddcf82ac",
+  "originHash" : "ebc3adf88decf1998cb990421e157f1df141f9ac0838248c90741ce3e8098ce9",
   "pins" : [
+    {
+      "identity" : "ink",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/johnsundell/ink.git",
+      "state" : {
+        "revision" : "bcc9f219900a62c4210e6db726035d7f03ae757b",
+        "version" : "0.6.0"
+      }
+    },
     {
       "identity" : "launchatlogin-modern",
       "kind" : "remoteSourceControl",
@@ -16,6 +25,15 @@
       "location" : "https://github.com/boybeak/NoLaunchWin.git",
       "state" : {
         "revision" : "8114836b96375ffe24740bd9c503ca1b0a57324d",
+        "version" : "0.0.1"
+      }
+    },
+    {
+      "identity" : "swiftuiwindow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/boybeak/SwiftUIWindow.git",
+      "state" : {
+        "revision" : "e7d0d194a06b3de48bafda630864c80d8fe6df08",
         "version" : "0.0.1"
       }
     },

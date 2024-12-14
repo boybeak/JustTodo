@@ -16,22 +16,34 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler
 // SwiftUIWebView 是一个 SwiftUI 视图，用于显示 WebView 并进行交互
 struct WebView: NSViewRepresentable {
     let webView: WKWebView
-    let url: URL
-    let javascriptHandlers: [String: (WKWebView, Any) -> Void]
+    let url: URL?
+    let html: String?
+    let javascriptHandlers: [String: (WKWebView, Any) -> Void]?
 
     init(url: URL, javascriptHandlers: [String: (WKWebView, Any) -> Void], holder: WKWebViewHolder? = nil) {
         self.url = url
+        self.html = nil
         self.javascriptHandlers = javascriptHandlers
         let wv = WKWebView()
         self.webView = wv
         holder?.wkWebView = wv
     }
+    
+    init(html: String) {
+        self.url = nil
+        self.html = html
+        let wv = WKWebView()
+        self.webView = wv
+        self.javascriptHandlers = nil
+    }
 
     func makeNSView(context: Context) -> WKWebView {
         webView.navigationDelegate = context.coordinator
 
-        for (handlerName, _) in javascriptHandlers {
-            webView.configuration.userContentController.add(context.coordinator, name: handlerName)
+        if let javascriptHandlers = self.javascriptHandlers {
+            for (handlerName, _) in javascriptHandlers {
+                webView.configuration.userContentController.add(context.coordinator, name: handlerName)
+            }
         }
         
         let webPreferences = webView.configuration.defaultWebpagePreferences
@@ -43,9 +55,16 @@ struct WebView: NSViewRepresentable {
     }
 
     func updateNSView(_ nsView: WKWebView, context: Context) {
-        nsView.load(URLRequest(url: url))
+        if let url = self.url {
+            nsView.load(URLRequest(url: url))
+        } else if let htmlStr = self.html {
+            nsView.loadHTMLString(htmlStr, baseURL: nil)
+        }
+        
         context.coordinator.webView = nsView
-        context.coordinator.javascriptHandlers = javascriptHandlers
+        if let javascriptHandlers = self.javascriptHandlers {
+            context.coordinator.javascriptHandlers = javascriptHandlers
+        }
     }
 
     func makeCoordinator() -> WebViewCoordinator {
